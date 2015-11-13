@@ -1,0 +1,14 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Hydra">
+
+    <SolidColorBrush x:Key="UGentBlue" Color="#104B7D" />
+    <SolidColorBrush x:Key="UGentYellow" Color="#FDB812" />
+
+
+    <Style x:Key="ContentFrameStyle" TargetType="Frame">
+        <Setter Property="Background" Value="#DDD" />
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,83 @@
+﻿<Page
+    x:Class="Hydra.Views.Shell"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Hydra.Views"
+    xmlns:controls="using:Hydra.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    KeyDown="AppShell_KeyDown"
+    TabNavigation="Cycle"
+    mc:Ignorable="d">
+    
+    <Page.Resources>
+        <DataTemplate x:Key="NavMenuItemTemplate" x:DataType="local:NavMenuItem">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <FontIcon x:Name="Glyph" Glyph="{x:Bind SymbolAsChar}" ToolTipService.ToolTip="{x:Bind Label}"  />
+                <TextBlock x:Name="Text" Grid.Column="1" Text="{x:Bind Label}" Style="{StaticResource topNavText}" />
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid>
+        <!-- Adaptive triggers TODO: can't we put this in Styles? -->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="RootSplitView.DisplayMode" Value="CompactInline"/>
+                        <Setter Target="RootSplitView.IsPaneOpen" Value="True"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="RootSplitView.DisplayMode" Value="Overlay"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        
+        <SplitView x:Name="RootSplitView" DisplayMode="CompactOverlay" Style="{StaticResource topNavigation}">
+            <SplitView.Pane>
+                <controls:NavMenuListView x:Name="NavMenuList"
+                                          TabIndex="3"
+                                          Margin="0,48,0,0"
+                                          ContainerContentChanging="NavMenuItemContainerContentChanging"
+                                          ItemContainerStyle="{StaticResource topNavMenuItem}"
+                                          ItemTemplate="{StaticResource NavMenuItemTemplate}"
+                                          ItemInvoked="NavMenuList_ItemInvoked">
+                </controls:NavMenuListView>
+            </SplitView.Pane>
+
+
+            <!-- OnNavigatingToPage we synchronize the selected item in the nav menu with the current page.
+                 OnNavigatedToPage we move keyboard focus to the first item on the page after it's loaded. -->
+            <Frame x:Name="ContentFrame"
+                   Navigating="OnNavigatingToPage"
+                   Navigated="OnNavigatedToPage"
+                   Style="{StaticResource ContentFrameStyle}">
+            </Frame>
+        </SplitView>
+
+
+        <!-- Declared last to have it rendered above everything else, but it needs to be the first item in the tab sequence. -->
+        <ToggleButton x:Name="TogglePaneButton"
+                      TabIndex="1"
+                      Style="{StaticResource SplitViewTogglePaneButtonStyle}"
+                      IsChecked="{Binding IsPaneOpen, ElementName=RootSplitView, Mode=TwoWay}"
+                      Unchecked="TogglePaneButton_Checked"
+                      AutomationProperties.Name="Menu"
+                      ToolTipService.ToolTip="Menu" />
+    </Grid>
+</Page>
