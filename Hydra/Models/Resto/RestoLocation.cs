@@ -10,12 +10,11 @@ namespace Hydra.Models.Resto {
 
     [DataContract]
     public class RestoLocation : IModel {
-        public static readonly string[] types = new string[] {
+        public static readonly string[] TYPES = new string[] {
             "resto",
             "cafetaria",
             "club"
         };
-
 
         [DataMember(Name = "name")]
         public string Name { get; set; }

@@ -9,6 +9,7 @@ using Windows.UI.Xaml.Controls;
 using Hydra.Models.Resto;
 
 namespace Hydra.Views.Resto {
+
     public class RestoMenuTemplateSelector : DataTemplateSelector {
         public DataTemplate LoadingTemplate { get; set; }
         public DataTemplate RestoClosedTemplate { get; set; }
