@@ -104,7 +104,6 @@
     <Compile Include="Models\IModel.cs" />
     <Compile Include="Models\ModelFactory.cs" />
     <Compile Include="Models\RestoMenuFactory.cs" />
-    <Compile Include="Models\Resto\WeekMenu.cs" />
     <Compile Include="Models\Resto\Meal.cs" />
     <Compile Include="Models\Resto\RestoLocation.cs" />
     <Compile Include="Models\Resto\RestoLegend.cs" />

@@ -31,7 +31,7 @@ namespace Hydra.Views.Resto {
         public async void GetRestoMeta() {
             RestoMeta restoMeta = (RestoMeta) await new RestoMenuFactory().FromRestApi(typeof(RestoMeta), restoApiUrl, "meta.json");
 
-            RestoLocationList.DataContext = restoMeta.locations;
+            RestoLocationList.DataContext = restoMeta.Locations;
         }
     }
 }

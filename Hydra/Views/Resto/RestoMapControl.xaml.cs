@@ -34,7 +34,7 @@ namespace Hydra.Views.Resto {
         public async void GetRestoLocations() {
             RestoMeta restoMeta = (RestoMeta)await new RestoMenuFactory().FromRestApi(typeof(RestoMeta), restoApiUrl, "meta.json");
 
-            foreach(RestoLocation resto in restoMeta.locations) {
+            foreach(RestoLocation resto in restoMeta.Locations) {
                 MapIcon pin = new MapIcon() {
                     Location = resto.Location,
                     Title = resto.Name,

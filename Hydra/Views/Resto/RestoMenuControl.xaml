@@ -106,8 +106,8 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="0" Text="{Binding name}"/>
-                <TextBlock Grid.Column="1" Text="{Binding price}"/>
+                <TextBlock Grid.Column="0" Text="{Binding Name}"/>
+                <TextBlock Grid.Column="1" Text="{Binding Price}"/>
             </Grid>
         </DataTemplate>
 
