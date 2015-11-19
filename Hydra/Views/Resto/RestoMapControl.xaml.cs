@@ -39,9 +39,9 @@ namespace Hydra.Views.Resto {
                     Location = resto.Location,
                     Title = resto.Name,
                     ZIndex = 0,
-                    Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms:appx:///Assets/Icons/RestoMapIcon.png")),
                     CollisionBehaviorDesired = MapElementCollisionBehavior.RemainVisible
                 };
+                pin.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/Icons/RestoMapIcon.png"));
                 RestoLocationMap.MapElements.Add(pin);
             }
         }

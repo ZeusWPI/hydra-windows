@@ -198,6 +198,7 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Models\Activities\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Views\Calendar\" />
     <Folder Include="Views\Info\" />
