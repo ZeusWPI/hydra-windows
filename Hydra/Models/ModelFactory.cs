@@ -16,7 +16,7 @@ namespace Hydra.Models {
         
         protected const string zeusApiUrl = "https://zeus.ugent.be/hydra/api/";
 
-        public async Task<IModel> FromRestApi(Type modelType, string baseUri, string relativeUri, DataContractJsonSerializerSettings serializerSettings = null) {
+        public async Task<object> FromRestApi(Type modelType, string baseUri, string relativeUri, DataContractJsonSerializerSettings serializerSettings = null) {
             HttpContent jsonFile = await downloadJsonFile(baseUri, relativeUri);
             Stream stream = await jsonFile.ReadAsStreamAsync();
 
@@ -27,7 +27,7 @@ namespace Hydra.Models {
                 serializer = new DataContractJsonSerializer(modelType);
             }
             
-            return (IModel)serializer.ReadObject(stream);
+            return serializer.ReadObject(stream);
         }
 
         protected async Task<HttpContent> downloadJsonFile(string baseUri, string relativeUri) {

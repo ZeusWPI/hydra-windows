@@ -5,6 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Data.Json;
@@ -23,12 +24,15 @@ namespace Hydra.Models {
         /// <summary>
         /// Get the menus for this week (or next week if it's already weekend).
         /// </summary>
-        /// <param name="nextDays">The amount of days to download the info from.</param>
         public async Task<DailyMenu[]> GetRestoMenus() {
             string weekMenuApiUrl = "week/" + getWeekNr() + ".json";
-            HttpContent jsonFile = await downloadJsonFile(restoApiUrl, weekMenuApiUrl);
-            string jsonString = await jsonFile.ReadAsStringAsync();
-            return parseWeekMenu(jsonString);
+
+            DataContractJsonSerializerSettings serializerSettings = new DataContractJsonSerializerSettings() {
+                UseSimpleDictionaryFormat = true
+            };
+
+            var weekMenu = await FromRestApi(typeof(Dictionary<string, DailyMenu>), restoApiUrl, weekMenuApiUrl, serializerSettings);
+            return weekMenuToArray((Dictionary<string, DailyMenu>) weekMenu);
         }
         
         private int getWeekNr() {
@@ -46,53 +50,15 @@ namespace Hydra.Models {
             return currentWeekNr;
         }
 
-
-        private DailyMenu[] parseWeekMenu(string jsonString) {
+        private DailyMenu[] weekMenuToArray(Dictionary<string, DailyMenu> weekMenu) {
             List<DailyMenu> menus = new List<DailyMenu>(5);
-            JsonObject jsonObject = JsonObject.Parse(jsonString);
-
-            foreach (string day in jsonObject.Keys) {
-                var dailyMenu = jsonObject.GetNamedObject(day);
-                DailyMenu menu = new DailyMenu() {
-                    open = dailyMenu.GetNamedBoolean("open")
-                };
-
-                if (menu.open) {
-                    // Date
-                    DateTime date;
-                    DateTime.TryParse(day, out date);
-                    menu.date = date;
-
-                    // Meat
-                    var meat = dailyMenu.GetNamedArray("meat");
-                    List<Meal> meals = new List<Meal>();
-                    foreach (var el in meat) {
-                        var meal = el.GetObject();
-                        meals.Add(new Meal() {
-                            name = meal.GetNamedString("name"),
-                            price = meal.GetNamedString("price"),
-                            recommended = meal.GetNamedBoolean("recommended")
-                        });
-                    }
-                    menu.meat = meals.ToArray();
-
-                    // Soup
-                    var soupObject = dailyMenu.GetNamedObject("soup");
-                    menu.soup = new Meal() {
-                        name = soupObject.GetNamedString("name"),
-                        price = soupObject.GetNamedString("price")
-                    };
-
-                    // Vegetables
-                    var vegetables = dailyMenu.GetNamedArray("vegetables");
-                    List<string> vegetableList = new List<string>();
-                    foreach (var el in vegetables) {
-                        vegetableList.Add(el.GetString());
-                    }
-                    menu.vegetables = vegetableList.ToArray();
-
-                    menus.Add(menu);
-                }
+            
+            // I hate the current API
+            foreach(var keyValue in weekMenu.ToArray()) {
+                DateTime date;
+                DateTime.TryParse(keyValue.Key, out date);
+                keyValue.Value.date = date;
+                menus.Add(keyValue.Value);
             }
 
             return menus.ToArray();

@@ -104,6 +104,7 @@
     <Compile Include="Models\IModel.cs" />
     <Compile Include="Models\ModelFactory.cs" />
     <Compile Include="Models\RestoMenuFactory.cs" />
+    <Compile Include="Models\Resto\WeekMenu.cs" />
     <Compile Include="Models\Resto\Meal.cs" />
     <Compile Include="Models\Resto\RestoLocation.cs" />
     <Compile Include="Models\Resto\RestoLegend.cs" />
@@ -120,6 +121,7 @@
     <Compile Include="Views\Resto\RestoMenuControl.xaml.cs">
       <DependentUpon>RestoMenuControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Resto\RestoMenuTemplateSelector.cs" />
     <Compile Include="Views\Resto\RestoPage.xaml.cs">
       <DependentUpon>RestoPage.xaml</DependentUpon>
     </Compile>

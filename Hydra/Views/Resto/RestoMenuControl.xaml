@@ -110,43 +110,62 @@
                 <TextBlock Grid.Column="1" Text="{Binding price}"/>
             </Grid>
         </DataTemplate>
+
+
+
+        <local:RestoMenuTemplateSelector x:Key="RestoInfoSelector">
+            <local:RestoMenuTemplateSelector.DayMenuTemplate>
+                <DataTemplate>
+                    <StackPanel Background="White" Margin="-10,0,-10,0" BorderBrush="{StaticResource UGentYellow}" BorderThickness="1">
+                        <TextBlock Text="Soep" Style="{ThemeResource TitleTextBlockStyle}"  HorizontalAlignment="Center" />
+                        <ContentPresenter Padding="15" ContentTemplate="{StaticResource MealTemplate}" Content="{Binding Soup}" />
+
+                        <TextBlock Text="Vlees &amp; Veggie" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" />
+                        <ListView ItemsSource="{Binding Meat}" ItemTemplate="{StaticResource MealTemplate}" SelectionMode="None">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                        </ListView>
+
+                        <TextBlock Text="Groenten" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" />
+                        <ListView ItemsSource="{Binding Vegetables}">
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            </Style>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" />
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </DataTemplate>
+            </local:RestoMenuTemplateSelector.DayMenuTemplate>
+
+            <local:RestoMenuTemplateSelector.LoadingTemplate>
+                <DataTemplate>
+                    <ProgressRing IsActive="True" />
+                </DataTemplate>
+            </local:RestoMenuTemplateSelector.LoadingTemplate>
+
+            <local:RestoMenuTemplateSelector.RestoClosedTemplate>
+                <DataTemplate>
+                    <TextBlock Text="GESLOTEN" />
+                </DataTemplate>
+            </local:RestoMenuTemplateSelector.RestoClosedTemplate>
+        </local:RestoMenuTemplateSelector>
     </UserControl.Resources>
 
-    <Pivot x:Name="RestoMenuList" Width="500" ItemsSource="{Binding}">
+    <Pivot x:Name="RestoMenuList"
+           Width="500"
+           ItemsSource="{Binding}"
+           ItemTemplateSelector="{StaticResource RestoInfoSelector}">
         <Pivot.HeaderTemplate>
             <DataTemplate>
                 <ContentControl Content="{Binding FormattedDate}" />
             </DataTemplate>
         </Pivot.HeaderTemplate>
-
-        <Pivot.ItemTemplate>
-            <DataTemplate>
-                <StackPanel Background="White" Margin="-10,0,-10,0" BorderBrush="{StaticResource UGentYellow}" BorderThickness="1">
-                    <TextBlock Text="Vlees &amp; Veggie" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" />
-                    <ListView ItemsSource="{Binding meat}" ItemTemplate="{StaticResource MealTemplate}" SelectionMode="None">
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
-                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                            </Style>
-                        </ListView.ItemContainerStyle>
-                    </ListView>
-
-                    <TextBlock Text="Groenten" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" />
-                    <ListView ItemsSource="{Binding vegetables}">
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                        </Style>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding}" />
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-
-                    <TextBlock Text="Soep" Style="{ThemeResource TitleTextBlockStyle}"  HorizontalAlignment="Center" />
-                    <ContentPresenter ContentTemplate="{StaticResource MealTemplate}" Content="{Binding soup}" />
-                </StackPanel>
-            </DataTemplate>
-        </Pivot.ItemTemplate>
     </Pivot>
 </UserControl>

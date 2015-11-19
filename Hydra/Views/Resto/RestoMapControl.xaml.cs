@@ -37,7 +37,7 @@ namespace Hydra.Views.Resto {
             foreach(RestoLocation resto in restoMeta.locations) {
                 MapIcon pin = new MapIcon() {
                     Location = resto.Location,
-                    Title = resto.name,
+                    Title = resto.Name,
                     ZIndex = 0,
                     Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms:appx:///Assets/Icons/RestoMapIcon.png")),
                     CollisionBehaviorDesired = MapElementCollisionBehavior.RemainVisible

@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Navigation;
 using Hydra.Models;
 
 namespace Hydra.Views.Resto {
+
     public sealed partial class RestoMenuControl : UserControl {
         public RestoMenuControl() {
             InitializeComponent();
