@@ -16,25 +16,25 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+using Hydra.DataSources;
 using Hydra.Models;
 using Hydra.Models.Resto;
 
 namespace Hydra.Views.Resto {
     public sealed partial class RestoMapControl : UserControl {
-
-        private const string restoApiUrl = "https://zeus.ugent.be/hydra/api/1.0/resto/";
+        private IRestoSource restoSource;
 
         public RestoMapControl() {
             this.InitializeComponent();
+            restoSource = new ZeusRestoApi();
 
             GetRestoLocations();
             ConfigureMap();
         }
 
         public async void GetRestoLocations() {
-            RestoMeta restoMeta = (RestoMeta)await new RestoMenuFactory().FromRestApi(typeof(RestoMeta), restoApiUrl, "meta.json");
-
-            foreach(RestoLocation resto in restoMeta.Locations) {
+            IEnumerable<RestoLocation> locations = await restoSource.GetRestoLocations();
+            foreach (RestoLocation resto in locations) {
                 MapIcon pin = new MapIcon() {
                     Location = resto.Location,
                     Title = resto.Name,

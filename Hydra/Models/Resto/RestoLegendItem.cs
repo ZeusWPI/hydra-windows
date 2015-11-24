@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Hydra.Models.Resto {
 
-    public class RestoLegend : IModel {
+    public class RestoLegendItem : IModel {
         public static readonly string[] styles = new string[] {
             "bold"
         };

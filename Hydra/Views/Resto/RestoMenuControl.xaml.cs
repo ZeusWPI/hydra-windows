@@ -13,12 +13,16 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+using Hydra.DataSources;
 using Hydra.Models;
 
 namespace Hydra.Views.Resto {
 
     public sealed partial class RestoMenuControl : UserControl {
+        private IRestoSource restoSource;
+
         public RestoMenuControl() {
+            restoSource = new ZeusRestoApi();
             InitializeComponent();
             GetRestoMenus();
         }

@@ -101,15 +101,19 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\NavMenuListView.cs" />
+    <Compile Include="DataSources\IRestoSource.cs" />
+    <Compile Include="DataSources\ZeusRestoApi.cs" />
     <Compile Include="Models\IModel.cs" />
     <Compile Include="Models\ModelFactory.cs" />
     <Compile Include="Models\RestoMenuFactory.cs" />
     <Compile Include="Models\Resto\Meal.cs" />
     <Compile Include="Models\Resto\RestoLocation.cs" />
-    <Compile Include="Models\Resto\RestoLegend.cs" />
+    <Compile Include="Models\Resto\RestoLegendItem.cs" />
     <Compile Include="Models\Resto\DailyMenu.cs" />
     <Compile Include="Models\Resto\RestoMeta.cs" />
     <Compile Include="Models\Util\ModelDictionary.cs" />
+    <Compile Include="DataSources\IDataSource.cs" />
+    <Compile Include="DataSources\RestApi.cs" />
     <Compile Include="Views\Home\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>

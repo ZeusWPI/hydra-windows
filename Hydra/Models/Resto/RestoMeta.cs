@@ -11,7 +11,7 @@ namespace Hydra.Models.Resto {
     public class RestoMeta : IModel {
 
         [DataMember(Name = "legend")]
-        public RestoLegend[] Legend { get; set; }
+        public RestoLegendItem[] Legend { get; set; }
 
         [DataMember(Name = "locations")]
         public RestoLocation[] Locations { get; set; }
