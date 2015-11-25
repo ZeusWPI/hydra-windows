@@ -61,13 +61,11 @@ namespace Hydra.DataSources {
         /// <param name="input"></param>
         /// <param name="serializerSettings"></param>
         /// <returns></returns>
-        protected T Deserialize<T>(Stream input, DataContractJsonSerializerSettings serializerSettings = null) {
-            DataContractJsonSerializer serializer;
-            if (serializerSettings != null) {
-                serializer = new DataContractJsonSerializer(typeof(T), serializerSettings);
-            } else {
-                serializer = new DataContractJsonSerializer(typeof(T));
-            }
+        protected T Deserialize<T>(Stream input) {
+            DataContractJsonSerializerSettings serializerSettings = new DataContractJsonSerializerSettings() {
+                UseSimpleDictionaryFormat = true,
+            };
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(T), serializerSettings);
 
             return (T) serializer.ReadObject(input);
         }

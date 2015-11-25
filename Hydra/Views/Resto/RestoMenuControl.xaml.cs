@@ -28,7 +28,7 @@ namespace Hydra.Views.Resto {
         }
 
         public async void GetRestoMenus() {
-            RestoMenuList.DataContext = await new RestoMenuFactory().GetRestoMenus();
+            RestoMenuList.DataContext = await restoSource.GetRestoMenusThisWeek();
         }
     }
 }

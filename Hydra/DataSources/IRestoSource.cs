@@ -9,7 +9,7 @@ using Hydra.Models.Resto;
 namespace Hydra.DataSources {
 
     /// <summary>
-    /// 
+    /// Provides the data for the restos.
     /// </summary>
     public interface IRestoSource {
 

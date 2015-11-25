@@ -20,18 +20,8 @@ using Hydra.Models.Resto;
 namespace Hydra.Views.Resto {
     public sealed partial class RestoPage : Page {
 
-        private const string restoApiUrl = "https://zeus.ugent.be/hydra/api/1.0/resto/";
-
         public RestoPage() {
             InitializeComponent();
-            
-            GetRestoMeta(); 
-        }
-
-        public async void GetRestoMeta() {
-            RestoMeta restoMeta = (RestoMeta) await new RestoMenuFactory().FromRestApi(typeof(RestoMeta), restoApiUrl, "meta.json");
-
-            RestoLocationList.DataContext = restoMeta.Locations;
         }
     }
 }

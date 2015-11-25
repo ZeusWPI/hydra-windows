@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Hydra.Models.Resto;
+using System.Globalization;
+using System.Runtime.Serialization.Json;
 
 namespace Hydra.DataSources {
     public class ZeusRestoApi : RestApi, IRestoSource {
@@ -17,8 +19,6 @@ namespace Hydra.DataSources {
         private RestoLegendItem[] restoLegendItems;
         private List<DailyMenu> restoMenus;
 
-        // Format: "menu/{year}/{nr of the week}.json"
-        private const string RESTO_MENU_URL = "menu/{0}/{1}.json";
 
         public ZeusRestoApi() : base(BASE_URL, API_PATH) {
         }
@@ -51,12 +51,49 @@ namespace Hydra.DataSources {
             restoLocations = restoMeta.Locations;
         }
 
-        public Task<IEnumerable<DailyMenu>> GetRestoMenusThisWeek() {
-            throw new NotImplementedException();
+        public async Task<IEnumerable<DailyMenu>> GetRestoMenusThisWeek() {
+            if(restoMenus != null) {
+                return restoMenus;
+            }
+
+            string weekMenuApiUrl = $"/menu/{DateTime.Now.Year}/{getWeekNr()}.json";
+            Dictionary<string, DailyMenu> weekMenu = await Get<Dictionary<string, DailyMenu>>(weekMenuApiUrl);
+            restoMenus = weekMenuToList(weekMenu);
+
+            return restoMenus;
         }
 
         public Task<IEnumerable<DailyMenu>> GetRestoMenus(int nextDays) {
             throw new NotImplementedException();
+        }
+
+        private int getWeekNr() {
+            Calendar calendar = DateTimeFormatInfo.CurrentInfo.Calendar;
+
+            int currentWeekNr = calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstDay, DayOfWeek.Monday);
+            DayOfWeek currentDayNr = calendar.GetDayOfWeek(DateTime.Now);
+
+            // If it's the weekend, we prooooobably want the menus for the following week.
+            if (currentDayNr == DayOfWeek.Saturday || currentDayNr == DayOfWeek.Sunday) {
+                // Not just +1, in case someone is crazy enough to be looking up the resto menu on New Year's Eve.
+                currentWeekNr = calendar.GetWeekOfYear(DateTime.Now.AddDays(7), CalendarWeekRule.FirstFullWeek, DayOfWeek.Monday);
+            }
+
+            return currentWeekNr;
+        }
+
+        private List<DailyMenu> weekMenuToList(Dictionary<string, DailyMenu> weekMenu) {
+            List<DailyMenu> menus = new List<DailyMenu>(5);
+
+            // I hate the current API
+            foreach (var keyValue in weekMenu.ToArray()) {
+                DateTime date;
+                DateTime.TryParse(keyValue.Key, out date);
+                keyValue.Value.date = date;
+                menus.Add(keyValue.Value);
+            }
+
+            return menus;
         }
     }
 }
