@@ -1,11 +1,12 @@
-﻿<Application
+﻿<prismUnity:PrismUnityApplication
     x:Class="Hydra.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Hydra"
+    xmlns:prismUnity="using:Prism.Unity.Windows"
     RequestedTheme="Light">
 
-    <Application.Resources>
+    <prismUnity:PrismUnityApplication.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles/Main.xaml" />
@@ -13,6 +14,6 @@
                 <ResourceDictionary Source="/Styles/Resto.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </Application.Resources>
+    </prismUnity:PrismUnityApplication.Resources>
 
-</Application>
+</prismUnity:PrismUnityApplication>

@@ -95,6 +95,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="project.json" />
+    <PRIResource Include="Strings\nl\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -111,10 +112,15 @@
     <Compile Include="Models\Resto\RestoMeta.cs" />
     <Compile Include="DataSources\IDataSource.cs" />
     <Compile Include="DataSources\RestApi.cs" />
+    <Compile Include="PageTokens.cs" />
+    <Compile Include="ViewModels\MenuItemViewModel.cs" />
+    <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="Views\Home\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NavMenuItem.cs" />
+    <Compile Include="Views\MenuView.xaml.cs">
+      <DependentUpon>MenuView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Resto\RestoMapControl.xaml.cs">
       <DependentUpon>RestoMapControl.xaml</DependentUpon>
     </Compile>
@@ -172,6 +178,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\MenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Resto\RestoMapControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -199,7 +209,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Activities\" />
-    <Folder Include="ViewModels\" />
     <Folder Include="Views\Calendar\" />
     <Folder Include="Views\Info\" />
     <Folder Include="Views\Schamper\" />

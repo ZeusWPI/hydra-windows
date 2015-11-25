@@ -3,6 +3,14 @@
   "version": 1,
   "targets": {
     "UAP,Version=v10.0": {
+      "CommonServiceLocator/1.3.0": {
+        "compile": {
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
+        }
+      },
       "Microsoft.ApplicationInsights/1.0.0": {
         "compile": {
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
@@ -230,6 +238,60 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "Prism.Core/6.1.0": {
+        "compile": {
+          "lib/wpa81/Prism.dll": {}
+        },
+        "runtime": {
+          "lib/wpa81/Prism.dll": {}
+        }
+      },
+      "Prism.Unity/6.1.1": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Prism.Windows": "[6.0.1, )",
+          "System.Diagnostics.Debug": "[4.0.10, )",
+          "System.Globalization": "[4.0.10, )",
+          "System.Runtime": "[4.0.20, )",
+          "System.Threading.Tasks": "[4.0.10, )",
+          "Unity": "[4.0.1, )"
+        },
+        "compile": {
+          "lib/uap10.0/Prism.Unity.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Prism.Unity.Windows.dll": {}
+        }
+      },
+      "Prism.Windows/6.0.1": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Prism.Core": "[6.1.0, )",
+          "System.Collections": "[4.0.10, )",
+          "System.ComponentModel": "[4.0.0, )",
+          "System.ComponentModel.Annotations": "[4.0.10, )",
+          "System.Diagnostics.Debug": "[4.0.10, )",
+          "System.Globalization": "[4.0.10, )",
+          "System.IO": "[4.0.10, )",
+          "System.Linq": "[4.0.0, )",
+          "System.ObjectModel": "[4.0.10, )",
+          "System.Reflection": "[4.0.10, )",
+          "System.Reflection.Extensions": "[4.0.0, )",
+          "System.Runtime": "[4.0.20, )",
+          "System.Runtime.InteropServices.WindowsRuntime": "[4.0.0, )",
+          "System.Runtime.Serialization.Xml": "[4.0.10, )",
+          "System.Runtime.WindowsRuntime": "[4.0.10, )",
+          "System.Threading": "[4.0.10, )",
+          "System.Threading.Tasks": "[4.0.10, )",
+          "System.Xml.XDocument": "[4.0.10, )"
+        },
+        "compile": {
+          "lib/uap10.0/Prism.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Prism.Windows.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -1566,9 +1628,30 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Unity/4.0.1": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )"
+        },
+        "compile": {
+          "lib/win8/Microsoft.Practices.Unity.dll": {},
+          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+        },
+        "runtime": {
+          "lib/win8/Microsoft.Practices.Unity.dll": {},
+          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0/win10-arm": {
+      "CommonServiceLocator/1.3.0": {
+        "compile": {
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
+        }
+      },
       "Microsoft.ApplicationInsights/1.0.0": {
         "compile": {
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
@@ -1839,6 +1922,60 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "Prism.Core/6.1.0": {
+        "compile": {
+          "lib/wpa81/Prism.dll": {}
+        },
+        "runtime": {
+          "lib/wpa81/Prism.dll": {}
+        }
+      },
+      "Prism.Unity/6.1.1": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Prism.Windows": "[6.0.1, )",
+          "System.Diagnostics.Debug": "[4.0.10, )",
+          "System.Globalization": "[4.0.10, )",
+          "System.Runtime": "[4.0.20, )",
+          "System.Threading.Tasks": "[4.0.10, )",
+          "Unity": "[4.0.1, )"
+        },
+        "compile": {
+          "lib/uap10.0/Prism.Unity.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Prism.Unity.Windows.dll": {}
+        }
+      },
+      "Prism.Windows/6.0.1": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Prism.Core": "[6.1.0, )",
+          "System.Collections": "[4.0.10, )",
+          "System.ComponentModel": "[4.0.0, )",
+          "System.ComponentModel.Annotations": "[4.0.10, )",
+          "System.Diagnostics.Debug": "[4.0.10, )",
+          "System.Globalization": "[4.0.10, )",
+          "System.IO": "[4.0.10, )",
+          "System.Linq": "[4.0.0, )",
+          "System.ObjectModel": "[4.0.10, )",
+          "System.Reflection": "[4.0.10, )",
+          "System.Reflection.Extensions": "[4.0.0, )",
+          "System.Runtime": "[4.0.20, )",
+          "System.Runtime.InteropServices.WindowsRuntime": "[4.0.0, )",
+          "System.Runtime.Serialization.Xml": "[4.0.10, )",
+          "System.Runtime.WindowsRuntime": "[4.0.10, )",
+          "System.Threading": "[4.0.10, )",
+          "System.Threading.Tasks": "[4.0.10, )",
+          "System.Xml.XDocument": "[4.0.10, )"
+        },
+        "compile": {
+          "lib/uap10.0/Prism.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Prism.Windows.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -3222,9 +3359,30 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Unity/4.0.1": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )"
+        },
+        "compile": {
+          "lib/win8/Microsoft.Practices.Unity.dll": {},
+          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+        },
+        "runtime": {
+          "lib/win8/Microsoft.Practices.Unity.dll": {},
+          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0/win10-arm-aot": {
+      "CommonServiceLocator/1.3.0": {
+        "compile": {
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
+        }
+      },
       "Microsoft.ApplicationInsights/1.0.0": {
         "compile": {
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
@@ -3481,6 +3639,60 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "Prism.Core/6.1.0": {
+        "compile": {
+          "lib/wpa81/Prism.dll": {}
+        },
+        "runtime": {
+          "lib/wpa81/Prism.dll": {}
+        }
+      },
+      "Prism.Unity/6.1.1": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Prism.Windows": "[6.0.1, )",
+          "System.Diagnostics.Debug": "[4.0.10, )",
+          "System.Globalization": "[4.0.10, )",
+          "System.Runtime": "[4.0.20, )",
+          "System.Threading.Tasks": "[4.0.10, )",
+          "Unity": "[4.0.1, )"
+        },
+        "compile": {
+          "lib/uap10.0/Prism.Unity.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Prism.Unity.Windows.dll": {}
+        }
+      },
+      "Prism.Windows/6.0.1": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Prism.Core": "[6.1.0, )",
+          "System.Collections": "[4.0.10, )",
+          "System.ComponentModel": "[4.0.0, )",
+          "System.ComponentModel.Annotations": "[4.0.10, )",
+          "System.Diagnostics.Debug": "[4.0.10, )",
+          "System.Globalization": "[4.0.10, )",
+          "System.IO": "[4.0.10, )",
+          "System.Linq": "[4.0.0, )",
+          "System.ObjectModel": "[4.0.10, )",
+          "System.Reflection": "[4.0.10, )",
+          "System.Reflection.Extensions": "[4.0.0, )",
+          "System.Runtime": "[4.0.20, )",
+          "System.Runtime.InteropServices.WindowsRuntime": "[4.0.0, )",
+          "System.Runtime.Serialization.Xml": "[4.0.10, )",
+          "System.Runtime.WindowsRuntime": "[4.0.10, )",
+          "System.Threading": "[4.0.10, )",
+          "System.Threading.Tasks": "[4.0.10, )",
+          "System.Xml.XDocument": "[4.0.10, )"
+        },
+        "compile": {
+          "lib/uap10.0/Prism.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Prism.Windows.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -4850,9 +5062,30 @@
         "runtime": {
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Unity/4.0.1": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )"
+        },
+        "compile": {
+          "lib/win8/Microsoft.Practices.Unity.dll": {},
+          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+        },
+        "runtime": {
+          "lib/win8/Microsoft.Practices.Unity.dll": {},
+          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0/win10-x64": {
+      "CommonServiceLocator/1.3.0": {
+        "compile": {
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
+        }
+      },
       "Microsoft.ApplicationInsights/1.0.0": {
         "compile": {
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
@@ -5130,6 +5363,60 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "Prism.Core/6.1.0": {
+        "compile": {
+          "lib/wpa81/Prism.dll": {}
+        },
+        "runtime": {
+          "lib/wpa81/Prism.dll": {}
+        }
+      },
+      "Prism.Unity/6.1.1": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Prism.Windows": "[6.0.1, )",
+          "System.Diagnostics.Debug": "[4.0.10, )",
+          "System.Globalization": "[4.0.10, )",
+          "System.Runtime": "[4.0.20, )",
+          "System.Threading.Tasks": "[4.0.10, )",
+          "Unity": "[4.0.1, )"
+        },
+        "compile": {
+          "lib/uap10.0/Prism.Unity.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Prism.Unity.Windows.dll": {}
+        }
+      },
+      "Prism.Windows/6.0.1": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Prism.Core": "[6.1.0, )",
+          "System.Collections": "[4.0.10, )",
+          "System.ComponentModel": "[4.0.0, )",
+          "System.ComponentModel.Annotations": "[4.0.10, )",
+          "System.Diagnostics.Debug": "[4.0.10, )",
+          "System.Globalization": "[4.0.10, )",
+          "System.IO": "[4.0.10, )",
+          "System.Linq": "[4.0.0, )",
+          "System.ObjectModel": "[4.0.10, )",
+          "System.Reflection": "[4.0.10, )",
+          "System.Reflection.Extensions": "[4.0.0, )",
+          "System.Runtime": "[4.0.20, )",
+          "System.Runtime.InteropServices.WindowsRuntime": "[4.0.0, )",
+          "System.Runtime.Serialization.Xml": "[4.0.10, )",
+          "System.Runtime.WindowsRuntime": "[4.0.10, )",
+          "System.Threading": "[4.0.10, )",
+          "System.Threading.Tasks": "[4.0.10, )",
+          "System.Xml.XDocument": "[4.0.10, )"
+        },
+        "compile": {
+          "lib/uap10.0/Prism.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Prism.Windows.dll": {}
+        }
+      },
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.0, )",
@@ -6511,9 +6798,30 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Unity/4.0.1": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )"
+        },
+        "compile": {
+          "lib/win8/Microsoft.Practices.Unity.dll": {},
+          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+        },
+        "runtime": {
+          "lib/win8/Microsoft.Practices.Unity.dll": {},
+          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0/win10-x64-aot": {
+      "CommonServiceLocator/1.3.0": {
+        "compile": {
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
+        }
+      },
       "Microsoft.ApplicationInsights/1.0.0": {
         "compile": {
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
@@ -6770,6 +7078,60 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "Prism.Core/6.1.0": {
+        "compile": {
+          "lib/wpa81/Prism.dll": {}
+        },
+        "runtime": {
+          "lib/wpa81/Prism.dll": {}
+        }
+      },
+      "Prism.Unity/6.1.1": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Prism.Windows": "[6.0.1, )",
+          "System.Diagnostics.Debug": "[4.0.10, )",
+          "System.Globalization": "[4.0.10, )",
+          "System.Runtime": "[4.0.20, )",
+          "System.Threading.Tasks": "[4.0.10, )",
+          "Unity": "[4.0.1, )"
+        },
+        "compile": {
+          "lib/uap10.0/Prism.Unity.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Prism.Unity.Windows.dll": {}
+        }
+      },
+      "Prism.Windows/6.0.1": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Prism.Core": "[6.1.0, )",
+          "System.Collections": "[4.0.10, )",
+          "System.ComponentModel": "[4.0.0, )",
+          "System.ComponentModel.Annotations": "[4.0.10, )",
+          "System.Diagnostics.Debug": "[4.0.10, )",
+          "System.Globalization": "[4.0.10, )",
+          "System.IO": "[4.0.10, )",
+          "System.Linq": "[4.0.0, )",
+          "System.ObjectModel": "[4.0.10, )",
+          "System.Reflection": "[4.0.10, )",
+          "System.Reflection.Extensions": "[4.0.0, )",
+          "System.Runtime": "[4.0.20, )",
+          "System.Runtime.InteropServices.WindowsRuntime": "[4.0.0, )",
+          "System.Runtime.Serialization.Xml": "[4.0.10, )",
+          "System.Runtime.WindowsRuntime": "[4.0.10, )",
+          "System.Threading": "[4.0.10, )",
+          "System.Threading.Tasks": "[4.0.10, )",
+          "System.Xml.XDocument": "[4.0.10, )"
+        },
+        "compile": {
+          "lib/uap10.0/Prism.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Prism.Windows.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -8139,9 +8501,30 @@
         "runtime": {
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Unity/4.0.1": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )"
+        },
+        "compile": {
+          "lib/win8/Microsoft.Practices.Unity.dll": {},
+          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+        },
+        "runtime": {
+          "lib/win8/Microsoft.Practices.Unity.dll": {},
+          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0/win10-x86": {
+      "CommonServiceLocator/1.3.0": {
+        "compile": {
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
+        }
+      },
       "Microsoft.ApplicationInsights/1.0.0": {
         "compile": {
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
@@ -8419,6 +8802,60 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "Prism.Core/6.1.0": {
+        "compile": {
+          "lib/wpa81/Prism.dll": {}
+        },
+        "runtime": {
+          "lib/wpa81/Prism.dll": {}
+        }
+      },
+      "Prism.Unity/6.1.1": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Prism.Windows": "[6.0.1, )",
+          "System.Diagnostics.Debug": "[4.0.10, )",
+          "System.Globalization": "[4.0.10, )",
+          "System.Runtime": "[4.0.20, )",
+          "System.Threading.Tasks": "[4.0.10, )",
+          "Unity": "[4.0.1, )"
+        },
+        "compile": {
+          "lib/uap10.0/Prism.Unity.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Prism.Unity.Windows.dll": {}
+        }
+      },
+      "Prism.Windows/6.0.1": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Prism.Core": "[6.1.0, )",
+          "System.Collections": "[4.0.10, )",
+          "System.ComponentModel": "[4.0.0, )",
+          "System.ComponentModel.Annotations": "[4.0.10, )",
+          "System.Diagnostics.Debug": "[4.0.10, )",
+          "System.Globalization": "[4.0.10, )",
+          "System.IO": "[4.0.10, )",
+          "System.Linq": "[4.0.0, )",
+          "System.ObjectModel": "[4.0.10, )",
+          "System.Reflection": "[4.0.10, )",
+          "System.Reflection.Extensions": "[4.0.0, )",
+          "System.Runtime": "[4.0.20, )",
+          "System.Runtime.InteropServices.WindowsRuntime": "[4.0.0, )",
+          "System.Runtime.Serialization.Xml": "[4.0.10, )",
+          "System.Runtime.WindowsRuntime": "[4.0.10, )",
+          "System.Threading": "[4.0.10, )",
+          "System.Threading.Tasks": "[4.0.10, )",
+          "System.Xml.XDocument": "[4.0.10, )"
+        },
+        "compile": {
+          "lib/uap10.0/Prism.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Prism.Windows.dll": {}
+        }
+      },
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.0, )",
@@ -9800,9 +10237,30 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Unity/4.0.1": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )"
+        },
+        "compile": {
+          "lib/win8/Microsoft.Practices.Unity.dll": {},
+          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+        },
+        "runtime": {
+          "lib/win8/Microsoft.Practices.Unity.dll": {},
+          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0/win10-x86-aot": {
+      "CommonServiceLocator/1.3.0": {
+        "compile": {
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
+        }
+      },
       "Microsoft.ApplicationInsights/1.0.0": {
         "compile": {
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.dll": {}
@@ -10059,6 +10517,60 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "Prism.Core/6.1.0": {
+        "compile": {
+          "lib/wpa81/Prism.dll": {}
+        },
+        "runtime": {
+          "lib/wpa81/Prism.dll": {}
+        }
+      },
+      "Prism.Unity/6.1.1": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Prism.Windows": "[6.0.1, )",
+          "System.Diagnostics.Debug": "[4.0.10, )",
+          "System.Globalization": "[4.0.10, )",
+          "System.Runtime": "[4.0.20, )",
+          "System.Threading.Tasks": "[4.0.10, )",
+          "Unity": "[4.0.1, )"
+        },
+        "compile": {
+          "lib/uap10.0/Prism.Unity.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Prism.Unity.Windows.dll": {}
+        }
+      },
+      "Prism.Windows/6.0.1": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Prism.Core": "[6.1.0, )",
+          "System.Collections": "[4.0.10, )",
+          "System.ComponentModel": "[4.0.0, )",
+          "System.ComponentModel.Annotations": "[4.0.10, )",
+          "System.Diagnostics.Debug": "[4.0.10, )",
+          "System.Globalization": "[4.0.10, )",
+          "System.IO": "[4.0.10, )",
+          "System.Linq": "[4.0.0, )",
+          "System.ObjectModel": "[4.0.10, )",
+          "System.Reflection": "[4.0.10, )",
+          "System.Reflection.Extensions": "[4.0.0, )",
+          "System.Runtime": "[4.0.20, )",
+          "System.Runtime.InteropServices.WindowsRuntime": "[4.0.0, )",
+          "System.Runtime.Serialization.Xml": "[4.0.10, )",
+          "System.Runtime.WindowsRuntime": "[4.0.10, )",
+          "System.Threading": "[4.0.10, )",
+          "System.Threading.Tasks": "[4.0.10, )",
+          "System.Xml.XDocument": "[4.0.10, )"
+        },
+        "compile": {
+          "lib/uap10.0/Prism.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/Prism.Windows.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -11428,10 +11940,38 @@
         "runtime": {
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Unity/4.0.1": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )"
+        },
+        "compile": {
+          "lib/win8/Microsoft.Practices.Unity.dll": {},
+          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+        },
+        "runtime": {
+          "lib/win8/Microsoft.Practices.Unity.dll": {},
+          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "CommonServiceLocator/1.3.0": {
+      "sha512": "fbjO0SNwbOFPdwVfyqv+B7gIJ2CVBOFPKqn1mDDECK7KER8jFaOdcvroFYoAHa0ktPbxi5s+15qOLnA96f8GSA==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "CommonServiceLocator.nuspec",
+        "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll",
+        "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.pdb",
+        "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.XML",
+        "package/services/metadata/core-properties/8a82b9e5a63a439481bfa8d4ec335002.psmdcp",
+        "package/services/metadata/core-properties/99be0c88b2fd41c8b07c42071005ee47.psmdcp"
+      ]
+    },
     "Microsoft.ApplicationInsights/1.0.0": {
       "sha512": "HZ47/thX57SOuIivSvIbsR6L9CCb/Yt3IyB2i4KHmmNlf3DO+lqFwWIKDdbDNWKX+qh0Rg20/JSMPK0dwUsYYw==",
       "type": "Package",
@@ -12133,6 +12673,63 @@
         "ref/net46/Microsoft.Win32.Primitives.dll",
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._"
+      ]
+    },
+    "Prism.Core/6.1.0": {
+      "sha512": "JDUhYt+w3cawTVgLR1Hsbf59sytjsyFIdTmrbJKkKtHW7CCWAHFM9DGesWSU7cmUgbHm7MYZx5hQA+xiBTQeVg==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "lib/MonoAndroid10/Prism.dll",
+        "lib/MonoAndroid10/Prism.xml",
+        "lib/MonoTouch10/Prism.dll",
+        "lib/MonoTouch10/Prism.xml",
+        "lib/net45/Prism.dll",
+        "lib/net45/Prism.xml",
+        "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Prism.dll",
+        "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Prism.xml",
+        "lib/wp8/Prism.dll",
+        "lib/wp8/Prism.xml",
+        "lib/wp81/Prism.dll",
+        "lib/wp81/Prism.xml",
+        "lib/wpa81/Prism.dll",
+        "lib/wpa81/Prism.xml",
+        "lib/Xamarin.iOS10/Prism.dll",
+        "lib/Xamarin.iOS10/Prism.xml",
+        "package/services/metadata/core-properties/0435939d80aa4e7a8aa2f9784faad02c.psmdcp",
+        "Prism.Core.nuspec"
+      ]
+    },
+    "Prism.Unity/6.1.1": {
+      "sha512": "SD8g7C7n96JmRWxafwr2iRxGoXHKeoBcM2EWHF5DHkQbfY8tGiBeFXWcdS2hZyoCjJiYa7BTYuGuVMVZT9Lb+g==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "lib/net45/Prism.Unity.Wpf.dll",
+        "lib/net45/Prism.Unity.Wpf.xml",
+        "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Prism.Unity.Forms.dll",
+        "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Prism.Unity.Forms.dll.config",
+        "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Prism.Unity.Forms.xml",
+        "lib/uap10.0/Prism.Unity.Windows.dll",
+        "lib/uap10.0/Prism.Unity.Windows.pri",
+        "lib/uap10.0/Prism.Unity.Windows.xml",
+        "package/services/metadata/core-properties/4bc274ef0d1a41ccb2ec3524aa84b41c.psmdcp",
+        "Prism.Unity.nuspec"
+      ]
+    },
+    "Prism.Windows/6.0.1": {
+      "sha512": "ZizrGMZOkov0WGKPNnXS1bsIfh4oZnYqj5+bbqnAOQoDrG8FQO239Pc6U2glETwQDVhg30Eg5m1kfcKlfjjuDA==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "lib/uap10.0/Prism.Windows.dll",
+        "lib/uap10.0/Prism.Windows.pri",
+        "lib/uap10.0/Prism.Windows.xml",
+        "package/services/metadata/core-properties/e0b42f9fab30491e8fa124809b2c9ef1.psmdcp",
+        "Prism.Windows.nuspec"
       ]
     },
     "System.AppContext/4.0.0": {
@@ -14829,6 +15426,34 @@
         "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll",
         "System.Xml.XmlSerializer.nuspec"
       ]
+    },
+    "Unity/4.0.1": {
+      "sha512": "RHFTCW13E186hCI0Z4R47tl2SyxQOp3TNaBlilxKktO+u+NUWyOK/nPJ25PWwgPh4j4/GM46PQszSsusui+ikw==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "lib/net45/Microsoft.Practices.Unity.Configuration.dll",
+        "lib/net45/Microsoft.Practices.Unity.Configuration.XML",
+        "lib/net45/Microsoft.Practices.Unity.dll",
+        "lib/net45/Microsoft.Practices.Unity.RegistrationByConvention.dll",
+        "lib/net45/Microsoft.Practices.Unity.RegistrationByConvention.XML",
+        "lib/net45/Microsoft.Practices.Unity.xml",
+        "lib/portable-net45+wp80+win8+wpa81+MonoAndroid10+MonoTouch10/Microsoft.Practices.Unity.dll",
+        "lib/portable-net45+wp80+win8+wpa81+MonoAndroid10+MonoTouch10/Microsoft.Practices.Unity.xml",
+        "lib/win8/Microsoft.Practices.Unity.dll",
+        "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll",
+        "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.pri",
+        "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.XML",
+        "lib/win8/Microsoft.Practices.Unity.xml",
+        "lib/wp80/Microsoft.Practices.Unity.dll",
+        "lib/wp80/Microsoft.Practices.Unity.RegistrationByConvention.dll",
+        "lib/wp80/Microsoft.Practices.Unity.RegistrationByConvention.XML",
+        "lib/wp80/Microsoft.Practices.Unity.xml",
+        "package/services/metadata/core-properties/924820f073a54dfda4a033e3efb68c3c.psmdcp",
+        "Unity.nuspec",
+        "UnityConfiguration30.xsd"
+      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -14836,7 +15461,8 @@
       "Microsoft.ApplicationInsights >= 1.0.0",
       "Microsoft.ApplicationInsights.PersistenceChannel >= 1.0.0",
       "Microsoft.ApplicationInsights.WindowsApps >= 1.0.0",
-      "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0"
+      "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
+      "Prism.Unity >= 6.1.1"
     ],
     "UAP,Version=v10.0": []
   }

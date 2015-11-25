@@ -6,68 +6,40 @@
     xmlns:controls="using:Hydra.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    KeyDown="AppShell_KeyDown"
-    TabNavigation="Cycle"
     mc:Ignorable="d">
-    
-    <Page.Resources>
-        <DataTemplate x:Key="NavMenuItemTemplate" x:DataType="local:NavMenuItem">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50" />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-
-                <FontIcon x:Name="Glyph" Glyph="{x:Bind SymbolAsChar}" ToolTipService.ToolTip="{x:Bind Label}"  />
-                <TextBlock x:Name="Text" Grid.Column="1" Text="{x:Bind Label}" Style="{StaticResource topNavText}" />
-            </Grid>
-        </DataTemplate>
-    </Page.Resources>
 
     <Grid>
-        <!-- Adaptive triggers TODO: can't we put this in Styles? -->
         <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState>
+            <VisualStateGroup x:Name="MenuStates">
+                <VisualState x:Name="Wide">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="720" />
+                        <AdaptiveTrigger MinWindowWidth="1280" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="RootSplitView.DisplayMode" Value="CompactInline"/>
-                        <Setter Target="RootSplitView.IsPaneOpen" Value="True"/>
+                        <Setter Target="rootSplitView.DisplayMode" Value="Inline" />
+                        <Setter Target="rootSplitView.IsPaneOpen" Value="True" />
+                        <Setter Target="togglePaneButton.IsEnabled" Value="False" />
+                        <Setter Target="togglePaneButton.Opacity" Value="0" />
                     </VisualState.Setters>
                 </VisualState>
-                <VisualState>
+                <VisualState x:Name="Medium">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
+                        <AdaptiveTrigger MinWindowWidth="800" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="RootSplitView.DisplayMode" Value="Overlay"/>
+                        <Setter Target="rootSplitView.DisplayMode" Value="CompactOverlay" />
                     </VisualState.Setters>
                 </VisualState>
+                <VisualState x:Name="Narrow" />
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         
         <SplitView x:Name="RootSplitView" DisplayMode="CompactOverlay" Style="{StaticResource topNavigation}">
             <SplitView.Pane>
-                <controls:NavMenuListView x:Name="NavMenuList"
-                                          TabIndex="3"
-                                          Margin="0,48,0,0"
-                                          ContainerContentChanging="NavMenuItemContainerContentChanging"
-                                          ItemContainerStyle="{StaticResource topNavMenuItem}"
-                                          ItemTemplate="{StaticResource NavMenuItemTemplate}"
-                                          ItemInvoked="NavMenuList_ItemInvoked">
-                </controls:NavMenuListView>
+                <local:MenuView />
             </SplitView.Pane>
 
-
-            <!-- OnNavigatingToPage we synchronize the selected item in the nav menu with the current page.
-                 OnNavigatedToPage we move keyboard focus to the first item on the page after it's loaded. -->
-            <Frame x:Name="ContentFrame"
-                   Navigating="OnNavigatingToPage"
-                   Navigated="OnNavigatedToPage"
-                   Style="{StaticResource ContentFrameStyle}">
-            </Frame>
+            <Frame x:Name="ContentFrame" Style="{StaticResource ContentFrameStyle}" />
         </SplitView>
 
 
@@ -75,9 +47,8 @@
         <ToggleButton x:Name="TogglePaneButton"
                       TabIndex="1"
                       Style="{StaticResource SplitViewTogglePaneButtonStyle}"
-                      IsChecked="{Binding IsPaneOpen, ElementName=RootSplitView, Mode=TwoWay}"
-                      Unchecked="TogglePaneButton_Checked"
-                      AutomationProperties.Name="Menu"
-                      ToolTipService.ToolTip="Menu" />
+                      IsChecked="{Binding IsPaneOpen,
+                                          ElementName=RootSplitView,
+                                          Mode=TwoWay}" />
     </Grid>
 </Page>
