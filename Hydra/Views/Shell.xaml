@@ -16,10 +16,10 @@
                         <AdaptiveTrigger MinWindowWidth="1280" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="rootSplitView.DisplayMode" Value="Inline" />
-                        <Setter Target="rootSplitView.IsPaneOpen" Value="True" />
-                        <Setter Target="togglePaneButton.IsEnabled" Value="False" />
-                        <Setter Target="togglePaneButton.Opacity" Value="0" />
+                        <Setter Target="RootSplitView.DisplayMode" Value="Inline" />
+                        <Setter Target="RootSplitView.IsPaneOpen" Value="True" />
+                        <Setter Target="TogglePaneButton.IsEnabled" Value="False" />
+                        <Setter Target="TogglePaneButton.Opacity" Value="0" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Medium">
@@ -27,7 +27,7 @@
                         <AdaptiveTrigger MinWindowWidth="800" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="rootSplitView.DisplayMode" Value="CompactOverlay" />
+                        <Setter Target="RootSplitView.DisplayMode" Value="CompactOverlay" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Narrow" />

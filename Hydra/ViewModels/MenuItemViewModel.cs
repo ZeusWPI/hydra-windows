@@ -13,7 +13,7 @@ namespace Hydra.ViewModels {
 
         public string DisplayName { get; set; }
 
-        public Symbol FontIcon { get; set; }
+        public Symbol SymbolIcon { get; set; }
 
         public ICommand Command { get; set; }
 

@@ -2,6 +2,8 @@
 using Microsoft.Practices.Unity;
 using Prism.Unity.Windows;
 using Prism.Windows.AppModel;
+using System;
+using System.Globalization;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Resources;
@@ -32,6 +34,20 @@ namespace Hydra {
         protected override Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args) {
             NavigationService.Navigate(PageTokens.HomePage, null);
             return Task.FromResult(true);
+        }
+
+        /// <summary>
+        /// Allow subfolder for page views
+        /// </summary>
+        protected override Type GetPageType(string pageToken) {
+            var pageTokenParts = pageToken.Split('/');
+
+            var assemblyQualifiedAppType = GetType().AssemblyQualifiedName;
+            var pageNameWithParameter = assemblyQualifiedAppType.Replace(GetType().FullName, GetType().Namespace + ".Views.{0}.{1}");
+            var viewFullName = string.Format(CultureInfo.InvariantCulture, pageNameWithParameter, pageTokenParts[0], pageTokenParts[1]);
+            var viewType = Type.GetType(viewFullName);
+
+            return viewType;
         }
     }
 }

@@ -5,8 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Hydra {
+    /// <summary>
+    /// Provides path-independent references to pages (to use with e.g. NavigationService).
+    /// </summary>
     public static class PageTokens {
-        public const string HomePage = "Home";
-        public const string RestoPage = "Resto";
+        public const string HomePage = "Home/HomePage";
+        public const string RestoPage = "Resto/RestoPage";
     }
 }

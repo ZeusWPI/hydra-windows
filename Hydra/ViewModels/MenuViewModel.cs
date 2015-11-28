@@ -28,12 +28,12 @@ namespace Hydra.ViewModels {
             Commands = new ObservableCollection<MenuItemViewModel>() {
                 new MenuItemViewModel {
                     DisplayName = resourceLoader.GetString("RootMenuHomePageDisplayName"),
-                    FontIcon = Symbol.Home,
+                    SymbolIcon = Symbol.Home,
                     Command = new DelegateCommand(NavigateToMainPage, CanNavigateToMainPage)
                 },
                 new MenuItemViewModel {
                     DisplayName = resourceLoader.GetString("RootMenuRestoPageDisplayName"),
-                    FontIcon = Symbol.Like,
+                    SymbolIcon = Symbol.Favorite,
                     Command = new DelegateCommand(NavigateToSecondPage, CanNavigateToSecondPage)
                 }
             };
