@@ -113,8 +113,10 @@
     <Compile Include="DataSources\IDataSource.cs" />
     <Compile Include="DataSources\RestApi.cs" />
     <Compile Include="PageTokens.cs" />
+    <Compile Include="ViewModels\Home\HomePageViewModel.cs" />
     <Compile Include="ViewModels\MenuItemViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
+    <Compile Include="ViewModels\Resto\RestoPageViewModel.cs" />
     <Compile Include="Views\Home\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>

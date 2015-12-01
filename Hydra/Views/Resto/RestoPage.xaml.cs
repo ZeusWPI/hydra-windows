@@ -16,9 +16,10 @@ using Windows.UI.Xaml.Navigation;
 
 using Hydra.Models;
 using Hydra.Models.Resto;
+using Prism.Windows.Mvvm;
 
 namespace Hydra.Views.Resto {
-    public sealed partial class RestoPage : Page {
+    public sealed partial class RestoPage : SessionStateAwarePage {
 
         public RestoPage() {
             InitializeComponent();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Windows.Mvvm;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,7 +15,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 namespace Hydra.Views.Home {
-    public sealed partial class HomePage : Page {
+    public sealed partial class HomePage : SessionStateAwarePage {
         public HomePage() {
             InitializeComponent();
         }

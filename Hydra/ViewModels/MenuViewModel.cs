@@ -14,63 +14,34 @@ namespace Hydra.ViewModels {
 
     public class MenuViewModel : ViewModelBase {
 
-        private INavigationService _navigationService;
-        private bool _canNavigateToMain = false;
-        private bool _canNavigateToSecond = true;
+        private readonly INavigationService navigationService;
 
         public ObservableCollection<MenuItemViewModel> Commands { get; set; }
 
         public MenuViewModel(INavigationService navigationService, IResourceLoader resourceLoader) {
-            // TODO: Add ability to indicate which page your on by listening for navigation events once the NuGet package has been updated. Change CanNavigate to use whether or not your on that page to return false.
-            // As-is, if navigation occurs via the back button, we won't know and can't update the _canNavigate value
-            _navigationService = navigationService;
+            this.navigationService = navigationService;
 
             Commands = new ObservableCollection<MenuItemViewModel>() {
                 new MenuItemViewModel {
-                    DisplayName = resourceLoader.GetString("RootMenuHomePageDisplayName"),
+                    DisplayName = resourceLoader.GetString("RootMenu_HomePageDisplayName"),
                     SymbolIcon = Symbol.Home,
-                    Command = new DelegateCommand(NavigateToMainPage, CanNavigateToMainPage)
+                    Command = new DelegateCommand(NavigateToPage(PageTokens.HomePage))
                 },
                 new MenuItemViewModel {
-                    DisplayName = resourceLoader.GetString("RootMenuRestoPageDisplayName"),
+                    DisplayName = resourceLoader.GetString("RootMenu_RestoPageDisplayName"),
                     SymbolIcon = Symbol.Favorite,
-                    Command = new DelegateCommand(NavigateToSecondPage, CanNavigateToSecondPage)
+                    Command = new DelegateCommand(NavigateToPage(PageTokens.RestoPage))
+                },
+                new MenuItemViewModel {
+                    DisplayName = resourceLoader.GetString("RootMenu_RestoPageDisplayName"),
+                    SymbolIcon = Symbol.Help,
+                    Command = new DelegateCommand(NavigateToPage(PageTokens.RestoPage))
                 }
             };
         }
 
-        private void NavigateToMainPage() {
-            if (CanNavigateToMainPage()) {
-                if (_navigationService.Navigate(PageTokens.HomePage, null)) {
-                    _canNavigateToMain = false;
-                    _canNavigateToSecond = true;
-                    RaiseCanExecuteChanged();
-                }
-            }
-        }
-
-        private bool CanNavigateToMainPage() {
-            return _canNavigateToMain;
-        }
-
-        private void NavigateToSecondPage() {
-            if (CanNavigateToSecondPage()) {
-                if (_navigationService.Navigate(PageTokens.RestoPage, null)) {
-                    _canNavigateToMain = true;
-                    _canNavigateToSecond = false;
-                    RaiseCanExecuteChanged();
-                }
-            }
-        }
-
-        private bool CanNavigateToSecondPage() {
-            return _canNavigateToSecond;
-        }
-
-        private void RaiseCanExecuteChanged() {
-            foreach (var item in Commands) {
-                (item.Command as DelegateCommand).RaiseCanExecuteChanged();
-            }
+        private Action NavigateToPage(string page) {
+            return () => { this.navigationService.Navigate(page, null); };
         }
     }
 }

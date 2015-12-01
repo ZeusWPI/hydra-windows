@@ -1,7 +1,10 @@
-﻿using Hydra.Views;
+﻿using Hydra.DataSources;
+using Hydra.Views;
 using Microsoft.Practices.Unity;
+using Prism.Mvvm;
 using Prism.Unity.Windows;
 using Prism.Windows.AppModel;
+using Prism.Windows.Navigation;
 using System;
 using System.Globalization;
 using System.Threading.Tasks;
@@ -27,7 +30,12 @@ namespace Hydra {
         }
 
         protected override Task OnInitializeAsync(IActivatedEventArgs args) {
+            // Get the right resource (localized strings etc.)
             Container.RegisterInstance<IResourceLoader>(new ResourceLoaderAdapter(new ResourceLoader()));
+
+            // Inject the data sources
+            Container.RegisterInstance<IRestoSource>(new ZeusRestoApi());
+
             return base.OnInitializeAsync(args);
         }
 
