@@ -26,14 +26,15 @@
             <local:RestoMenuTemplateSelector.DayMenuTemplate>
                 <DataTemplate>
                     <StackPanel Style="{StaticResource RestoInfoItem}">
-                        <TextBlock Text="Soep" Style="{ThemeResource TitleTextBlockStyle}"  HorizontalAlignment="Center" />
+                        <TextBlock Text="Soep" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" />
                         <ContentPresenter Padding="15" ContentTemplate="{StaticResource MealTemplate}" Content="{Binding Soup}" />
 
                         <TextBlock Text="Vlees &amp; Veggie" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" />
-                        <ListView ItemsSource="{Binding Meat}" ItemTemplate="{StaticResource MealTemplate}" SelectionMode="None">
+                        <ListView ItemsSource="{Binding Meat}" ItemTemplate="{StaticResource MealTemplate}" SelectionMode="None"  Background="White">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
                                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    <Setter Property="Background" Value="White" />
                                 </Style>
                             </ListView.ItemContainerStyle>
                         </ListView>
@@ -71,15 +72,33 @@
         </local:RestoMenuTemplateSelector>
     </prismMvvm:SessionStateAwarePage.Resources>
 
-    <StackPanel>
+    <StackPanel Orientation="Horizontal" Style="{StaticResource HydraRootContainer}">
         <Pivot Width="500"
                ItemsSource="{Binding RestoInfoList}"
-               ItemTemplateSelector="{StaticResource RestoInfoSelector}">
+               ItemTemplateSelector="{StaticResource RestoInfoSelector}"
+               Style="{StaticResource HydraItemsControl}">
             <Pivot.HeaderTemplate>
                 <DataTemplate>
                     <ContentControl Content="{Binding FormattedDate}" />
                 </DataTemplate>
             </Pivot.HeaderTemplate>
         </Pivot>
+
+
+        <StackPanel Orientation="Vertical" Style="{StaticResource HydraPanel}">
+            <TextBlock Text="Legende" Style="{ThemeResource TitleTextBlockStyle}" />
+            <ListView ItemsSource="{Binding Legend}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Key}" />
+                            <TextBlock Text=": " />
+                            <TextBlock Text="{Binding Value}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+
     </StackPanel>
 </prismMvvm:SessionStateAwarePage>

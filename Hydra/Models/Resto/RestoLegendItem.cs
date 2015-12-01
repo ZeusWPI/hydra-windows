@@ -7,19 +7,20 @@ using System.Threading.Tasks;
 
 namespace Hydra.Models.Resto {
 
+    [DataContract]
     public class RestoLegendItem : IModel {
         public static readonly string[] styles = new string[] {
             "bold"
         };
 
         [DataMember(Name = "key")]
-        public string key { get; set; }
+        public string Key { get; set; }
 
         [DataMember(Name = "style")]
-        public string style { get; set; }
+        public string Style { get; set; }
 
         [DataMember(Name = "value")]
-        public string value { get; set; }
+        public string Value { get; set; }
     }
 
 }

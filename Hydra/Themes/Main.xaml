@@ -1,0 +1,25 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Hydra">
+
+    <SolidColorBrush x:Key="UGentBlue" Color="#104B7D" />
+    <SolidColorBrush x:Key="UGentYellow" Color="#FDB812" />
+
+
+    <Style x:Key="HydraRootContainer" TargetType="Panel">
+        <Setter Property="Background" Value="#DDD" />
+    </Style>
+
+    <Style x:Key="HydraPanel" TargetType="Panel">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Margin" Value="10" />
+    </Style>
+    
+    <!-- Repeat the previous part, because fuck XAML target types -->
+    <Style x:Key="HydraItemsControl" TargetType="ItemsControl">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Margin" Value="10" />
+    </Style>
+
+</ResourceDictionary>

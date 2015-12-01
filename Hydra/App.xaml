@@ -9,9 +9,9 @@
     <prismUnity:PrismUnityApplication.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Styles/Main.xaml" />
-                <ResourceDictionary Source="/Styles/Navigation.xaml" />
-                <ResourceDictionary Source="/Styles/Resto.xaml" />
+                <ResourceDictionary Source="Themes/Main.xaml" />
+                <ResourceDictionary Source="Themes/Navigation.xaml" />
+                <ResourceDictionary Source="Themes/Resto.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </prismUnity:PrismUnityApplication.Resources>

@@ -39,7 +39,7 @@
                 <local:MenuView />
             </SplitView.Pane>
 
-            <Frame x:Name="ContentFrame" Style="{StaticResource ContentFrameStyle}" />
+            <Frame x:Name="ContentFrame" />
         </SplitView>
 
 

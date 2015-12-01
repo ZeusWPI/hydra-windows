@@ -18,17 +18,26 @@ namespace Hydra.ViewModels.Resto {
 
         public ObservableCollection<DailyMenu> RestoInfoList { get; set; }
 
+        public ObservableCollection<RestoLegendItem> Legend { get; set; }
+
         public RestoPageViewModel(IRestoSource restoSource) {
-            Debug.WriteLine("Derp.");
             this.restoSource = restoSource;
             RestoInfoList = new ObservableCollection<DailyMenu>();
+            Legend = new ObservableCollection<RestoLegendItem>();
 
             GetRestoMenus();
+            GetRestoLegend();
         }
 
-        public async void GetRestoMenus() {
+        public async Task GetRestoMenus() {
             IEnumerable<DailyMenu> restoMenus = await restoSource.GetRestoMenusThisWeek();
             foreach (DailyMenu menu in restoMenus) RestoInfoList.Add(menu);
+            OnPropertyChanged();
+        }
+
+        public async Task GetRestoLegend() {
+            IEnumerable<RestoLegendItem> legendItems = await restoSource.GetRestoLegendItems();
+            foreach (RestoLegendItem legendItem in legendItems) Legend.Add(legendItem);
             OnPropertyChanged();
         }
     }

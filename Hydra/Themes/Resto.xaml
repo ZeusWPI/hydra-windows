@@ -88,9 +88,7 @@
         </Setter>
     </Style>
 
-
     <Style x:Key="RestoInfoItem" TargetType="StackPanel">
-        <Setter Property="Background" Value="White" />
         <Setter Property="BorderBrush" Value="{StaticResource UGentYellow}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Margin" Value="-10,0,-10,0" />
