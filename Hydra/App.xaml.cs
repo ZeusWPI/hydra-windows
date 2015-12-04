@@ -35,6 +35,7 @@ namespace Hydra {
 
             // Inject the data sources
             Container.RegisterInstance<IRestoSource>(new ZeusRestoApi());
+            Container.RegisterInstance<IAssociationSource>(new DsaAssociationsApi());
 
             return base.OnInitializeAsync(args);
         }

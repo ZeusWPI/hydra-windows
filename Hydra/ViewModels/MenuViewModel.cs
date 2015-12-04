@@ -36,6 +36,11 @@ namespace Hydra.ViewModels {
                     DisplayName = resourceLoader.GetString("RootMenu_RestoPageDisplayName"),
                     SymbolIcon = Symbol.Help,
                     Command = new DelegateCommand(NavigateToPage(PageTokens.RestoPage))
+                },
+                new MenuItemViewModel {
+                    DisplayName = resourceLoader.GetString("RootMenu_RestoPageDisplayName"),
+                    SymbolIcon = Symbol.Calendar,
+                    Command = new DelegateCommand(NavigateToPage(PageTokens.ActivitiesPage))
                 }
             };
         }

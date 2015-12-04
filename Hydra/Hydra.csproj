@@ -102,8 +102,11 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\NavMenuListView.cs" />
+    <Compile Include="DataSources\IAssociationSource.cs" />
     <Compile Include="DataSources\IRestoSource.cs" />
+    <Compile Include="DataSources\DsaAssociationsApi.cs" />
     <Compile Include="DataSources\ZeusRestoApi.cs" />
+    <Compile Include="Models\Activities\Association.cs" />
     <Compile Include="Models\IModel.cs" />
     <Compile Include="Models\Resto\Meal.cs" />
     <Compile Include="Models\Resto\RestoLocation.cs" />
@@ -116,7 +119,11 @@
     <Compile Include="ViewModels\Home\HomePageViewModel.cs" />
     <Compile Include="ViewModels\MenuItemViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
+    <Compile Include="ViewModels\Activities\ActivitiesPageViewModel.cs" />
     <Compile Include="ViewModels\Resto\RestoPageViewModel.cs" />
+    <Compile Include="Views\Activities\ActivitiesPage.xaml.cs">
+      <DependentUpon>ActivitiesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Home\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -181,6 +188,10 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
+    <Page Include="Views\Activities\ActivitiesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Home\HomePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -215,8 +226,6 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\Activities\" />
-    <Folder Include="Views\Calendar\" />
     <Folder Include="Views\Info\" />
     <Folder Include="Views\Schamper\" />
     <Folder Include="Views\UrgentFm\" />
