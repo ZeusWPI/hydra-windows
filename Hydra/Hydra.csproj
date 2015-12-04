@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Hydra</RootNamespace>
     <AssemblyName>Hydra</AssemblyName>
-    <DefaultLanguage>en-US</DefaultLanguage>
+    <DefaultLanguage>nl-BE</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
@@ -102,11 +102,16 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\NavMenuListView.cs" />
+    <Compile Include="Converters\DateFormatter.cs" />
+    <Compile Include="DataSources\IActivitySource.cs" />
     <Compile Include="DataSources\IAssociationSource.cs" />
     <Compile Include="DataSources\IRestoSource.cs" />
     <Compile Include="DataSources\DsaAssociationsApi.cs" />
     <Compile Include="DataSources\ZeusRestoApi.cs" />
+    <Compile Include="Models\Activities\Activity.cs" />
     <Compile Include="Models\Activities\Association.cs" />
+    <Compile Include="Models\Activities\EventDay.cs" />
+    <Compile Include="Models\Activities\Konvent.cs" />
     <Compile Include="Models\IModel.cs" />
     <Compile Include="Models\Resto\Meal.cs" />
     <Compile Include="Models\Resto\RestoLocation.cs" />

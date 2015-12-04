@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 namespace Hydra.DataSources {
 
     /// <summary>
-    /// Provides the data for the associations from the DSA.
+    /// Provides the data for the activities.
     /// </summary>
-    public interface IAssociationSource {
+    public interface IActivitySource {
 
         /// <summary>
-        /// Return all associations from UGent
+        /// 
         /// </summary>
         /// <returns></returns>
-        Task<IEnumerable<Association>> GetAssociations();
+        Task<IEnumerable<Activity>> GetActivities();
 
         /// <summary>
-        /// Return all associations from UGent, grouped by konvent
+        /// 
         /// </summary>
         /// <returns></returns>
-        Task<IEnumerable<Konvent>> GetAssociationsByKonvent();
+        Task<IEnumerable<EventDay>> GetActivitiesByDate();
     }
 }

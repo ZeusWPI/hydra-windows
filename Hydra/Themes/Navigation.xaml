@@ -11,19 +11,6 @@
         <Setter Property="OpenPaneLength" Value="150" />
     </Style>
 
-    <Style x:Key="topNavMenuItem" TargetType="ListViewItem">
-        <Setter Property="Foreground" Value="White" />
-        <Setter Property="MinWidth" Value="{StaticResource SplitViewCompactPaneThemeLength}"/>
-        <Setter Property="Height" Value="50" />
-        <Setter Property="Padding" Value="0"/>
-    </Style>
-
-    <Style TargetType="TextBlock" x:Key="topNavText">
-        <Setter Property="FontSize" Value="18" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-    </Style>
-
-
     <Style x:Key="SplitViewMenuButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />

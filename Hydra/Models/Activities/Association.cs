@@ -18,5 +18,9 @@ namespace Hydra.Models.Activities {
 
         [DataMember(Name = "parentAssociation")]
         public string ParentAssociation { get; set; }
+
+        public override string ToString() {
+            return this.DisplayName;
+        }
     }
 }

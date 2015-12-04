@@ -11,27 +11,73 @@ using System.Runtime.Serialization.Json;
 using Hydra.Models.Activities;
 
 namespace Hydra.DataSources {
-    public class DsaAssociationsApi : RestApi, IAssociationSource {
+    public class DsaApi : RestApi, IAssociationSource, IActivitySource {
 
         private const string BASE_URL = "http://student.ugent.be/";
-        private const string API_PATH = "/hydra/api/1.0/associations.json";
+        private const string API_PATH = "/hydra/api/1.0/";
 
         private Association[] associations;
+        private Activity[] activities;
 
 
-        public DsaAssociationsApi() : base(BASE_URL, API_PATH) {
+        public DsaApi() : base(BASE_URL, API_PATH) {
         }
-
-        /// <summary>
-        /// Retrieves the locations of all resto's.
-        /// </summary>
+        
         public async Task<IEnumerable<Association>> GetAssociations() {
             if(associations == null) {
-                associations = await Get<Association[]>("");
+                associations = await Get<Association[]>("associations.json");
             }
             
             return associations;
         }
-        
+
+        public async Task<IEnumerable<Konvent>> GetAssociationsByKonvent() {
+            List<Konvent> konvents = new List<Konvent>();
+
+            var query = from association in await GetAssociations()
+                        group association by association.ParentAssociation into grp
+                        orderby grp.Key
+                        select new { GroupName = grp.Key, Items = grp };
+
+            foreach (var grp in query) {
+                Konvent konvent = new Konvent();
+                konvent.KonventName = grp.GroupName;
+                foreach (var item in grp.Items) {
+                    konvent.Add(item);
+                }
+                konvents.Add(konvent);
+            }
+
+            return konvents;
+        }
+
+        public async Task<IEnumerable<Activity>> GetActivities() {
+            if (activities == null) {
+                activities = await Get<Activity[]>("all_activities.json");
+            }
+
+            return activities;
+        }
+
+        public async Task<IEnumerable<EventDay>> GetActivitiesByDate() {
+            List<EventDay> dates = new List<EventDay>();
+
+            var query = from activity in await GetActivities()
+                        group activity by activity.Start.Date into grp
+                        orderby grp.Key
+                        select new { GroupName = grp.Key, Items = grp };
+
+            foreach (var grp in query) {
+                EventDay eventDay = new EventDay();
+                eventDay.Date = grp.GroupName;
+                foreach (var item in grp.Items) {
+                    eventDay.Add(item);
+                }
+                dates.Add(eventDay);
+            }
+
+            return dates;
+        }
+
     }
 }

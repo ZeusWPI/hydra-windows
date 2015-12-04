@@ -15,19 +15,30 @@ namespace Hydra.ViewModels.Activities {
     public class ActivitiesPageViewModel : ViewModelBase, INotifyPropertyChanged {
 
         private readonly IAssociationSource associationSource;
+        private readonly IActivitySource activitySource;
 
-        public ObservableCollection<Association> Associations { get; set; }
+        public ObservableCollection<Konvent> Konvents { get; set; }
+        public ObservableCollection<EventDay> EventDays { get; set; }
 
-        public ActivitiesPageViewModel(IAssociationSource associationSource) {
+        public ActivitiesPageViewModel(IAssociationSource associationSource, IActivitySource activitySource) {
             this.associationSource = associationSource;
-            Associations = new ObservableCollection<Association>();
+            this.activitySource = activitySource;
+            Konvents = new ObservableCollection<Konvent>();
+            EventDays = new ObservableCollection<EventDay>();
 
             GetAssociations();
+            GetActivities();
         }
 
         public async Task GetAssociations() {
-            IEnumerable<Association> associations = await associationSource.GetAssociations();
-            foreach (Association association in associations) Associations.Add(association);
+            IEnumerable<Konvent> konvents = await associationSource.GetAssociationsByKonvent();
+            foreach (Konvent konvent in konvents) Konvents.Add(konvent);
+            OnPropertyChanged();
+        }
+
+        public async Task GetActivities() {
+            IEnumerable<EventDay> days = await activitySource.GetActivitiesByDate();
+            foreach (EventDay day in days) EventDays.Add(day);
             OnPropertyChanged();
         }
     }

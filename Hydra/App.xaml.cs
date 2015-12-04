@@ -10,6 +10,7 @@ using System.Globalization;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Resources;
+using Windows.Globalization;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -35,7 +36,9 @@ namespace Hydra {
 
             // Inject the data sources
             Container.RegisterInstance<IRestoSource>(new ZeusRestoApi());
-            Container.RegisterInstance<IAssociationSource>(new DsaAssociationsApi());
+            DsaApi dsaApi = new DsaApi();
+            Container.RegisterInstance<IAssociationSource>(dsaApi);
+            Container.RegisterInstance<IActivitySource>(dsaApi);
 
             return base.OnInitializeAsync(args);
         }

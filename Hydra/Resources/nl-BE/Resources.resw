@@ -117,10 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="RootMenu_ActivitiesPageDisplayName" xml:space="preserve">
+    <value>Activiteiten</value>
+  </data>
   <data name="RootMenu_HomePageDisplayName" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="RootMenu_InfoPageDisplayName" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="RootMenu_NewsPageDisplayName" xml:space="preserve">
+    <value>Nieuws</value>
+  </data>
   <data name="RootMenu_RestoPageDisplayName" xml:space="preserve">
     <value>Resto</value>
+  </data>
+  <data name="RootMenu_SchamperPageDisplayName" xml:space="preserve">
+    <value>Schamper</value>
   </data>
 </root>
