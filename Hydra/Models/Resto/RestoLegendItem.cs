@@ -21,6 +21,10 @@ namespace Hydra.Models.Resto {
 
         [DataMember(Name = "value")]
         public string Value { get; set; }
+
+        public override string ToString() {
+            return Key + ": " + Value;
+        }
     }
 
 }

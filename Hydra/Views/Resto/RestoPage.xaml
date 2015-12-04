@@ -25,25 +25,21 @@
         <local:RestoMenuTemplateSelector x:Key="RestoInfoSelector">
             <local:RestoMenuTemplateSelector.DayMenuTemplate>
                 <DataTemplate>
-                    <StackPanel Style="{StaticResource RestoInfoItem}">
+                    <StackPanel>
                         <TextBlock Text="Soep" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" />
                         <ContentPresenter Padding="15" ContentTemplate="{StaticResource MealTemplate}" Content="{Binding Soup}" />
 
                         <TextBlock Text="Vlees &amp; Veggie" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" />
-                        <ListView ItemsSource="{Binding Meat}" ItemTemplate="{StaticResource MealTemplate}" SelectionMode="None"  Background="White">
+                        <ListView ItemsSource="{Binding Meat}" ItemTemplate="{StaticResource MealTemplate}" SelectionMode="None">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
                                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                    <Setter Property="Background" Value="White" />
                                 </Style>
                             </ListView.ItemContainerStyle>
                         </ListView>
 
                         <TextBlock Text="Groenten" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" />
-                        <ListView ItemsSource="{Binding Vegetables}">
-                            <Style TargetType="ListViewItem">
-                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                            </Style>
+                        <ListView ItemsSource="{Binding Vegetables}" SelectionMode="None">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding}" />
@@ -56,7 +52,7 @@
 
             <local:RestoMenuTemplateSelector.LoadingTemplate>
                 <DataTemplate>
-                    <StackPanel Style="{StaticResource RestoInfoItem}">
+                    <StackPanel>
                         <ProgressRing IsActive="{Binding Loading}" />
                     </StackPanel>
                 </DataTemplate>
@@ -64,7 +60,7 @@
 
             <local:RestoMenuTemplateSelector.RestoClosedTemplate>
                 <DataTemplate>
-                    <StackPanel Style="{StaticResource RestoInfoItem}">
+                    <StackPanel>
                         <TextBlock Style="{ThemeResource TitleTextBlockStyle}"  Text="GESLOTEN" />
                     </StackPanel>
                 </DataTemplate>
@@ -72,11 +68,11 @@
         </local:RestoMenuTemplateSelector>
     </prismMvvm:SessionStateAwarePage.Resources>
 
-    <StackPanel Orientation="Horizontal" Style="{StaticResource HydraRootContainer}">
+    <StackPanel Style="{StaticResource HydraRootContainer}" Orientation="Horizontal">
         <Pivot Width="500"
                ItemsSource="{Binding RestoInfoList}"
                ItemTemplateSelector="{StaticResource RestoInfoSelector}"
-               Style="{StaticResource HydraItemsControl}">
+               Style="{StaticResource HydraPivot}">
             <Pivot.HeaderTemplate>
                 <DataTemplate>
                     <ContentControl Content="{Binding FormattedDate}" />
@@ -85,16 +81,12 @@
         </Pivot>
 
 
-        <StackPanel Orientation="Vertical" Style="{StaticResource HydraPanel}">
+        <StackPanel Width="400" Orientation="Vertical" Style="{StaticResource HydraStackPanel}">
             <TextBlock Text="Legende" Style="{ThemeResource TitleTextBlockStyle}" />
-            <ListView ItemsSource="{Binding Legend}">
+            <ListView ItemsSource="{Binding Legend}" SelectionMode="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Key}" />
-                            <TextBlock Text=": " />
-                            <TextBlock Text="{Binding Value}" />
-                        </StackPanel>
+                        <TextBlock Text="{Binding}" TextWrapping="Wrap" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

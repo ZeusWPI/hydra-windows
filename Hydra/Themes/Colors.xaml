@@ -1,0 +1,17 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Hydra">
+
+    <!-- UGent Colors -->
+    <SolidColorBrush x:Key="UGentBlue" Color="#104B7D" />
+    <SolidColorBrush x:Key="UGentYellow" Color="#FDB812" />
+    <SolidColorBrush x:Key="UGentYellowLight" Color="#FFEE89" />
+
+    
+    <SolidColorBrush x:Key="DefaultPageBackground" Color="#E0E0E0" />
+    <!-- The default color of a first-level container in a page -->
+    <SolidColorBrush x:Key="DefaultHydraItemBackground" Color="White" />
+
+
+</ResourceDictionary>
