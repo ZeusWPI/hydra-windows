@@ -18,64 +18,107 @@
         <converters:DateFormatter x:Key="DateFormatConverter" />
         
         <DataTemplate x:Key="ActivityTemplate" x:DataType="data:Activity">
-            <StackPanel>
-                <TextBlock Text="{x:Bind Title}" TextWrapping="Wrap" />
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{x:Bind Start, Converter={StaticResource DateFormatConverter}, ConverterParameter=\{0:HH:mm\}}" />
-                    <TextBlock Text="{x:Bind End,   Converter={StaticResource DateFormatConverter}, ConverterParameter=\{0: - HH:mm\}}" />
-                </StackPanel>
-                <TextBlock Text="{x:Bind Association}" TextWrapping="Wrap" />
-            </StackPanel>
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Image Source="{x:Bind Thumbnail}" Width="40" Height="40"
+                       Grid.Row="0" Grid.Column="0"
+                       Grid.RowSpan="2" />
+
+                <TextBlock Text="{x:Bind Title}" TextTrimming="CharacterEllipsis" MaxWidth="200"
+                           Grid.Row="0" Grid.Column="1" />
+                <TextBlock Text="{x:Bind Start, Converter={StaticResource DateFormatConverter}, ConverterParameter=\{0:H:mm\}}"
+                           Grid.Row="0" Grid.Column="2" />
+
+                <TextBlock Text="{x:Bind Association}" FontStyle="Italic"
+                           Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" />
+            </Grid>
         </DataTemplate>
     </prismMvvm:SessionStateAwarePage.Resources>
 
 
-    <StackPanel Style="{StaticResource HydraRootContainer}" Orientation="Horizontal">
+    <Grid Style="{StaticResource HydraRootContainer}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
-        <ScrollViewer>
-            <StackPanel Width="400" Style="{StaticResource HydraStackPanel}">
-                <TextBlock Text="Verenigingen" Style="{ThemeResource TitleTextBlockStyle}" />
-                <ListView ItemsSource="{x:Bind KonventsCVS.View}" SelectionMode="None">
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="data:Association">
-                            <TextBlock Text="{x:Bind DisplayName}" TextWrapping="Wrap" />
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
 
-                    <ListView.GroupStyle>
-                        <GroupStyle>
-                            <GroupStyle.HeaderTemplate>
-                                <DataTemplate x:DataType="data:Konvent">
-                                    <TextBlock Text="{x:Bind KonventName}" Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                                </DataTemplate>
-                            </GroupStyle.HeaderTemplate>
-                        </GroupStyle>
-                    </ListView.GroupStyle>
-                </ListView>
-            </StackPanel>
-        </ScrollViewer>
-        
-        <ScrollViewer>
-            <StackPanel Width="400" Style="{StaticResource HydraStackPanel}">
-                <TextBlock Text="Activiteiten" Style="{ThemeResource TitleTextBlockStyle}" />
-                <ListView ItemsSource="{x:Bind EventDaysCVS.View}"
-                          SelectionMode="None"
-                          ItemTemplate="{StaticResource ActivityTemplate}" >
+        <Grid Grid.Column="0" Style="{StaticResource HydraGrid}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-                    <ListView.GroupStyle>
-                        <GroupStyle>
-                            <GroupStyle.HeaderTemplate>
-                                <DataTemplate x:DataType="data:EventDay">
-                                    <TextBlock Text="{x:Bind Date, Converter={StaticResource DateFormatConverter}, ConverterParameter=\{0:ddd d MMMM\}}"
+            <TextBlock Grid.Row="0" Text="Verenigingen" Style="{ThemeResource TitleTextBlockStyle}" />
+            <ListView Grid.Row="1" ItemsSource="{x:Bind KonventsCVS.View}" SelectionMode="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="data:Association">
+                        <TextBlock Text="{x:Bind DisplayName}" TextWrapping="Wrap" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+                <ListView.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.HeaderTemplate>
+                            <DataTemplate x:DataType="data:Konvent">
+                                <TextBlock Text="{x:Bind KonventName}" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                            </DataTemplate>
+                        </GroupStyle.HeaderTemplate>
+                    </GroupStyle>
+                </ListView.GroupStyle>
+            </ListView>
+        </Grid>
+
+        <Grid Grid.Column="1" Style="{StaticResource HydraGrid}" HorizontalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Text="Activiteiten" Style="{ThemeResource TitleTextBlockStyle}" />
+            <GridView Grid.Row="1" ItemsSource="{x:Bind EventDaysCVS.View}"
+                      ItemTemplate="{StaticResource ActivityTemplate}"
+                      HorizontalAlignment="Stretch"
+                      HorizontalContentAlignment="Stretch">
+
+                <GridView.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.HeaderTemplate>
+                            <DataTemplate x:DataType="data:EventDay">
+                                <TextBlock Text="{x:Bind Date, Converter={StaticResource DateFormatConverter}, ConverterParameter=\{0:ddd d MMMM\}}"
                                                Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                                </DataTemplate>
-                            </GroupStyle.HeaderTemplate>
-                        </GroupStyle>
-                    </ListView.GroupStyle>
-                </ListView>
+                            </DataTemplate>
+                        </GroupStyle.HeaderTemplate>
+                    </GroupStyle>
+                </GridView.GroupStyle>
 
-            </StackPanel>
-        </ScrollViewer>
+                <GridView.ItemContainerStyle>
+                    <Style TargetType="GridViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </GridView.ItemContainerStyle>
+            </GridView>
 
-    </StackPanel>
+        </Grid>
+
+    </Grid>
 </prismMvvm:SessionStateAwarePage>

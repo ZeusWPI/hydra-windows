@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
 
 namespace Hydra.Models.Activities {
 
@@ -41,6 +42,9 @@ namespace Hydra.Models.Activities {
 
         [DataMember(Name = "description")]
         public string Description { get; set; }
+
+        [IgnoreDataMember]
+        public string Thumbnail { get { return "ms-appx:///Assets/Icons/Nav-RestoIcon.png"; } }
 
         [DataMember(Name = "url")]
         public Uri Url { get; set; }
