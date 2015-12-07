@@ -20,12 +20,26 @@
 
     <Style x:Key="HydraGrid" TargetType="Grid" BasedOn="{StaticResource HydraPanel}">
         <Setter Property="Padding" Value="15" />
+        <Setter Property="BorderThickness" Value="0,0,1,1" />
+        <Setter Property="BorderBrush" Value="{StaticResource DefaultHydraItemShadow}" />
+        <Setter Property="CornerRadius" Value="3" />
     </Style>
 
     <Style x:Key="HydraStackPanel" TargetType="StackPanel" BasedOn="{StaticResource HydraPanel}">
         <Setter Property="Padding" Value="15" />
     </Style>
-    
+
+    <Style x:Key="HydraListViewStatic" TargetType="ListView">
+        <Setter Property="SelectionMode" Value="None" />
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="HydraPivot" TargetType="Pivot">
         <Setter Property="Margin" Value="10" />
         <Setter Property="Padding" Value="0" />
@@ -34,9 +48,8 @@
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
-                    <Grid Background="{StaticResource DefaultHydraItemBackground}"
-                          BorderBrush="{StaticResource UGentYellow}"
-                          BorderThickness="1" />
+                    <Grid Style="{StaticResource HydraGrid}"
+                          Margin="0" />
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
@@ -79,10 +92,10 @@
                                     <Setter.Value>
                                         <ControlTemplate TargetType="PivotHeaderItem">
                                             <Grid x:Name="Grid"
-                                                  Background="White"
-                                                  BorderBrush="{StaticResource UGentYellow}"
-                                                  BorderThickness="1,1,1,0"
-                                                  Margin="0,0,5,0">
+                                                  Background="{StaticResource DefaultHydraItemBackground}"
+                                                  BorderBrush="{StaticResource DefaultHydraItemShadow}"
+                                                  BorderThickness="0,0,1,1"
+                                                  Margin="0,0,2,0">
                                                 <VisualStateManager.VisualStateGroups>
                                                     <VisualStateGroup x:Name="SelectionStates">
                                                         <VisualState x:Name="Disabled">

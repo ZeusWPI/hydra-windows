@@ -9,9 +9,10 @@
     <SolidColorBrush x:Key="UGentYellowLight" Color="#FFEE89" />
 
     
-    <SolidColorBrush x:Key="DefaultPageBackground" Color="#E0E0E0" />
+    <SolidColorBrush x:Key="DefaultPageBackground" Color="#E5E5E5" />
     <!-- The default color of a first-level container in a page -->
     <SolidColorBrush x:Key="DefaultHydraItemBackground" Color="White" />
+    <SolidColorBrush x:Key="DefaultHydraItemShadow" Color="#BBBBBB" />
 
 
 </ResourceDictionary>

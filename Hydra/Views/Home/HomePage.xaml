@@ -9,11 +9,15 @@
     prismMvvm:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
 
-    <Hub>
-        <HubSection Header="Hallo">
-            <DataTemplate>
-                <TextBlock Text="{Binding DisplayText}" />
-            </DataTemplate>
-        </HubSection>
-    </Hub>
+    <Grid Style="{StaticResource HydraRootContainer}">
+        <Grid Style="{StaticResource HydraGrid}">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            
+            <TextBlock Grid.Row="0" Text="HYDRAAAAA" Style="{ThemeResource TitleTextBlockStyle}" />
+            <TextBlock Grid.Row="1" Text="{Binding DisplayText}" />
+        </Grid>
+    </Grid>
 </prismMvvm:SessionStateAwarePage>
