@@ -10,6 +10,7 @@ namespace Hydra {
     /// </summary>
     public static class PageTokens {
         public const string HomePage = "Home/HomePage";
+        public const string NewsPage = "News/NewsPage";
         public const string RestoPage = "Resto/RestoPage";
         public const string ActivitiesPage = "Activities/ActivitiesPage";
     }

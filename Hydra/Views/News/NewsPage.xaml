@@ -1,0 +1,63 @@
+﻿<prismMvvm:SessionStateAwarePage
+    x:Class="Hydra.Views.News.NewsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Hydra.Views.News"
+    xmlns:converters="using:Hydra.Converters"
+    xmlns:data="using:Hydra.Models.News"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prismMvvm="using:Prism.Windows.Mvvm"
+    prismMvvm:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+
+    <prismMvvm:SessionStateAwarePage.Resources>
+        <converters:DateFormatter x:Key="DateFormatConverter" />
+
+        <DataTemplate x:Key="NewsArticleTemplate" x:DataType="data:NewsArticle">
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Image Source="ms-appx:///Assets/Icons/Nav-RestoIcon.png" Width="40" Height="40"
+                       Grid.Row="0" Grid.Column="0"
+                       Grid.RowSpan="2" />
+
+                <TextBlock Text="{x:Bind Title}" Style="{StaticResource TitleTextBlockStyle}"
+                           Grid.Row="0" Grid.Column="1" />
+                <TextBlock Text="{x:Bind Date, Converter={StaticResource DateFormatConverter}, ConverterParameter=\{0:ddd MM H:mm\}}"
+                           Grid.Row="0" Grid.Column="2" />
+
+                <TextBlock Text="{x:Bind Content}" TextWrapping="Wrap"
+                           Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" /> 
+            </Grid>
+        </DataTemplate>
+    </prismMvvm:SessionStateAwarePage.Resources>
+
+
+    <Grid Style="{StaticResource HydraRootContainer}">
+        <Grid Style="{StaticResource HydraGrid}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Text="Nieuws" Style="{ThemeResource TitleTextBlockStyle}" />
+            <ListView Grid.Row="1" ItemsSource="{Binding NewsArticles}"
+                      ItemTemplate="{StaticResource NewsArticleTemplate}"
+                      Style="{StaticResource HydraListViewStatic}" />
+
+        </Grid>
+    </Grid>
+</prismMvvm:SessionStateAwarePage>

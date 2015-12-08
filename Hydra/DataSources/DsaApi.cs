@@ -9,16 +9,17 @@ using Hydra.Models.Resto;
 using System.Globalization;
 using System.Runtime.Serialization.Json;
 using Hydra.Models.Activities;
+using Hydra.Models.News;
 
 namespace Hydra.DataSources {
-    public class DsaApi : RestApi, IAssociationSource, IActivitySource {
+    public class DsaApi : RestApi, IAssociationSource, IActivitySource, INewsSource {
 
         private const string BASE_URL = "http://student.ugent.be/";
         private const string API_PATH = "/hydra/api/1.0/";
 
         private Association[] associations;
         private Activity[] activities;
-
+        private NewsArticle[] newsArticles;
 
         public DsaApi() : base(BASE_URL, API_PATH) {
         }
@@ -77,6 +78,14 @@ namespace Hydra.DataSources {
             }
 
             return dates;
+        }
+
+        public async Task<IEnumerable<NewsArticle>> GetArticles() {
+            if (newsArticles == null) {
+                newsArticles = await Get<NewsArticle[]>("all_news.json");
+            }
+
+            return newsArticles;
         }
 
     }

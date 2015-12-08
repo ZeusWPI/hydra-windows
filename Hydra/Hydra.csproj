@@ -103,16 +103,18 @@
     </Compile>
     <Compile Include="Controls\NavMenuListView.cs" />
     <Compile Include="Converters\DateFormatter.cs" />
+    <Compile Include="DataSources\INewsSource.cs" />
     <Compile Include="DataSources\IActivitySource.cs" />
     <Compile Include="DataSources\IAssociationSource.cs" />
     <Compile Include="DataSources\IRestoSource.cs" />
-    <Compile Include="DataSources\DsaAssociationsApi.cs" />
+    <Compile Include="DataSources\DsaApi.cs" />
     <Compile Include="DataSources\ZeusRestoApi.cs" />
     <Compile Include="Models\Activities\Activity.cs" />
     <Compile Include="Models\Activities\Association.cs" />
     <Compile Include="Models\Activities\EventDay.cs" />
     <Compile Include="Models\Activities\Konvent.cs" />
     <Compile Include="Models\IModel.cs" />
+    <Compile Include="Models\News\NewsArticle.cs" />
     <Compile Include="Models\Resto\Meal.cs" />
     <Compile Include="Models\Resto\RestoLocation.cs" />
     <Compile Include="Models\Resto\RestoLegendItem.cs" />
@@ -121,6 +123,7 @@
     <Compile Include="DataSources\IDataSource.cs" />
     <Compile Include="DataSources\RestApi.cs" />
     <Compile Include="PageTokens.cs" />
+    <Compile Include="ViewModels\News\NewsPageViewModel.cs" />
     <Compile Include="ViewModels\Home\HomePageViewModel.cs" />
     <Compile Include="ViewModels\MenuItemViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
@@ -134,6 +137,9 @@
     </Compile>
     <Compile Include="Views\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\News\NewsPage.xaml.cs">
+      <DependentUpon>NewsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Resto\RestoMapControl.xaml.cs">
       <DependentUpon>RestoMapControl.xaml</DependentUpon>
@@ -204,6 +210,10 @@
     <Page Include="Views\MenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\News\NewsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Resto\RestoMapControl.xaml">
       <SubType>Designer</SubType>

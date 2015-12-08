@@ -39,6 +39,7 @@ namespace Hydra {
             DsaApi dsaApi = new DsaApi();
             Container.RegisterInstance<IAssociationSource>(dsaApi);
             Container.RegisterInstance<IActivitySource>(dsaApi);
+            Container.RegisterInstance<INewsSource>(dsaApi);
 
             return base.OnInitializeAsync(args);
         }
