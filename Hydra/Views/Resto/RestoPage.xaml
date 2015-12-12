@@ -25,7 +25,7 @@
 
         <local:RestoMenuTemplateSelector x:Key="RestoInfoSelector">
             <local:RestoMenuTemplateSelector.DayMenuTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="data:DailyMenu">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -41,17 +41,17 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Grid.Row="0" Text="Soep" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" />
-                        <ContentPresenter Grid.Row="1" Padding="15" ContentTemplate="{StaticResource MealTemplate}" Content="{Binding Soup}" />
+                        <ContentPresenter Grid.Row="1" Padding="15" ContentTemplate="{StaticResource MealTemplate}" Content="{x:Bind Soup}" HorizontalAlignment="Stretch" />
 
                         <TextBlock Grid.Row="2" Text="Vlees &amp; Veggie" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" />
-                        <ListView Grid.Row="3" ItemsSource="{Binding Meat}"
+                        <ListView Grid.Row="3" ItemsSource="{x:Bind Meat}"
                                   ItemTemplate="{StaticResource MealTemplate}"
-                                  Style="{StaticResource HydraListViewStatic}"/>
+                                  Style="{StaticResource HydraListViewStatic}"  HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" />
 
                         <TextBlock Grid.Row="5" Text="Groenten" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" />
                         <ListView Grid.Row="6"
-                                  ItemsSource="{Binding Vegetables}"
-                                  Style="{StaticResource HydraListViewStatic}">
+                                  ItemsSource="{x:Bind Vegetables}"
+                                  Style="{StaticResource HydraListViewStatic}"  HorizontalAlignment="Stretch">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding}" />
@@ -97,7 +97,7 @@
     <Grid Style="{StaticResource HydraRootContainer}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         
         <Pivot Grid.Column="0"
@@ -112,7 +112,7 @@
         </Pivot>
 
 
-        <Grid Grid.Column="1" MaxWidth="400" Style="{StaticResource HydraGrid}">
+        <Grid Grid.Column="1" Style="{StaticResource HydraGrid}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>

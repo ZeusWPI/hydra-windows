@@ -32,6 +32,10 @@ namespace Hydra.DataSources {
             return associations;
         }
 
+        public async Task<Association> GetAssociation(string internalName) {
+            return (await GetAssociations()).Where(assocation => assocation.InternalName == internalName).First();
+        }
+
         public async Task<IEnumerable<Konvent>> GetAssociationsByKonvent() {
             List<Konvent> konvents = new List<Konvent>();
 

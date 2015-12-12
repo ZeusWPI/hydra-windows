@@ -35,6 +35,36 @@
             <Setter.Value>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListViewItem">
+                                <ListViewItemPresenter CheckHintBrush="{ThemeResource ListViewItemCheckHintThemeBrush}" 
+                                               CheckBrush="{ThemeResource ListViewItemCheckThemeBrush}" 
+                                               ContentMargin="4" 
+                                               ContentTransitions="{TemplateBinding ContentTransitions}" 
+                                               CheckSelectingBrush="{ThemeResource ListViewItemCheckSelectingThemeBrush}" 
+                                               DragForeground="{ThemeResource ListViewItemDragForegroundThemeBrush}" 
+                                               DragOpacity="{ThemeResource ListViewItemDragThemeOpacity}" 
+                                               DragBackground="{ThemeResource ListViewItemDragBackgroundThemeBrush}" 
+                                               DisabledOpacity="{ThemeResource ListViewItemDisabledThemeOpacity}" 
+                                               FocusBorderBrush="{ThemeResource ListViewItemFocusBorderThemeBrush}" 
+                                               HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                               Padding="{TemplateBinding Padding}" 
+                                               PointerOverBackgroundMargin="1" 
+                                               PlaceholderBackground="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" 
+                                               PointerOverBackground="Transparent" 
+                                               ReorderHintOffset="{ThemeResource ListViewItemReorderHintThemeOffset}" 
+                                               SelectedPointerOverBorderBrush="{ThemeResource ListViewItemSelectedPointerOverBorderThemeBrush}" 
+                                               SelectionCheckMarkVisualEnabled="True" 
+                                               SelectedForeground="{ThemeResource ListViewItemSelectedForegroundThemeBrush}" 
+                                               SelectedPointerOverBackground="{ThemeResource ListViewItemSelectedPointerOverBackgroundThemeBrush}" 
+                                               SelectedBorderThickness="{ThemeResource ListViewItemCompactSelectedBorderThemeThickness}" 
+                                               SelectedBackground="{ThemeResource ListViewItemSelectedBackgroundThemeBrush}" 
+                                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
                 </Style>
             </Setter.Value>
         </Setter>
