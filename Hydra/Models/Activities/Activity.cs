@@ -44,7 +44,7 @@ namespace Hydra.Models.Activities {
         public string Description { get; set; }
 
         [IgnoreDataMember]
-        public string Thumbnail { get { return "ms-appx:///Assets/Icons/Nav-RestoIcon.png"; } }
+        public string Thumbnail { get { return Association.Logo; } }
 
         [DataMember(Name = "url")]
         public Uri Url { get; set; }
@@ -60,23 +60,9 @@ namespace Hydra.Models.Activities {
 
         // WHY THE HELL DOESN'T THIS FOLLOW THE OTHER ASSOCIATION FORMAT
         [DataMember(Name = "association")]
-        public ActivityAssociation Association { get; set; }
+        public Dictionary<string, string> associationLinks { get; set; }
 
-        [DataContract]
-        public class ActivityAssociation {
-
-            [DataMember(Name = "internal_name")]
-            public string InternalName { get; set; }
-
-            [DataMember(Name = "display_name")]
-            public string DisplayName { get; set; }
-
-            [DataMember(Name = "full_name")]
-            public string FullName { get; set; }
-
-            public override string ToString() {
-                return DisplayName;
-            }
-        }
+        [IgnoreDataMember]
+        public Association Association { get; set; }
     }
 }

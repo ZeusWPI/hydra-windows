@@ -163,6 +163,37 @@
     <None Include="Hydra_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\AssociationLogos\Chemica.small.jpg" />
+    <Content Include="Assets\AssociationLogos\Dentalia.small.jpg" />
+    <Content Include="Assets\AssociationLogos\Filologica.small.jpg" />
+    <Content Include="Assets\AssociationLogos\FK.small.jpg" />
+    <Content Include="Assets\AssociationLogos\GBK.small.jpg" />
+    <Content Include="Assets\AssociationLogos\Geografi.small.jpg" />
+    <Content Include="Assets\AssociationLogos\Geologic.small.jpg" />
+    <Content Include="Assets\AssociationLogos\GFK.small.jpg" />
+    <Content Include="Assets\AssociationLogos\Hermes.small.jpg" />
+    <Content Include="Assets\AssociationLogos\Hilok.small.jpg" />
+    <Content Include="Assets\AssociationLogos\KHK.small.jpg" />
+    <Content Include="Assets\AssociationLogos\KK.small.jpg" />
+    <Content Include="Assets\AssociationLogos\KMF.small.jpg" />
+    <Content Include="Assets\AssociationLogos\LILA.small.jpg" />
+    <Content Include="Assets\AssociationLogos\LOMBRO.small.jpg" />
+    <Content Include="Assets\AssociationLogos\LIES.small.jpg" />
+    <Content Include="Assets\AssociationLogos\OAK.small.jpg" />
+    <Content Include="Assets\AssociationLogos\Politeia.small.jpg" />
+    <Content Include="Assets\AssociationLogos\Slavia.small.jpg" />
+    <Content Include="Assets\AssociationLogos\VBK.small.jpg" />
+    <Content Include="Assets\AssociationLogos\VDK.small.jpg" />
+    <Content Include="Assets\AssociationLogos\VEK.small.jpg" />
+    <Content Include="Assets\AssociationLogos\VETO.small.jpg" />
+    <Content Include="Assets\AssociationLogos\VGKFGEN.small.jpg" />
+    <Content Include="Assets\AssociationLogos\VGKFLWI.small.jpg" />
+    <Content Include="Assets\AssociationLogos\VLAK.small.jpg" />
+    <Content Include="Assets\AssociationLogos\VLK.small.jpg" />
+    <Content Include="Assets\AssociationLogos\VPPK.small.jpg" />
+    <Content Include="Assets\AssociationLogos\VRG.small.jpg" />
+    <Content Include="Assets\AssociationLogos\VTK.small.jpg" />
+    <Content Include="Assets\AssociationLogos\WINA.small.jpg" />
     <Content Include="Assets\Icons\RestoMapIcon.png" />
     <Content Include="Assets\Icons\Nav-RestoIcon.png" />
     <Content Include="Properties\Default.rd.xml" />

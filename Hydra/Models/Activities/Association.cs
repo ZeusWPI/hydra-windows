@@ -19,6 +19,9 @@ namespace Hydra.Models.Activities {
         [DataMember(Name = "parentAssociation")]
         public string ParentAssociation { get; set; }
 
+        [IgnoreDataMember]
+        public string Logo { get { return "ms-appx:///Assets/AssociationLogos/" + InternalName + ".small.jpg"; } }
+
         public override string ToString() {
             return this.DisplayName;
         }

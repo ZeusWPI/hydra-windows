@@ -33,7 +33,7 @@ namespace Hydra.DataSources {
         }
 
         public async Task<Association> GetAssociation(string internalName) {
-            return (await GetAssociations()).Where(assocation => assocation.InternalName == internalName).First();
+            return (await GetAssociations()).Single(assocation => assocation.InternalName.Equals(internalName, StringComparison.OrdinalIgnoreCase));
         }
 
         public async Task<IEnumerable<Konvent>> GetAssociationsByKonvent() {
@@ -59,6 +59,10 @@ namespace Hydra.DataSources {
         public async Task<IEnumerable<Activity>> GetActivities() {
             if (activities == null) {
                 activities = await Get<Activity[]>("all_activities.json");
+
+                foreach(Activity activity in activities) {
+                    activity.Association = await GetAssociation(activity.associationLinks["internal_name"]);
+                }
             }
 
             return activities;
