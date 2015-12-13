@@ -17,7 +17,7 @@
         <converters:DateFormatter x:Key="DateFormatConverter" />
 
         <DataTemplate x:Key="ActivityTemplate" x:DataType="data:Activity">
-            <Grid HorizontalAlignment="Stretch">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
@@ -25,7 +25,7 @@
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
@@ -46,14 +46,7 @@
 
 
     <Grid Style="{StaticResource HydraRootContainer}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-
-        <Grid Style="{StaticResource HydraGrid}" HorizontalAlignment="Stretch">
+        <Grid Style="{StaticResource HydraGrid}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -76,9 +69,7 @@
 
             <GridView Grid.Row="1" Grid.ColumnSpan="2"
                       ItemsSource="{x:Bind EventDaysCVS.View}"
-                      ItemTemplate="{StaticResource ActivityTemplate}"
-                      HorizontalAlignment="Stretch"
-                      HorizontalContentAlignment="Stretch">
+                      ItemTemplate="{StaticResource ActivityTemplate}">
 
                 <GridView.GroupStyle>
                     <GroupStyle>
@@ -90,12 +81,6 @@
                         </GroupStyle.HeaderTemplate>
                     </GroupStyle>
                 </GridView.GroupStyle>
-
-                <GridView.ItemContainerStyle>
-                    <Style TargetType="GridViewItem">
-                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                    </Style>
-                </GridView.ItemContainerStyle>
             </GridView>
 
         </Grid>

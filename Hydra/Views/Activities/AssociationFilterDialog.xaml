@@ -14,7 +14,8 @@
     PrimaryButtonText="Opslaan"
     SecondaryButtonText="Annuleren"
     PrimaryButtonCommand="{Binding SaveButtonCommand}"
-    SecondaryButtonCommand="{Binding CancelButtonCommand}">
+    SecondaryButtonCommand="{Binding CancelButtonCommand}"
+    Style="{StaticResource HydraContentDialog}">
 
     <ContentDialog.Resources>
         <CollectionViewSource x:Name="KonventsCVS" IsSourceGrouped="True" Source="{Binding Konvents}" />
