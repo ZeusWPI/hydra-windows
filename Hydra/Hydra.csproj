@@ -123,6 +123,7 @@
     <Compile Include="DataSources\IDataSource.cs" />
     <Compile Include="DataSources\RestApi.cs" />
     <Compile Include="PageTokens.cs" />
+    <Compile Include="ViewModels\Activities\AssociationFilterDialogViewModel.cs" />
     <Compile Include="ViewModels\News\NewsPageViewModel.cs" />
     <Compile Include="ViewModels\Home\HomePageViewModel.cs" />
     <Compile Include="ViewModels\MenuItemViewModel.cs" />
@@ -131,6 +132,9 @@
     <Compile Include="ViewModels\Resto\RestoPageViewModel.cs" />
     <Compile Include="Views\Activities\ActivitiesPage.xaml.cs">
       <DependentUpon>ActivitiesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Activities\AssociationFilterDialog.xaml.cs">
+      <DependentUpon>AssociationFilterDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Home\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
@@ -233,6 +237,10 @@
     <Page Include="Views\Activities\ActivitiesPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Activities\AssociationFilterDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Home\HomePage.xaml">
       <Generator>MSBuild:Compile</Generator>

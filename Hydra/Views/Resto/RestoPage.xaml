@@ -41,7 +41,7 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Grid.Row="0" Text="Soep" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" />
-                        <ContentPresenter Grid.Row="1" Padding="15" ContentTemplate="{StaticResource MealTemplate}" Content="{x:Bind Soup}" HorizontalAlignment="Stretch" />
+                        <ContentPresenter Grid.Row="1" Padding="5" ContentTemplate="{StaticResource MealTemplate}" Content="{x:Bind Soup}" HorizontalAlignment="Stretch" />
 
                         <TextBlock Grid.Row="2" Text="Vlees &amp; Veggie" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" />
                         <ListView Grid.Row="3" ItemsSource="{x:Bind Meat}"

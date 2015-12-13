@@ -35,7 +35,7 @@
 
                 <TextBlock Text="{x:Bind Title}" Style="{StaticResource SubtitleTextBlockStyle}"
                            Grid.Row="0" Grid.Column="0" />
-                <TextBlock Text="{x:Bind Date, Converter={StaticResource DateFormatConverter}, ConverterParameter=\{0:ddd d MMM H:mm\}}"
+                <TextBlock Text="{x:Bind Date, Converter={StaticResource DateFormatConverter}, ConverterParameter=\{0:d MMM yyyy - H:mm\}}"
                            Grid.Row="0" Grid.Column="1" />
 
                 <TextBlock Text="{x:Bind Content}" TextWrapping="Wrap"

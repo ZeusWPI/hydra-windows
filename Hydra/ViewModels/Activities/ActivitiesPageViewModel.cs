@@ -1,5 +1,7 @@
 ﻿using Hydra.DataSources;
 using Hydra.Models.Activities;
+using Hydra.Views.Activities;
+using Prism.Commands;
 using Prism.Windows.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -14,26 +16,25 @@ using Windows.UI.Xaml;
 namespace Hydra.ViewModels.Activities {
     public class ActivitiesPageViewModel : ViewModelBase, INotifyPropertyChanged {
 
-        private readonly IAssociationSource associationSource;
         private readonly IActivitySource activitySource;
-
-        public ObservableCollection<Konvent> Konvents { get; set; }
+        
         public ObservableCollection<EventDay> EventDays { get; set; }
 
-        public ActivitiesPageViewModel(IAssociationSource associationSource, IActivitySource activitySource) {
-            this.associationSource = associationSource;
-            this.activitySource = activitySource;
-            Konvents = new ObservableCollection<Konvent>();
-            EventDays = new ObservableCollection<EventDay>();
-
-            GetAssociations();
-            GetActivities();
+        // Technically, directly referring to the dialog is against MVVM, but oh well, this is still a hobby project.
+        public DelegateCommand OpenDialogCommand {
+            get {
+                DelegateCommand command = new DelegateCommand(async () => {
+                    var associationFilterDialog = new AssociationFilterDialog();
+                    await associationFilterDialog.ShowAsync();
+                });
+                return command;
+            }
         }
 
-        public async Task GetAssociations() {
-            IEnumerable<Konvent> konvents = await associationSource.GetAssociationsByKonvent();
-            foreach (Konvent konvent in konvents) Konvents.Add(konvent);
-            OnPropertyChanged();
+        public ActivitiesPageViewModel(IAssociationSource associationSource, IActivitySource activitySource) {
+            this.activitySource = activitySource;
+            EventDays = new ObservableCollection<EventDay>();
+            GetActivities();
         }
 
         public async Task GetActivities() {

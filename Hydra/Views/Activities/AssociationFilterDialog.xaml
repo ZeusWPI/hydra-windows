@@ -1,0 +1,50 @@
+﻿<ContentDialog
+    x:Class="Hydra.Views.Activities.AssociationFilterDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Hydra.Views.Activities"
+    xmlns:data="using:Hydra.Models.Activities"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:prismMvvm="using:Prism.Windows.Mvvm"
+    prismMvvm:ViewModelLocator.AutoWireViewModel="True"
+    
+    Title="Filter activiteiten op kring"
+    PrimaryButtonText="Opslaan"
+    SecondaryButtonText="Annuleren"
+    PrimaryButtonCommand="{Binding SaveButtonCommand}"
+    SecondaryButtonCommand="{Binding CancelButtonCommand}">
+
+    <ContentDialog.Resources>
+        <CollectionViewSource x:Name="KonventsCVS" IsSourceGrouped="True" Source="{Binding Konvents}" />
+
+        <DataTemplate x:Key="AssociationTemplate" x:DataType="data:Association">
+            <TextBlock Text="{x:Bind DisplayName}" TextWrapping="Wrap" />
+        </DataTemplate>
+
+        <DataTemplate x:Key="KonventTemplate" x:DataType="data:Konvent">
+            <TextBlock Text="{x:Bind KonventName}" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+        </DataTemplate>
+    </ContentDialog.Resources>
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <ListView ItemsSource="{x:Bind KonventsCVS.View}"
+                      ItemTemplate="{StaticResource AssociationTemplate}"
+                      SelectionMode="Multiple"
+                      Style="{StaticResource HydraListViewStatic}">
+
+            <ListView.GroupStyle>
+                <GroupStyle HeaderTemplate="{StaticResource KonventTemplate}"/>
+            </ListView.GroupStyle>
+        </ListView>
+    </Grid>
+</ContentDialog>
