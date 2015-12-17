@@ -19,8 +19,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-using Hydra.Controls;
-
 namespace Hydra.Views {
     /// <summary>
     /// The basic UI for the app.

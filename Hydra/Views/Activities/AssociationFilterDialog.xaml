@@ -21,7 +21,15 @@
         <CollectionViewSource x:Name="KonventsCVS" IsSourceGrouped="True" Source="{Binding Konvents}" />
 
         <DataTemplate x:Key="AssociationTemplate" x:DataType="data:Association">
-            <TextBlock Text="{x:Bind DisplayName}" TextWrapping="Wrap" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Source="{x:Bind Logo}" />
+                <TextBlock Grid.Column="1" Text="{x:Bind DisplayName}" TextWrapping="Wrap" VerticalAlignment="Center" />
+            </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="KonventTemplate" x:DataType="data:Konvent">
@@ -39,10 +47,10 @@
         </Grid.ColumnDefinitions>
         
         <ListView ItemsSource="{x:Bind KonventsCVS.View}"
-                      ItemTemplate="{StaticResource AssociationTemplate}"
-                      SelectionMode="Multiple"
-                      Style="{StaticResource HydraListViewStatic}">
-
+                  ItemTemplate="{StaticResource AssociationTemplate}"
+                  SelectionMode="Multiple"
+                  Style="{StaticResource HydraListViewStatic}">
+ 
             <ListView.GroupStyle>
                 <GroupStyle HeaderTemplate="{StaticResource KonventTemplate}"/>
             </ListView.GroupStyle>

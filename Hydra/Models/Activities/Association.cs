@@ -22,6 +22,9 @@ namespace Hydra.Models.Activities {
         [IgnoreDataMember]
         public string Logo { get { return "ms-appx:///Assets/AssociationLogos/" + InternalName + ".small.jpg"; } }
 
+        [IgnoreDataMember]
+        public bool Hidden { get; set; }
+
         public override string ToString() {
             return this.DisplayName;
         }

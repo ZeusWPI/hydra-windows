@@ -15,9 +15,10 @@
         <CollectionViewSource x:Name="EventDaysCVS" IsSourceGrouped="True" Source="{Binding EventDays}" />
 
         <converters:DateFormatter x:Key="DateFormatConverter" />
+        <converters:BooleanToHiddenConverter x:Key="BooleanToHidden" />
 
         <DataTemplate x:Key="ActivityTemplate" x:DataType="data:Activity">
-            <Grid>
+            <Grid Visibility="{x:Bind Hidden, Converter={StaticResource BooleanToHidden}}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
@@ -25,7 +26,7 @@
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
@@ -33,7 +34,7 @@
                        Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
                        Margin="0,0,5,0" />
 
-                <TextBlock Text="{x:Bind Title}" TextTrimming="CharacterEllipsis"
+                <TextBlock Text="{x:Bind Title}"
                            Grid.Row="0" Grid.Column="1" />
                 <TextBlock Text="{x:Bind Start, Converter={StaticResource DateFormatConverter}, ConverterParameter=\{0:H:mm\}}"
                            Grid.Row="0" Grid.Column="2" />
@@ -41,6 +42,11 @@
                 <TextBlock Text="{x:Bind Association}" FontStyle="Italic"
                            Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" />
             </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="EventDayTemplate" x:DataType="data:EventDay">
+            <TextBlock Text="{x:Bind Date, Converter={StaticResource DateFormatConverter}, ConverterParameter=\{0:ddd d MMMM\}}"
+                                           Style="{ThemeResource SubtitleTextBlockStyle}"/>
         </DataTemplate>
     </prismMvvm:SessionStateAwarePage.Resources>
 
@@ -59,7 +65,7 @@
             <TextBlock Grid.Row="0" Grid.Column="0"
                        Text="Activiteiten" Style="{ThemeResource TitleTextBlockStyle}" />
 
-            <Button Grid.Row="0" Grid.Column="1" Command="{Binding OpenDialogCommand}">
+            <Button Grid.Row="0" Grid.Column="1" Command="{Binding OpenDialogCommand}" Style="{StaticResource HydraButton}">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Filter" />
                     <SymbolIcon Symbol="Filter" Height="15" />
@@ -69,17 +75,11 @@
 
             <GridView Grid.Row="1" Grid.ColumnSpan="2"
                       ItemsSource="{x:Bind EventDaysCVS.View}"
-                      ItemTemplate="{StaticResource ActivityTemplate}">
+                      ItemTemplate="{StaticResource ActivityTemplate}"
+                      Style="{StaticResource HydraGridViewStatic}">
 
                 <GridView.GroupStyle>
-                    <GroupStyle>
-                        <GroupStyle.HeaderTemplate>
-                            <DataTemplate x:DataType="data:EventDay">
-                                <TextBlock Text="{x:Bind Date, Converter={StaticResource DateFormatConverter}, ConverterParameter=\{0:ddd d MMMM\}}"
-                                           Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                            </DataTemplate>
-                        </GroupStyle.HeaderTemplate>
-                    </GroupStyle>
+                    <GroupStyle HeaderTemplate="{StaticResource EventDayTemplate}" />
                 </GridView.GroupStyle>
             </GridView>
 

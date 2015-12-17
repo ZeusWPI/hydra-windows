@@ -101,8 +101,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\NavMenuListView.cs" />
+    <Compile Include="Converters\BooleanToHiddenConverter.cs" />
     <Compile Include="Converters\DateFormatter.cs" />
+    <Compile Include="Converters\HtmlToRichTextConverter.cs" />
     <Compile Include="DataSources\INewsSource.cs" />
     <Compile Include="DataSources\IActivitySource.cs" />
     <Compile Include="DataSources\IAssociationSource.cs" />
@@ -280,6 +281,7 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Utils\" />
     <Folder Include="Views\Info\" />
     <Folder Include="Views\Schamper\" />
     <Folder Include="Views\UrgentFm\" />

@@ -58,6 +58,9 @@ namespace Hydra.Models.Activities {
         [DataMember(Name = "highlighted")]
         public int Highlighted { get; set; }
 
+        [IgnoreDataMember]
+        public bool Hidden { get { return Association.Hidden; } }
+
         // WHY THE HELL DOESN'T THIS FOLLOW THE OTHER ASSOCIATION FORMAT
         [DataMember(Name = "association")]
         public Dictionary<string, string> associationLinks { get; set; }

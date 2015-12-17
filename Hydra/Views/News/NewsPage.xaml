@@ -38,7 +38,7 @@
                 <TextBlock Text="{x:Bind Date, Converter={StaticResource DateFormatConverter}, ConverterParameter=\{0:d MMM yyyy - H:mm\}}"
                            Grid.Row="0" Grid.Column="1" />
 
-                <TextBlock Text="{x:Bind Content}" TextWrapping="Wrap"
+                <RichTextBlock converters:HtmlToRichTextConverter.Html="{x:Bind contentHTML}" TextWrapping="Wrap"
                            Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" /> 
             </Grid>
         </DataTemplate>
