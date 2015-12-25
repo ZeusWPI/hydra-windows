@@ -8,11 +8,17 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Markup;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Shapes;
 
 namespace Hydra.ViewModels {
 
     public class MenuViewModel : ViewModelBase {
+
+        private const string baseIconFolder = "ms-appx:///Assets/Icons/";
 
         private readonly INavigationService navigationService;
 
@@ -24,27 +30,27 @@ namespace Hydra.ViewModels {
             Commands = new ObservableCollection<MenuItemViewModel>() {
                 new MenuItemViewModel {
                     DisplayName = resourceLoader.GetString("RootMenu_HomePageDisplayName"),
-                    SymbolIcon = Symbol.Home,
+                    IconSource = baseIconFolder + "Menu-HomeIcon.png",
                     Command = new DelegateCommand(NavigateToPage(PageTokens.HomePage))
                 },
                 new MenuItemViewModel {
                     DisplayName = resourceLoader.GetString("RootMenu_RestoPageDisplayName"),
-                    SymbolIcon = Symbol.Favorite,
+                    IconSource = baseIconFolder + "Menu-RestoIcon.png",
                     Command = new DelegateCommand(NavigateToPage(PageTokens.RestoPage))
                 },
                 new MenuItemViewModel {
                     DisplayName = resourceLoader.GetString("RootMenu_InfoPageDisplayName"),
-                    SymbolIcon = Symbol.Help,
+                    IconSource = baseIconFolder + "Menu-InfoIcon.png",
                     Command = new DelegateCommand(NavigateToPage(PageTokens.NewsPage))
                 },
                 new MenuItemViewModel {
                     DisplayName = resourceLoader.GetString("RootMenu_NewsPageDisplayName"),
-                    SymbolIcon = Symbol.Comment,
+                    IconSource = baseIconFolder + "Menu-NewsIcon.png",
                     Command = new DelegateCommand(NavigateToPage(PageTokens.NewsPage))
                 },
                 new MenuItemViewModel {
                     DisplayName = resourceLoader.GetString("RootMenu_ActivitiesPageDisplayName"),
-                    SymbolIcon = Symbol.Calendar,
+                    IconSource = baseIconFolder + "Menu-ActivitiesIcon.png",
                     Command = new DelegateCommand(NavigateToPage(PageTokens.ActivitiesPage))
                 }
             };

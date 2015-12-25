@@ -4,7 +4,7 @@
   <mp:PhoneIdentity PhoneProductId="b70d11ff-bc39-42d1-9783-1569eaa7a09c" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Hydra</DisplayName>
-    <PublisherDisplayName>Niels</PublisherDisplayName>
+    <PublisherDisplayName>Zeus WPI</PublisherDisplayName>
     <Logo>Assets\Logos\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
@@ -15,11 +15,12 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Hydra.App">
-      <uap:VisualElements DisplayName="Hydra" Square150x150Logo="Assets\Logos\Square150x150Logo.png" Square44x44Logo="Assets\Logos\Square44x44Logo.png" Description="Hydra" BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Logos\Wide310x150Logo.png">
+      <uap:VisualElements DisplayName="Hydra" Square150x150Logo="Assets\Logos\Square150x150Logo.png" Square44x44Logo="Assets\Logos\Square44x44Logo.png" Description="Hydra" BackgroundColor="#104B7D">
+        <uap:DefaultTile Wide310x150Logo="Assets\Logos\Wide310x150Logo.png" ShortName="Hydra" Square310x310Logo="Assets\Logos\Square310x310Logo.png" Square71x71Logo="Assets\Logos\Square71x71Logo.png">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
             <uap:ShowOn Tile="wide310x150Logo" />
+            <uap:ShowOn Tile="square310x310Logo" />
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\Logos\SplashScreen.png" BackgroundColor="#104B7D" />
