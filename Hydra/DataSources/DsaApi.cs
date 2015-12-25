@@ -12,6 +12,10 @@ using Hydra.Models.Activities;
 using Hydra.Models.News;
 
 namespace Hydra.DataSources {
+
+    /// <summary>
+    /// The DSA REST API provides all news articles, activities and associations at Ghent University.
+    /// </summary>
     public class DsaApi : RestApi, IAssociationSource, IActivitySource, INewsSource {
 
         private const string BASE_URL = "http://student.ugent.be/";

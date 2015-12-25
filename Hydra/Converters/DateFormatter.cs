@@ -3,17 +3,18 @@ using System.Globalization;
 using Windows.UI.Xaml.Data;
 
 namespace Hydra.Converters {
+    /// <summary>
+    /// Formats DateTime objects into a given format string
+    /// </summary>
     public class DateFormatter : IValueConverter {
-        // This converts the DateTime object to the string to display.
+
         public object Convert(object value, Type targetType, object parameter, string language) {
-            // Retrieve the format string and use it to format the value.
             string formatString = parameter as string;
             if (!string.IsNullOrEmpty(formatString)) {
-                return string.Format(
-                    CultureInfo.InvariantCulture, formatString, value);
+                return string.Format(CultureInfo.InvariantCulture, formatString, value);
             }
-            // If the format string is null or empty, simply call ToString()
-            // on the value.
+
+            // If the format string is null or empty, simply call ToString() on the value.
             return value.ToString();
         }
 

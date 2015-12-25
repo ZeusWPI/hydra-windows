@@ -10,6 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Hydra.DataSources {
+    /// <summary>
+    /// Abstract class which implements the basic operations for a RESTful API.
+    /// </summary>
     public abstract class RestApi : IDataSource {
 
         public string BaseUrl { get; protected set; }

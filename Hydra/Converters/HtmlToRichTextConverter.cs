@@ -1,6 +1,7 @@
 ﻿using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,12 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Shapes;
 
 namespace Hydra.Converters {
+    /// <summary>
+    /// You'd think something as a basic HTML parser/displayer was already available in a decent framework.
+    /// Well, think again. This class converts a (partial) HTML string to a XAML-layout (using RichTextBlock).
+    /// 
+    /// Code is a modified version of https://code.msdn.microsoft.com/windowsapps/Social-Media-Dashboard-135436da
+    /// </summary>
     public class HtmlToRichTextConverter : DependencyObject {
         public static readonly DependencyProperty HtmlProperty =
             DependencyProperty.RegisterAttached("Html", typeof(string), typeof(HtmlToRichTextConverter), new PropertyMetadata(null, HtmlChanged));
@@ -65,7 +72,7 @@ namespace Hydra.Converters {
                 Block b = GenerateParagraph(doc.DocumentNode);
                 bc.Add(b);
             } catch (Exception ex) {
-
+                Debug.WriteLine("Something went wrong trying to generate blocks for the HMTL string.");
             }
 
             return bc;
@@ -79,7 +86,6 @@ namespace Hydra.Converters {
         /// <returns></returns> 
         private static string CleanText(string input) {
             string clean = Windows.Data.Html.HtmlUtilities.ConvertToText(input);
-            //clean = System.Net.WebUtility.HtmlEncode(clean); 
             if (clean == "\0")
                 clean = "\n";
             return clean;
