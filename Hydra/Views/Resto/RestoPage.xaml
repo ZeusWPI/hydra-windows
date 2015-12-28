@@ -22,6 +22,22 @@
                 <TextBlock Grid.Column="1" Text="{x:Bind Price}" />
             </Grid>
         </DataTemplate>
+        
+        <DataTemplate x:Key="SandwichTemplate" x:DataType="data:Sandwich">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="{x:Bind Name}" />
+                <TextBlock Grid.Column="1" Text="{x:Bind Name}" TextWrapping="Wrap" />
+                <TextBlock Grid.Column="2" Text="{x:Bind PriceSmall}" />
+                <TextBlock Grid.Column="3" Text="{x:Bind PriceMedium}" />
+            </Grid>
+        </DataTemplate>
 
         <local:RestoMenuTemplateSelector x:Key="RestoInfoSelector">
             <local:RestoMenuTemplateSelector.DayMenuTemplate>
@@ -78,6 +94,38 @@
                     </StackPanel>
                 </DataTemplate>
             </local:RestoMenuTemplateSelector.RestoClosedTemplate>
+
+            <local:RestoMenuTemplateSelector.SandwichMenuTemplate>
+                <DataTemplate x:DataType="data:SandwichMenu">
+                    <ListView ItemsSource="{x:Bind Sandwiches}" />
+                </DataTemplate>
+            </local:RestoMenuTemplateSelector.SandwichMenuTemplate>
+        </local:RestoMenuTemplateSelector>
+
+        <local:RestoMenuTemplateSelector x:Key="RestoHeaderSelector">
+            <local:RestoMenuTemplateSelector.DayMenuTemplate>
+                <DataTemplate x:DataType="data:DailyMenu">
+                    <TextBlock Text="{x:Bind FormattedDate}" />
+                </DataTemplate>
+            </local:RestoMenuTemplateSelector.DayMenuTemplate>
+
+            <local:RestoMenuTemplateSelector.LoadingTemplate>
+                <DataTemplate>
+                    <TextBlock Text="Laden..." />
+                </DataTemplate>
+            </local:RestoMenuTemplateSelector.LoadingTemplate>
+
+            <local:RestoMenuTemplateSelector.RestoClosedTemplate>
+                <DataTemplate x:DataType="data:DailyMenu">
+                    <TextBlock Text="{x:Bind FormattedDate}" />
+                </DataTemplate>
+            </local:RestoMenuTemplateSelector.RestoClosedTemplate>
+
+            <local:RestoMenuTemplateSelector.SandwichMenuTemplate>
+                <DataTemplate x:DataType="data:SandwichMenu">
+                    <TextBlock Text="Sa" />
+                </DataTemplate>
+            </local:RestoMenuTemplateSelector.SandwichMenuTemplate>
         </local:RestoMenuTemplateSelector>
 
 
@@ -105,8 +153,9 @@
                ItemTemplateSelector="{StaticResource RestoInfoSelector}"
                Style="{StaticResource HydraPivot}">
             <Pivot.HeaderTemplate>
-                <DataTemplate x:DataType="data:DailyMenu">
-                    <ContentControl Content="{x:Bind FormattedDate}" />
+                <DataTemplate>
+                    <ContentControl Content="{Binding}" ContentTemplateSelector="{StaticResource RestoHeaderSelector}">
+                    </ContentControl>
                 </DataTemplate>
             </Pivot.HeaderTemplate>
         </Pivot>

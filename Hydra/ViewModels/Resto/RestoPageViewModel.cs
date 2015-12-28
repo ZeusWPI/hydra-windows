@@ -16,13 +16,13 @@ namespace Hydra.ViewModels.Resto {
 
         private readonly IRestoSource restoSource;
 
-        public ObservableCollection<DailyMenu> RestoInfoList { get; set; }
+        public ObservableCollection<object> RestoInfoList { get; set; }
 
         public ObservableCollection<RestoLegendItem> Legend { get; set; }
 
         public RestoPageViewModel(IRestoSource restoSource) {
             this.restoSource = restoSource;
-            RestoInfoList = new ObservableCollection<DailyMenu>();
+            RestoInfoList = new ObservableCollection<object>();
             Legend = new ObservableCollection<RestoLegendItem>();
 
             GetRestoMenus();

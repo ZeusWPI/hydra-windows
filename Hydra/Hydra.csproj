@@ -123,6 +123,8 @@
     <Compile Include="Models\Resto\RestoMeta.cs" />
     <Compile Include="DataSources\IDataSource.cs" />
     <Compile Include="DataSources\RestApi.cs" />
+    <Compile Include="Models\Resto\Sandwich.cs" />
+    <Compile Include="Models\Resto\SandwichMenu.cs" />
     <Compile Include="PageTokens.cs" />
     <Compile Include="ViewModels\Activities\AssociationFilterDialogViewModel.cs" />
     <Compile Include="ViewModels\News\NewsPageViewModel.cs" />

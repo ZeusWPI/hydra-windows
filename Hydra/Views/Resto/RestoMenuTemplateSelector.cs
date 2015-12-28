@@ -10,20 +10,24 @@ using Hydra.Models.Resto;
 
 namespace Hydra.Views.Resto {
 
+    /// <summary>
+    /// Selects the datatemplate that should be used for the resto information.
+    /// Can be used in a Pivot for both header and item
+    /// </summary>
     public class RestoMenuTemplateSelector : DataTemplateSelector {
         public DataTemplate LoadingTemplate { get; set; }
         public DataTemplate RestoClosedTemplate { get; set; }
         public DataTemplate DayMenuTemplate { get; set; }
+        public DataTemplate SandwichMenuTemplate { get; set; }
 
         protected override DataTemplate SelectTemplateCore(object item) {
 
             if (item is DailyMenu) {
                 DailyMenu menu = (DailyMenu) item;
-                if (menu.Open) {
-                    return DayMenuTemplate;
-                } else {
-                    return RestoClosedTemplate;
-                }
+                return (menu.Open) ? DayMenuTemplate : RestoClosedTemplate;
+            }
+            if(item is SandwichMenu) {
+                return SandwichMenuTemplate;
             }
 
             return LoadingTemplate;
