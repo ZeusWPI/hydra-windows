@@ -5,15 +5,15 @@
     xmlns:local="using:Hydra.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewModels="using:Hydra.ViewModels"
+    xmlns:viewModelsUtil="using:Hydra.ViewModels.Util"
     xmlns:prismMvvm="using:Prism.Windows.Mvvm"
     prismMvvm:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
 
     <UserControl.Resources>
-        <DataTemplate x:Key="MenuItemTemplate" x:DataType="viewModels:MenuItemViewModel">
+        <DataTemplate x:Key="MenuItemTemplate" x:DataType="viewModelsUtil:ButtonViewModel">
             <Grid>
-                <Button AutomationProperties.Name="{Binding DisplayName}"
+                <Button AutomationProperties.Name="{x:Bind DisplayName}"
                         Command="{x:Bind Path=Command}"
                         Style="{StaticResource SplitViewMenuButtonStyle}"
                         ToolTipService.ToolTip="{x:Bind Path=DisplayName}">

@@ -128,9 +128,12 @@
     <Compile Include="Models\Resto\SandwichMenu.cs" />
     <Compile Include="PageTokens.cs" />
     <Compile Include="ViewModels\Activities\AssociationFilterDialogViewModel.cs" />
+    <Compile Include="ViewModels\Info\InfoPageItemViewModel.cs" />
+    <Compile Include="ViewModels\Info\InfoPageViewModel.cs" />
     <Compile Include="ViewModels\News\NewsPageViewModel.cs" />
     <Compile Include="ViewModels\Home\HomePageViewModel.cs" />
-    <Compile Include="ViewModels\MenuItemViewModel.cs" />
+    <Compile Include="ViewModels\Util\NavigationButtonViewModel.cs" />
+    <Compile Include="ViewModels\Util\ButtonViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\Activities\ActivitiesPageViewModel.cs" />
     <Compile Include="ViewModels\Resto\RestoPageViewModel.cs" />
@@ -142,6 +145,9 @@
     </Compile>
     <Compile Include="Views\Home\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Info\InfoPage.xaml.cs">
+      <DependentUpon>InfoPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
@@ -200,6 +206,12 @@
     <Content Include="Assets\AssociationLogos\VTK.small.jpg" />
     <Content Include="Assets\AssociationLogos\WINA.small.jpg" />
     <Content Include="Assets\Icons\Resto-SandwichIcon.png" />
+    <Content Include="Assets\Icons\Info-CalendarIcon.png" />
+    <Content Include="Assets\Icons\Info-OasisIcon.png" />
+    <Content Include="Assets\Icons\Info-DoctorIcon.png" />
+    <Content Include="Assets\Icons\Info-BicycleIcon.png" />
+    <Content Include="Assets\Icons\Info-MinervaIcon.png" />
+    <Content Include="Assets\Icons\Info-StudyLocationIcon.png" />
     <Content Include="Assets\Icons\Menu-NewsIcon.png" />
     <Content Include="Assets\Icons\Menu-RestoIcon.png" />
     <Content Include="Assets\Icons\Menu-HomeIcon.png" />
@@ -208,6 +220,8 @@
     <Content Include="Assets\Icons\Menu-SchamperIcon.png" />
     <Content Include="Assets\Icons\Menu-ActivitiesIcon.png" />
     <Content Include="Assets\Icons\RestoMapIcon.png" />
+    <Content Include="Assets\Icons\Info-EduroamIcon.png" />
+    <Content Include="Assets\Icons\Info-VpnIcon.png" />
     <Content Include="Assets\Logos\SplashScreen.scale-100.png" />
     <Content Include="Assets\Logos\SplashScreen.scale-125.png" />
     <Content Include="Assets\Logos\SplashScreen.scale-150.png" />
@@ -270,6 +284,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Info\InfoPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\MenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -301,7 +319,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utils\" />
-    <Folder Include="Views\Info\" />
     <Folder Include="Views\Schamper\" />
     <Folder Include="Views\UrgentFm\" />
   </ItemGroup>

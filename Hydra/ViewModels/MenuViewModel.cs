@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using Hydra.ViewModels.Util;
+using Prism.Commands;
 using Prism.Windows.AppModel;
 using Prism.Windows.Mvvm;
 using Prism.Windows.Navigation;
@@ -22,33 +23,33 @@ namespace Hydra.ViewModels {
 
         private readonly INavigationService navigationService;
 
-        public ObservableCollection<MenuItemViewModel> Commands { get; set; }
+        public ObservableCollection<ButtonViewModel> Commands { get; set; }
 
         public MenuViewModel(INavigationService navigationService, IResourceLoader resourceLoader) {
             this.navigationService = navigationService;
 
-            Commands = new ObservableCollection<MenuItemViewModel>() {
-                new MenuItemViewModel {
+            Commands = new ObservableCollection<ButtonViewModel>() {
+                new ButtonViewModel {
                     DisplayName = resourceLoader.GetString("RootMenu_HomePageDisplayName"),
                     IconSource = baseIconFolder + "Menu-HomeIcon.png",
                     Command = new DelegateCommand(NavigateToPage(PageTokens.HomePage))
                 },
-                new MenuItemViewModel {
+                new ButtonViewModel {
                     DisplayName = resourceLoader.GetString("RootMenu_RestoPageDisplayName"),
                     IconSource = baseIconFolder + "Menu-RestoIcon.png",
                     Command = new DelegateCommand(NavigateToPage(PageTokens.RestoPage))
                 },
-                new MenuItemViewModel {
+                new ButtonViewModel {
                     DisplayName = resourceLoader.GetString("RootMenu_InfoPageDisplayName"),
                     IconSource = baseIconFolder + "Menu-InfoIcon.png",
-                    Command = new DelegateCommand(NavigateToPage(PageTokens.NewsPage))
+                    Command = new DelegateCommand(NavigateToPage(PageTokens.InfoPage))
                 },
-                new MenuItemViewModel {
+                new ButtonViewModel {
                     DisplayName = resourceLoader.GetString("RootMenu_NewsPageDisplayName"),
                     IconSource = baseIconFolder + "Menu-NewsIcon.png",
                     Command = new DelegateCommand(NavigateToPage(PageTokens.NewsPage))
                 },
-                new MenuItemViewModel {
+                new ButtonViewModel {
                     DisplayName = resourceLoader.GetString("RootMenu_ActivitiesPageDisplayName"),
                     IconSource = baseIconFolder + "Menu-ActivitiesIcon.png",
                     Command = new DelegateCommand(NavigateToPage(PageTokens.ActivitiesPage))
