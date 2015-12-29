@@ -10,12 +10,7 @@ namespace Hydra.Models.Resto {
     [DataContract]
     public class DailyMenu : IModel {
 
-        public DateTime date { get; set; }
-        public string FormattedDate {
-            get {
-                return date.ToString("dd/M");
-            }
-        }
+        public DateTime Date { get; set; }
 
         [DataMember(Name = "meat")]
         public Meal[] Meat { get; set; }

@@ -152,9 +152,6 @@
     <Compile Include="Views\Resto\RestoMapControl.xaml.cs">
       <DependentUpon>RestoMapControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Resto\RestoMenuControl.xaml.cs">
-      <DependentUpon>RestoMenuControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Resto\RestoMenuTemplateSelector.cs" />
     <Compile Include="Views\Resto\RestoPage.xaml.cs">
       <DependentUpon>RestoPage.xaml</DependentUpon>
@@ -282,10 +279,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Resto\RestoMapControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Resto\RestoMenuControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

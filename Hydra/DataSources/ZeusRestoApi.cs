@@ -93,7 +93,7 @@ namespace Hydra.DataSources {
             foreach (var keyValue in weekMenu.ToArray()) {
                 DateTime date;
                 DateTime.TryParse(keyValue.Key, out date);
-                keyValue.Value.date = date;
+                keyValue.Value.Date = date;
                 menus.Add(keyValue.Value);
             }
 

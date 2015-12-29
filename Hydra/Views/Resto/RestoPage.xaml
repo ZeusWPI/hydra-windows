@@ -12,6 +12,7 @@
     mc:Ignorable="d">
 
     <prismMvvm:SessionStateAwarePage.Resources>
+        <converters:DateFormatter x:Key="DateFormatter" />
         <converters:ArrayImploder x:Key="arrayImploder" />
         
         <DataTemplate x:Key="MealTemplate" x:DataType="data:Meal">
@@ -119,7 +120,7 @@
         <local:RestoMenuTemplateSelector x:Key="RestoHeaderSelector">
             <local:RestoMenuTemplateSelector.DayMenuTemplate>
                 <DataTemplate x:DataType="data:DailyMenu">
-                    <TextBlock Text="{x:Bind FormattedDate}" />
+                    <TextBlock Text="{x:Bind Date, Converter={StaticResource DateFormatter}, ConverterParameter=\{0:d/M\}}" />
                 </DataTemplate>
             </local:RestoMenuTemplateSelector.DayMenuTemplate>
 
@@ -131,7 +132,7 @@
 
             <local:RestoMenuTemplateSelector.RestoClosedTemplate>
                 <DataTemplate x:DataType="data:DailyMenu">
-                    <TextBlock Text="{x:Bind FormattedDate}" />
+                    <TextBlock Text="{x:Bind Date, Converter={StaticResource DateFormatter}, ConverterParameter=\{0:d/M\}}" />
                 </DataTemplate>
             </local:RestoMenuTemplateSelector.RestoClosedTemplate>
 
