@@ -101,6 +101,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\ArrayImploder.cs" />
     <Compile Include="Converters\BooleanToHiddenConverter.cs" />
     <Compile Include="Converters\DateFormatter.cs" />
     <Compile Include="Converters\HtmlToRichTextConverter.cs" />
@@ -201,6 +202,7 @@
     <Content Include="Assets\AssociationLogos\VRG.small.jpg" />
     <Content Include="Assets\AssociationLogos\VTK.small.jpg" />
     <Content Include="Assets\AssociationLogos\WINA.small.jpg" />
+    <Content Include="Assets\Icons\Resto-SandwichIcon.png" />
     <Content Include="Assets\Icons\Menu-NewsIcon.png" />
     <Content Include="Assets\Icons\Menu-RestoIcon.png" />
     <Content Include="Assets\Icons\Menu-HomeIcon.png" />

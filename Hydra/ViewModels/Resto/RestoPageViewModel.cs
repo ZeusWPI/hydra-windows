@@ -27,6 +27,7 @@ namespace Hydra.ViewModels.Resto {
 
             GetRestoMenus();
             GetRestoLegend();
+            GetRestoSandwichMenu();
         }
 
         public async Task GetRestoMenus() {
@@ -37,7 +38,12 @@ namespace Hydra.ViewModels.Resto {
 
         public async Task GetRestoLegend() {
             IEnumerable<RestoLegendItem> legendItems = await restoSource.GetRestoLegendItems();
-            foreach (RestoLegendItem legendItem in legendItems) Legend.Add(legendItem);
+            foreach (RestoLegendItem legendItem in legendItems) Legend.Insert(0, legendItem);
+            OnPropertyChanged();
+        }
+
+        public async Task GetRestoSandwichMenu() {
+            RestoInfoList.Add(await restoSource.GetRestoSandwichMenu());
             OnPropertyChanged();
         }
     }

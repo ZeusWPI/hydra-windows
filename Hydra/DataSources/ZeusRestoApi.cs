@@ -18,9 +18,13 @@ namespace Hydra.DataSources {
         private RestoLocation[] restoLocations;
         private RestoLegendItem[] restoLegendItems;
         private List<DailyMenu> restoMenus;
+        private SandwichMenu sandwichMenu;
 
 
         public ZeusRestoApi() : base(BASE_URL, API_PATH) {
+            sandwichMenu = new SandwichMenu() {
+                Sandwiches = null
+            };
         }
 
         /// <summary>
@@ -94,6 +98,14 @@ namespace Hydra.DataSources {
             }
 
             return menus;
+        }
+
+        public async Task<SandwichMenu> GetRestoSandwichMenu() {
+            if (sandwichMenu.Sandwiches == null) {
+                sandwichMenu.Sandwiches = await Get<Sandwich[]>("/sandwiches.json");
+            }
+
+            return sandwichMenu;
         }
     }
 }

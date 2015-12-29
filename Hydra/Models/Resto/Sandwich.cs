@@ -13,7 +13,7 @@ namespace Hydra.Models.Resto {
         public string Name { get; set; }
 
         [DataMember(Name = "ingredients")]
-        public string Ingredients { get; set; }
+        public string[] Ingredients { get; set; }
 
         [DataMember(Name = "price_small")]
         public string PriceSmall { get; set; }

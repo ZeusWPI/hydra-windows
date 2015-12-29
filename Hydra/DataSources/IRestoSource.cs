@@ -36,5 +36,11 @@ namespace Hydra.DataSources {
         /// </summary>
         /// <returns></returns>
         Task<IEnumerable<DailyMenu>> GetRestoMenus(int nextDays);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        Task<SandwichMenu> GetRestoSandwichMenu();
     }
 }
