@@ -12,7 +12,10 @@ namespace Hydra {
         public const string HomePage = "Home/HomePage";
         public const string NewsPage = "News/NewsPage";
         public const string RestoPage = "Resto/RestoPage";
-        public const string InfoPage = "Info/InfoPage";
         public const string ActivitiesPage = "Activities/ActivitiesPage";
+
+        // Info pages
+        public const string InfoPage = "Info/InfoPage";
+        public const string AcademicCalendarPage = "Info/AcademicCalendarPage";
     }
 }

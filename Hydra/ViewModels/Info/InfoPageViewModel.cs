@@ -26,11 +26,6 @@ namespace Hydra.ViewModels.Info {
                     Title = "Studies",
                     Links = new ObservableCollection<ButtonViewModel>() {
                         new NavigationButtonViewModel(navigationService) {
-                            IconSource = icons_basefolder + "Info-CalendarIcon.png",
-                            DisplayName = "Academische kalender",
-                            PageToken = PageTokens.InfoPage
-                        },
-                        new NavigationButtonViewModel(navigationService) {
                             IconSource = icons_basefolder + "Info-MinervaIcon.png",
                             DisplayName = "Minerva",
                             PageToken = PageTokens.InfoPage
@@ -49,6 +44,11 @@ namespace Hydra.ViewModels.Info {
                             IconSource = icons_basefolder + "Info-VpnIcon.png",
                             DisplayName = "VPN",
                             PageToken = PageTokens.InfoPage
+                        },
+                        new NavigationButtonViewModel(navigationService) {
+                            IconSource = icons_basefolder + "Info-CalendarIcon.png",
+                            DisplayName = "Academische kalender",
+                            PageToken = PageTokens.AcademicCalendarPage
                         }
                     }
                 },

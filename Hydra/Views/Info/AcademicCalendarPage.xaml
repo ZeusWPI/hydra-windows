@@ -1,0 +1,94 @@
+﻿<prismMvvm:SessionStateAwarePage
+    x:Class="Hydra.Views.Info.AcademicCalendarPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Hydra.Views.Info"
+    xmlns:models="using:Hydra.Models.Info"
+    xmlns:viewModels="using:Hydra.ViewModels.Info"
+    xmlns:converters="using:Hydra.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prismMvvm="using:Prism.Windows.Mvvm"
+    prismMvvm:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+
+    <prismMvvm:SessionStateAwarePage.Resources>
+        <converters:DateFormatter x:Key="DateFormatConverter" />
+        
+        <DataTemplate x:Key="AcademicPeriodTemplate" x:DataType="models:AcademicPeriod">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="{x:Bind Start, Converter={StaticResource DateFormatConverter}, ConverterParameter=\{0:dd MMM yyyy\}}" />
+                <TextBlock Grid.Column="1" Text=" - " />
+                <TextBlock Grid.Column="2" Text="{x:Bind End, Converter={StaticResource DateFormatConverter}, ConverterParameter=\{0:dd MMM yyyy\}}" />
+                <TextBlock Grid.Column="3" Text=":" Margin="0,0,5,0" />
+                <TextBlock Grid.Column="4" Text="{x:Bind Name}" TextWrapping="Wrap" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="HolidayTemplate" x:DataType="models:Holiday">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="{x:Bind Date, Converter={StaticResource DateFormatConverter}, ConverterParameter=\{0:ddd dd MMM yyyy\}}" />
+                <TextBlock Grid.Column="1" Text=":" Margin="0,0,5,0" />
+                <TextBlock Grid.Column="2" Text="{x:Bind Name}" TextWrapping="Wrap" />
+            </Grid>
+        </DataTemplate>
+    </prismMvvm:SessionStateAwarePage.Resources>
+
+    <Grid Style="{StaticResource HydraRootContainer}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.ColumnSpan="2" Style="{StaticResource HydraGrid}">
+            <TextBlock Text="Info » Academische kalender" Style="{ThemeResource TitleTextBlockStyle}" />
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="0" Style="{StaticResource HydraGrid}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Text="Onderwijs- en examenperiodes" Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+            <ListView Grid.Row="1" 
+                      ItemsSource="{Binding Periods}" ItemTemplate="{StaticResource AcademicPeriodTemplate}"
+                      Style="{StaticResource HydraListViewStatic}"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1" Style="{StaticResource HydraGrid}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Text="Sluitingsdagen" Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+            <ListView Grid.Row="1" 
+                      ItemsSource="{Binding Holidays}" ItemTemplate="{StaticResource HolidayTemplate}"
+                      Style="{StaticResource HydraListViewStatic}"/>
+        </Grid>
+    </Grid>
+</prismMvvm:SessionStateAwarePage>

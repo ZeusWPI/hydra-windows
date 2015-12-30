@@ -129,6 +129,9 @@
     <Compile Include="PageTokens.cs" />
     <Compile Include="Utils\HtmlToXamlTranslator.cs" />
     <Compile Include="ViewModels\Activities\AssociationFilterDialogViewModel.cs" />
+    <Compile Include="ViewModels\Info\AcademicCalendarPageViewModel.cs" />
+    <Compile Include="Models\Info\Holiday.cs" />
+    <Compile Include="Models\Info\AcademicPeriod.cs" />
     <Compile Include="ViewModels\Info\InfoPageItemViewModel.cs" />
     <Compile Include="ViewModels\Info\InfoPageViewModel.cs" />
     <Compile Include="ViewModels\News\NewsPageViewModel.cs" />

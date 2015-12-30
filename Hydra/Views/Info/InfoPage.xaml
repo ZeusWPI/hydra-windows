@@ -29,7 +29,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="InfoButtonTemplate" x:DataType="viewModelsutil:ButtonViewModel">
-            <Button Command="{x:Bind Command}" HorizontalAlignment="Stretch">
+            <Button Command="{x:Bind Command}" HorizontalAlignment="Stretch" Style="{StaticResource HydraButton}">
                 <Grid HorizontalAlignment="Left">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40" />
