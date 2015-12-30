@@ -1,0 +1,38 @@
+﻿<prismMvvm:SessionStateAwarePage
+    x:Class="Hydra.Views.Info.DoctorPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Hydra.Views.Info"
+    xmlns:viewModels="using:Hydra.ViewModels.Info"
+    xmlns:viewModelsutil="using:Hydra.ViewModels.Util"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prismMvvm="using:Prism.Windows.Mvvm"
+    prismMvvm:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+
+    <Grid Style="{StaticResource HydraRootContainer}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Style="{StaticResource HydraGrid}">
+            <TextBlock Text="Info » Studentenarts" Style="{ThemeResource TitleTextBlockStyle}" />
+        </Grid>
+
+        <Grid Grid.Row="1" Style="{StaticResource HydraGrid}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
+            <TextBlock Grid.Row="0" Text="Consultaties"
+                       Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+            <TextBlock Grid.Row="1" Text="Maandag - vrijdag: op afspraak" />
+            <TextBlock Grid.Row="2" Text="Maandag - donderdag: tussen 17u en 19u vrije consultaties" />
+        </Grid>
+    </Grid>
+</prismMvvm:SessionStateAwarePage>

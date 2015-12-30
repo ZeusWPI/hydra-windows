@@ -153,6 +153,21 @@
     <Compile Include="Views\Info\AcademicCalendarPage.xaml.cs">
       <DependentUpon>AcademicCalendarPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Info\BicyclePage.xaml.cs">
+      <DependentUpon>BicyclePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Info\DoctorPage.xaml.cs">
+      <DependentUpon>DoctorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Info\BlokmapPage.xaml.cs">
+      <DependentUpon>BlokmapPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Info\VpnPage.xaml.cs">
+      <DependentUpon>VpnPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Info\EduroamPage.xaml.cs">
+      <DependentUpon>EduroamPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Info\InfoPage.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>
     </Compile>
@@ -298,6 +313,26 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Info\AcademicCalendarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Info\BicyclePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Info\DoctorPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Info\BlokmapPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Info\VpnPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Info\EduroamPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -38,12 +38,12 @@ namespace Hydra.ViewModels.Info {
                         new NavigationButtonViewModel(navigationService) {
                             IconSource = icons_basefolder + "Info-EduroamIcon.png",
                             DisplayName = "Eduroam",
-                            PageToken = PageTokens.InfoPage
+                            PageToken = PageTokens.EduroamPage
                         },
                         new NavigationButtonViewModel(navigationService) {
                             IconSource = icons_basefolder + "Info-VpnIcon.png",
                             DisplayName = "VPN",
-                            PageToken = PageTokens.InfoPage
+                            PageToken = PageTokens.VpnPage
                         },
                         new NavigationButtonViewModel(navigationService) {
                             IconSource = icons_basefolder + "Info-CalendarIcon.png",
@@ -58,17 +58,17 @@ namespace Hydra.ViewModels.Info {
                         new NavigationButtonViewModel(navigationService) {
                             IconSource = icons_basefolder + "Info-DoctorIcon.png",
                             DisplayName = "Studentenarts",
-                            PageToken = PageTokens.InfoPage
+                            PageToken = PageTokens.DoctorPage
                         },
                         new NavigationButtonViewModel(navigationService) {
                             IconSource = icons_basefolder + "Info-BicycleIcon.png",
                             DisplayName = "StudentenENMobiliteit",
-                            PageToken = PageTokens.InfoPage
+                            PageToken = PageTokens.BicyclePage
                         },
                         new NavigationButtonViewModel(navigationService) {
                             IconSource = icons_basefolder + "Info-StudyLocationIcon.png",
                             DisplayName = "Bloklocaties",
-                            PageToken = PageTokens.InfoPage
+                            PageToken = PageTokens.BlokmapPage
                         }
                     }
                 }
