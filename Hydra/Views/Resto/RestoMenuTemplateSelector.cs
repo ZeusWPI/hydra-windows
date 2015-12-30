@@ -19,8 +19,12 @@ namespace Hydra.Views.Resto {
         public DataTemplate RestoClosedTemplate { get; set; }
         public DataTemplate DayMenuTemplate { get; set; }
         public DataTemplate SandwichMenuTemplate { get; set; }
+        public DataTemplate RestoMapTemplate { get; set; }
 
         protected override DataTemplate SelectTemplateCore(object item) {
+            if(item == null) {
+                return LoadingTemplate;
+            }
 
             if (item is DailyMenu) {
                 DailyMenu menu = (DailyMenu) item;
@@ -29,7 +33,11 @@ namespace Hydra.Views.Resto {
             if(item is SandwichMenu) {
                 return SandwichMenuTemplate;
             }
+            if (item is RestoMap) {
+                return RestoMapTemplate;
+            }
 
+            // Fall back
             return LoadingTemplate;
         }
 

@@ -15,13 +15,16 @@ namespace Hydra.DataSources {
         private const string BASE_URL = "https://zeus.ugent.be";
         private const string API_PATH = "/hydra/api/1.0/resto";
 
-        private RestoLocation[] restoLocations;
+        private RestoMap restoMap;
         private RestoLegendItem[] restoLegendItems;
         private List<DailyMenu> restoMenus;
         private SandwichMenu sandwichMenu;
 
 
         public ZeusRestoApi() : base(BASE_URL, API_PATH) {
+            restoMap = new RestoMap() {
+                RestoLocations = null
+            };
             sandwichMenu = new SandwichMenu() {
                 Sandwiches = null
             };
@@ -30,12 +33,12 @@ namespace Hydra.DataSources {
         /// <summary>
         /// Retrieves the locations of all resto's.
         /// </summary>
-        public async Task<IEnumerable<RestoLocation>> GetRestoLocations() {
-            if(restoLocations == null) {
+        public async Task<RestoMap> GetRestoMap() {
+            if(this.restoMap == null) {
                 await GetRestoMeta();
             }
             
-            return restoLocations;
+            return this.restoMap;
         }
 
         /// <summary>
@@ -51,8 +54,8 @@ namespace Hydra.DataSources {
 
         private async Task GetRestoMeta() {
             RestoMeta restoMeta = await Get<RestoMeta>("/meta.json");
-            restoLegendItems = restoMeta.Legend;
-            restoLocations = restoMeta.Locations;
+            this.restoLegendItems = restoMeta.Legend;
+            this.restoMap.RestoLocations = restoMeta.Locations;
         }
 
         public async Task<IEnumerable<DailyMenu>> GetRestoMenusThisWeek() {

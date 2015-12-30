@@ -33,7 +33,7 @@ namespace Hydra.Views.Resto {
         }
 
         public async void GetRestoLocations() {
-            IEnumerable<RestoLocation> locations = await restoSource.GetRestoLocations();
+            /*IEnumerable<RestoLocation> locations = await restoSource.GetRestoLocations();
             foreach (RestoLocation resto in locations) {
                 MapIcon pin = new MapIcon() {
                     Location = resto.Location,
@@ -43,7 +43,7 @@ namespace Hydra.Views.Resto {
                 };
                 pin.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/Icons/RestoMapIcon.png"));
                 RestoLocationMap.MapElements.Add(pin);
-            }
+            }*/
         }
 
         public void ConfigureMap() {

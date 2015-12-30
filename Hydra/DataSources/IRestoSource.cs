@@ -14,10 +14,10 @@ namespace Hydra.DataSources {
     public interface IRestoSource {
 
         /// <summary>
-        /// 
+        /// Returns a RestoMap, containing all resto locations.
         /// </summary>
         /// <returns></returns>
-        Task<IEnumerable<RestoLocation>> GetRestoLocations();
+        Task<RestoMap> GetRestoMap();
 
         /// <summary>
         /// 

@@ -117,6 +117,7 @@
     <Compile Include="Models\Activities\Konvent.cs" />
     <Compile Include="Models\IModel.cs" />
     <Compile Include="Models\News\NewsArticle.cs" />
+    <Compile Include="Models\Resto\RestoMap.cs" />
     <Compile Include="Models\Resto\Meal.cs" />
     <Compile Include="Models\Resto\RestoLocation.cs" />
     <Compile Include="Models\Resto\RestoLegendItem.cs" />

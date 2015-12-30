@@ -8,6 +8,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prismMvvm="using:Prism.Windows.Mvvm"
+    xmlns:maps="using:Windows.UI.Xaml.Controls.Maps"
     prismMvvm:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
 
@@ -115,6 +116,17 @@
                     </Grid>
                 </DataTemplate>
             </local:RestoMenuTemplateSelector.SandwichMenuTemplate>
+
+            <local:RestoMenuTemplateSelector.RestoMapTemplate>
+                <DataTemplate x:DataType="data:RestoMap">
+                    <maps:MapControl
+                        Margin="-19,-15"
+                        MapServiceToken="d8jmVUfn9j2AvDUkjg4x~Uc_mgbDPMhW1C2cm7reMbg~AuFJC-cJJ0dng3bZlsuKhWxOAXsJsXuC18KtKzIEP8mCQpIarZTs9-BGDNQWaeNG"
+                        ZoomLevel="13"
+                        Center="{x:Bind Center}">
+                    </maps:MapControl>
+                </DataTemplate>
+            </local:RestoMenuTemplateSelector.RestoMapTemplate>
         </local:RestoMenuTemplateSelector>
 
         <local:RestoMenuTemplateSelector x:Key="RestoHeaderSelector">
@@ -141,6 +153,12 @@
                     <BitmapIcon UriSource="ms-appx:///Assets/Icons/Resto-SandwichIcon.png" />
                 </DataTemplate>
             </local:RestoMenuTemplateSelector.SandwichMenuTemplate>
+
+            <local:RestoMenuTemplateSelector.RestoMapTemplate>
+                <DataTemplate x:DataType="data:RestoMap">
+                    <TextBlock Text="Map" />
+                </DataTemplate>
+            </local:RestoMenuTemplateSelector.RestoMapTemplate>
         </local:RestoMenuTemplateSelector>
 
 
