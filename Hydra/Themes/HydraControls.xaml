@@ -35,7 +35,6 @@
     </Style>
 
     <Style x:Key="HydraButton" TargetType="Button">
-        <Setter Property="Background" Value="{StaticResource UGentYellow}" />
         <Setter Property="Foreground" Value="{StaticResource UGentBlue}" />
     </Style>
 
@@ -180,7 +179,7 @@
                                                         <VisualState x:Name="UnselectedPointerOver">
                                                             <Storyboard>
                                                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Grid" Storyboard.TargetProperty="Background">
-                                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource UGentYellowLight}" />
+                                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource UGentYellowLighter}" />
                                                                 </ObjectAnimationUsingKeyFrames>
                                                             </Storyboard>
                                                         </VisualState>
@@ -188,7 +187,7 @@
                                                         <VisualState x:Name="UnselectedPressed">
                                                             <Storyboard>
                                                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Grid" Storyboard.TargetProperty="Background">
-                                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource UGentYellowLight}" />
+                                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource UGentYellowLighter}" />
                                                                 </ObjectAnimationUsingKeyFrames>
                                                             </Storyboard>
                                                         </VisualState>

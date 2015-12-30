@@ -127,6 +127,7 @@
     <Compile Include="Models\Resto\Sandwich.cs" />
     <Compile Include="Models\Resto\SandwichMenu.cs" />
     <Compile Include="PageTokens.cs" />
+    <Compile Include="Utils\HtmlToXamlTranslator.cs" />
     <Compile Include="ViewModels\Activities\AssociationFilterDialogViewModel.cs" />
     <Compile Include="ViewModels\Info\InfoPageItemViewModel.cs" />
     <Compile Include="ViewModels\Info\InfoPageViewModel.cs" />
@@ -145,6 +146,9 @@
     </Compile>
     <Compile Include="Views\Home\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Info\AcademicCalendarPage.xaml.cs">
+      <DependentUpon>AcademicCalendarPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Info\InfoPage.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>
@@ -284,6 +288,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Info\AcademicCalendarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Info\InfoPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -318,7 +326,6 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Utils\" />
     <Folder Include="Views\Schamper\" />
     <Folder Include="Views\UrgentFm\" />
   </ItemGroup>
