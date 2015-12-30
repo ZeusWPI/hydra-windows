@@ -16,6 +16,8 @@ namespace Hydra {
 
         // Info pages
         public const string InfoPage = "Info/InfoPage";
+        public const string MinervaPage = "Info/MinervaPage";
+        public const string OasisPage = "Info/OasisPage";
         public const string AcademicCalendarPage = "Info/AcademicCalendarPage";
     }
 }

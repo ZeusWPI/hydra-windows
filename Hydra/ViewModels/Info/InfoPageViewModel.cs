@@ -28,12 +28,12 @@ namespace Hydra.ViewModels.Info {
                         new NavigationButtonViewModel(navigationService) {
                             IconSource = icons_basefolder + "Info-MinervaIcon.png",
                             DisplayName = "Minerva",
-                            PageToken = PageTokens.InfoPage
+                            PageToken = PageTokens.MinervaPage
                         },
                         new NavigationButtonViewModel(navigationService) {
                             IconSource = icons_basefolder + "Info-OasisIcon.png",
                             DisplayName = "Oasis",
-                            PageToken = PageTokens.InfoPage
+                            PageToken = PageTokens.OasisPage
                         },
                         new NavigationButtonViewModel(navigationService) {
                             IconSource = icons_basefolder + "Info-EduroamIcon.png",

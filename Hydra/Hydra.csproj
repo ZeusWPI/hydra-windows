@@ -156,6 +156,12 @@
     <Compile Include="Views\Info\InfoPage.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Info\OasisPage.xaml.cs">
+      <DependentUpon>OasisPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Info\MinervaPage.xaml.cs">
+      <DependentUpon>MinervaPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
@@ -296,6 +302,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Info\InfoPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Info\OasisPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Info\MinervaPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
