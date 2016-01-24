@@ -74,7 +74,7 @@ namespace Hydra.DataSources {
         private int getWeekNr() {
             Calendar calendar = DateTimeFormatInfo.CurrentInfo.Calendar;
 
-            int currentWeekNr = calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstDay, DayOfWeek.Monday);
+            int currentWeekNr = calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFullWeek, DayOfWeek.Monday);
             DayOfWeek currentDayNr = calendar.GetDayOfWeek(DateTime.Now);
 
             // If it's the weekend, we prooooobably want the menus for the following week.
