@@ -12,22 +12,6 @@
     mc:Ignorable="d">
 
     <prismMvvm:SessionStateAwarePage.Resources>
-        <DataTemplate x:Key="InfoItemTemplate" x:DataType="viewModels:InfoPageItemViewModel">
-            <Grid Style="{StaticResource HydraGrid}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-
-                <TextBlock Grid.Row="0" Text="{x:Bind Title}" Style="{ThemeResource SubtitleTextBlockStyle}" />
-
-                <ListView Grid.Row="1" ItemsSource="{x:Bind Links}"
-                          ItemTemplate="{StaticResource InfoButtonTemplate}"
-                          Style="{StaticResource HydraListViewStatic}" />
-
-            </Grid>
-        </DataTemplate>
-
         <DataTemplate x:Key="InfoButtonTemplate" x:DataType="viewModelsutil:ButtonViewModel">
             <Button Command="{x:Bind Command}" HorizontalAlignment="Stretch" Style="{StaticResource HydraButton}">
                 <Grid HorizontalAlignment="Left">
@@ -45,6 +29,22 @@
                                FontSize="20" VerticalAlignment="Center" TextWrapping="WrapWholeWords" />
                 </Grid>
             </Button>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="InfoItemTemplate" x:DataType="viewModels:InfoPageItemViewModel">
+            <Grid Style="{StaticResource HydraGrid}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="{x:Bind Title}" Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+                <ListView Grid.Row="1" ItemsSource="{x:Bind Links}"
+                          ItemTemplate="{StaticResource InfoButtonTemplate}"
+                          Style="{StaticResource HydraListViewStatic}" />
+
+            </Grid>
         </DataTemplate>
     </prismMvvm:SessionStateAwarePage.Resources>
 

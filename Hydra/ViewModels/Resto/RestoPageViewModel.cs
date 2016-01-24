@@ -1,6 +1,8 @@
 ﻿using Hydra.DataSources;
 using Hydra.Models.Resto;
+using Hydra.ViewModels.Util;
 using Prism.Windows.Mvvm;
+using Prism.Windows.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,19 +19,23 @@ namespace Hydra.ViewModels.Resto {
         private readonly IRestoSource restoSource;
 
         public ObservableCollection<object> RestoInfoList { get; set; }
-
         public ObservableCollection<RestoLegendItem> Legend { get; set; }
 
-        public RestoPageViewModel(IRestoSource restoSource) {
+        public ButtonViewModel MapButton { get; set; }
+
+        public RestoPageViewModel(IRestoSource restoSource, INavigationService navigationService) {
             this.restoSource = restoSource;
+            this.MapButton = new NavigationButtonViewModel(navigationService) {
+                IconSource = "ms-appx:///Assets/Icons/Resto-MapIcon.png",
+                DisplayName = "Kaart",
+                PageToken = PageTokens.RestoMapPage
+            };
+
             RestoInfoList = new ObservableCollection<object>();
             Legend = new ObservableCollection<RestoLegendItem>();
-            
-
-            GetRestoMenus();
-            GetRestoLegend();
-            GetRestoLocations();
-            GetRestoSandwichMenu();
+            var restoMenusTask = GetRestoMenus();
+            var restoLegendTask = GetRestoLegend();
+            var restoSandwichMenuTask = GetRestoSandwichMenu();
         }
 
         public async Task GetRestoMenus() {
@@ -41,14 +47,8 @@ namespace Hydra.ViewModels.Resto {
         }
 
         public async Task GetRestoLegend() {
-            IEnumerable<RestoLegendItem> legendItems = await restoSource.GetRestoLegendItems();
+            RestoLegendItem[] legendItems = await restoSource.GetRestoLegendItems();
             foreach (RestoLegendItem legendItem in legendItems) Legend.Add(legendItem);
-            OnPropertyChanged();
-        }
-
-        public async Task GetRestoLocations() {
-            RestoMap restoMap = await restoSource.GetRestoMap();
-            RestoInfoList.Add(restoMap);
             OnPropertyChanged();
         }
 

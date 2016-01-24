@@ -117,7 +117,6 @@
     <Compile Include="Models\Activities\Konvent.cs" />
     <Compile Include="Models\IModel.cs" />
     <Compile Include="Models\News\NewsArticle.cs" />
-    <Compile Include="Models\Resto\RestoMap.cs" />
     <Compile Include="Models\Resto\Meal.cs" />
     <Compile Include="Models\Resto\RestoLocation.cs" />
     <Compile Include="Models\Resto\RestoLegendItem.cs" />
@@ -137,6 +136,7 @@
     <Compile Include="ViewModels\Info\InfoPageViewModel.cs" />
     <Compile Include="ViewModels\News\NewsPageViewModel.cs" />
     <Compile Include="ViewModels\Home\HomePageViewModel.cs" />
+    <Compile Include="ViewModels\Resto\RestoMapPageViewModel.cs" />
     <Compile Include="ViewModels\Util\NavigationButtonViewModel.cs" />
     <Compile Include="ViewModels\Util\ButtonViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
@@ -185,6 +185,9 @@
       <DependentUpon>NewsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Resto\RestoMenuTemplateSelector.cs" />
+    <Compile Include="Views\Resto\RestoMapPage.xaml.cs">
+      <DependentUpon>RestoMapPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Resto\RestoPage.xaml.cs">
       <DependentUpon>RestoPage.xaml</DependentUpon>
     </Compile>
@@ -352,6 +355,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\News\NewsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Resto\RestoMapPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

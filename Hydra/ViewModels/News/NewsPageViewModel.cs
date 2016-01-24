@@ -22,7 +22,7 @@ namespace Hydra.ViewModels.News {
             this.newsSource = newsSource;
             NewsArticles = new ObservableCollection<NewsArticle>();
 
-            GetNewsArticles();
+            var newsArticlesTask = GetNewsArticles();
         }
 
         public async Task GetNewsArticles() {

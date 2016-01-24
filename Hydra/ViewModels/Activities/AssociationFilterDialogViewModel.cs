@@ -29,7 +29,7 @@ namespace Hydra.ViewModels.Activities {
             this.associationSource = associationSource;
             Konvents = new ObservableCollection<Konvent>();
 
-            GetAssociations();
+            var associationsTask = GetAssociations();
         }
 
         public async Task GetAssociations() {

@@ -15,16 +15,13 @@ namespace Hydra.DataSources {
         private const string BASE_URL = "https://zeus.ugent.be";
         private const string API_PATH = "/hydra/api/1.0/resto";
 
-        private RestoMap restoMap;
+        private RestoLocation[] restoLocations;
         private RestoLegendItem[] restoLegendItems;
         private List<DailyMenu> restoMenus;
         private SandwichMenu sandwichMenu;
 
 
         public ZeusRestoApi() : base(BASE_URL, API_PATH) {
-            restoMap = new RestoMap() {
-                RestoLocations = null
-            };
             sandwichMenu = new SandwichMenu() {
                 Sandwiches = null
             };
@@ -33,18 +30,18 @@ namespace Hydra.DataSources {
         /// <summary>
         /// Retrieves the locations of all resto's.
         /// </summary>
-        public async Task<RestoMap> GetRestoMap() {
-            if(this.restoMap == null) {
+        public async Task<RestoLocation[]> GetRestoLocations() {
+            if(this.restoLocations == null) {
                 await GetRestoMeta();
             }
             
-            return this.restoMap;
+            return this.restoLocations;
         }
 
         /// <summary>
         /// Retrieves the legend for the resto menus.
         /// </summary>
-        public async Task<ICollection<RestoLegendItem>> GetRestoLegendItems() {
+        public async Task<RestoLegendItem[]> GetRestoLegendItems() {
             if (restoLegendItems == null) {
                 await GetRestoMeta();
             }
@@ -55,7 +52,7 @@ namespace Hydra.DataSources {
         private async Task GetRestoMeta() {
             RestoMeta restoMeta = await Get<RestoMeta>("/meta.json");
             this.restoLegendItems = restoMeta.Legend;
-            this.restoMap.RestoLocations = restoMeta.Locations;
+            this.restoLocations = restoMeta.Locations;
         }
 
         public async Task<ICollection<DailyMenu>> GetRestoMenusThisWeek() {

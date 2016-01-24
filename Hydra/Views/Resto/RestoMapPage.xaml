@@ -1,0 +1,66 @@
+﻿<prismMvvm:SessionStateAwarePage
+    x:Class="Hydra.Views.Resto.RestoMapPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Hydra.Views.Resto"
+    xmlns:data="using:Hydra.Models.Resto"
+    xmlns:converters="using:Hydra.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prismMvvm="using:Prism.Windows.Mvvm"
+    xmlns:maps="using:Windows.UI.Xaml.Controls.Maps"
+    prismMvvm:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+
+    <prismMvvm:SessionStateAwarePage.Resources>
+        <DataTemplate x:Key="RestoLegendItemTemplate" x:DataType="data:RestoLegendItem">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="{x:Bind Key}" />
+                <TextBlock Grid.Column="1" Text="{x:Bind Value}" TextWrapping="Wrap" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="RestoLocationMarker" x:DataType="data:RestoLocation">
+            <StackPanel maps:MapControl.Location="{x:Bind Location}" Margin="-25,-50,0,0">
+                <!-- TODO: use NormalizedAnchorPoint (doesn't work right now, see Windows-bug
+                     at https://github.com/Microsoft/Windows-universal-samples/issues/252 )
+                -->
+                <TextBlock Text="{x:Bind Name}" />
+                <Image Source="ms-appx:///Assets/Icons/Resto-MarkerIcon.png" Height="35" />
+            </StackPanel>
+        </DataTemplate>
+    </prismMvvm:SessionStateAwarePage.Resources>
+
+    <Grid Style="{StaticResource HydraRootContainer}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Style="{StaticResource HydraGrid}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Text="Resto » Kaart" Style="{StaticResource TitleTextBlockStyle}" />
+        </Grid>
+
+        <Grid Grid.Row="1" Style="{StaticResource HydraGrid}">
+            <maps:MapControl
+                    Margin="-10"
+                    MapServiceToken="d8jmVUfn9j2AvDUkjg4x~Uc_mgbDPMhW1C2cm7reMbg~AuFJC-cJJ0dng3bZlsuKhWxOAXsJsXuC18KtKzIEP8mCQpIarZTs9-BGDNQWaeNG"
+                    Center="{x:Bind Center}" ZoomLevel="13">
+                <maps:MapItemsControl ItemsSource="{Binding RestoLocations}" ItemTemplate="{StaticResource RestoLocationMarker}" />
+            </maps:MapControl>
+        </Grid>
+
+    </Grid>
+</prismMvvm:SessionStateAwarePage>

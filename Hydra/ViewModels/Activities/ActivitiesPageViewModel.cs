@@ -34,7 +34,7 @@ namespace Hydra.ViewModels.Activities {
         public ActivitiesPageViewModel(IAssociationSource associationSource, IActivitySource activitySource) {
             this.activitySource = activitySource;
             EventDays = new ObservableCollection<EventDay>();
-            GetActivities();
+            var activitiesTask = GetActivities();
         }
 
         public async Task GetActivities() {

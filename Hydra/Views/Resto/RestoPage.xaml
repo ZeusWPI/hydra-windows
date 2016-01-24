@@ -5,6 +5,7 @@
     xmlns:local="using:Hydra.Views.Resto"
     xmlns:data="using:Hydra.Models.Resto"
     xmlns:converters="using:Hydra.Converters"
+    xmlns:viewModelsutil="using:Hydra.ViewModels.Util"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prismMvvm="using:Prism.Windows.Mvvm"
@@ -117,28 +118,6 @@
                     </Grid>
                 </DataTemplate>
             </local:RestoMenuTemplateSelector.SandwichMenuTemplate>
-
-            <local:RestoMenuTemplateSelector.RestoMapTemplate>
-                <DataTemplate x:DataType="data:RestoMap">
-                    <maps:MapControl
-                        Margin="-19,-15"
-                        MapServiceToken="d8jmVUfn9j2AvDUkjg4x~Uc_mgbDPMhW1C2cm7reMbg~AuFJC-cJJ0dng3bZlsuKhWxOAXsJsXuC18KtKzIEP8mCQpIarZTs9-BGDNQWaeNG"
-                        Center="{x:Bind Center}" ZoomLevel="12">
-
-                        <maps:MapItemsControl ItemsSource="{x:Bind RestoLocations}">
-                            <maps:MapItemsControl.ItemTemplate>
-                                <DataTemplate x:DataType="data:RestoLocation">
-                                    <Button Background="Transparent">
-                                        <Image maps:MapControl.Location="{x:Bind Location}"
-                                                    Source="ms-appx:///Assets/Icons/Resto-MarkerIcon.png"
-                                                    MaxHeight="45" />
-                                    </Button>
-                                </DataTemplate>
-                            </maps:MapItemsControl.ItemTemplate>
-                        </maps:MapItemsControl>
-                    </maps:MapControl>
-                </DataTemplate>
-            </local:RestoMenuTemplateSelector.RestoMapTemplate>
         </local:RestoMenuTemplateSelector>
 
         <local:RestoMenuTemplateSelector x:Key="RestoHeaderSelector">
@@ -165,12 +144,6 @@
                     <BitmapIcon UriSource="ms-appx:///Assets/Icons/Resto-SandwichIcon.png" MaxHeight="25" />
                 </DataTemplate>
             </local:RestoMenuTemplateSelector.SandwichMenuTemplate>
-
-            <local:RestoMenuTemplateSelector.RestoMapTemplate>
-                <DataTemplate x:DataType="data:RestoMap">
-                    <BitmapIcon UriSource="ms-appx:///Assets/Icons/Resto-MapIcon.png" MaxHeight="25" />
-                </DataTemplate>
-            </local:RestoMenuTemplateSelector.RestoMapTemplate>
         </local:RestoMenuTemplateSelector>
 
 
@@ -188,34 +161,57 @@
     </prismMvvm:SessionStateAwarePage.Resources>
 
     <Grid Style="{StaticResource HydraRootContainer}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Style="{StaticResource HydraGrid}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Text="Resto" Style="{StaticResource TitleTextBlockStyle}" />
+            <Button Grid.Column="1" DataContext="{Binding MapButton}" Command="{Binding Command}">
+                <StackPanel Orientation="Horizontal">
+                    <BitmapIcon UriSource="{Binding IconSource}" MaxHeight="20" />
+                    <TextBlock Text="{Binding DisplayName}" />
+                </StackPanel>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
         
-        <Pivot Grid.Column="0"
-               ItemsSource="{Binding RestoInfoList}"
-               ItemTemplateSelector="{StaticResource RestoInfoSelector}"
-               Style="{StaticResource HydraPivot}">
-            <Pivot.HeaderTemplate>
-                <DataTemplate>
-                    <ContentControl Content="{Binding}" ContentTemplateSelector="{StaticResource RestoHeaderSelector}" />
-                </DataTemplate>
-            </Pivot.HeaderTemplate>
-        </Pivot>
+            <Pivot Grid.Column="0"
+                   ItemsSource="{Binding RestoInfoList}"
+                   ItemTemplateSelector="{StaticResource RestoInfoSelector}"
+                   Style="{StaticResource HydraPivot}">
+                <Pivot.HeaderTemplate>
+                    <DataTemplate>
+                        <ContentControl Content="{Binding}" ContentTemplateSelector="{StaticResource RestoHeaderSelector}" />
+                    </DataTemplate>
+                </Pivot.HeaderTemplate>
+            </Pivot>
 
 
-        <Grid Grid.Column="1" Style="{StaticResource HydraGrid}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+            <Grid Grid.Column="1" Style="{StaticResource HydraGrid}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
             
-            <TextBlock Grid.Row="0" Text="Legende" Style="{ThemeResource TitleTextBlockStyle}" />
-            <ListView Grid.Row="1"
-                      ItemsSource="{Binding Legend}"
-                      ItemTemplate="{StaticResource RestoLegendItemTemplate}"
-                      Style="{StaticResource HydraListViewStatic}" />
+                <TextBlock Grid.Row="0" Text="Legende" Style="{ThemeResource TitleTextBlockStyle}" />
+                <ListView Grid.Row="1"
+                          ItemsSource="{Binding Legend}"
+                          ItemTemplate="{StaticResource RestoLegendItemTemplate}"
+                          Style="{StaticResource HydraListViewStatic}" />
+            </Grid>
+
         </Grid>
 
     </Grid>

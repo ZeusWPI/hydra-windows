@@ -17,13 +17,13 @@ namespace Hydra.DataSources {
         /// Returns a RestoMap, containing all resto locations.
         /// </summary>
         /// <returns></returns>
-        Task<RestoMap> GetRestoMap();
+        Task<RestoLocation[]> GetRestoLocations();
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        Task<ICollection<RestoLegendItem>> GetRestoLegendItems();
+        Task<RestoLegendItem[]> GetRestoLegendItems();
 
         /// <summary>
         /// 
