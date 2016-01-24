@@ -88,6 +88,35 @@
                 <Style TargetType="GridViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                     <Setter Property="Padding" Value="5" />
+
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="GridViewItem">
+                                <GridViewItemPresenter
+                                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    CheckHintBrush="{ThemeResource ListViewItemCheckHintThemeBrush}"
+                                    CheckBrush="{ThemeResource ListViewItemCheckThemeBrush}" ContentMargin="4"
+                                    ContentTransitions="{TemplateBinding ContentTransitions}"
+                                    CheckSelectingBrush="{ThemeResource ListViewItemCheckSelectingThemeBrush}"
+                                    DragForeground="{ThemeResource ListViewItemDragForegroundThemeBrush}"
+                                    DragOpacity="{ThemeResource ListViewItemDragThemeOpacity}"
+                                    DragBackground="{ThemeResource ListViewItemDragBackgroundThemeBrush}" 
+                                    DisabledOpacity="1"
+                                    FocusBorderBrush="{ThemeResource ListViewItemFocusBorderThemeBrush}"
+                                    Padding="{TemplateBinding Padding}" PointerOverBackgroundMargin="1"
+                                    PlaceholderBackground="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}"
+                                    PointerOverBackground="Transparent"
+                                    ReorderHintOffset="{ThemeResource ListViewItemReorderHintThemeOffset}"
+                                    SelectedPointerOverBorderBrush="{ThemeResource ListViewItemSelectedPointerOverBorderThemeBrush}"
+                                    SelectionCheckMarkVisualEnabled="True"
+                                    SelectedForeground="{ThemeResource ListViewItemSelectedForegroundThemeBrush}"
+                                    SelectedPointerOverBackground="{ThemeResource ListViewItemSelectedPointerOverBackgroundThemeBrush}"
+                                    SelectedBorderThickness="{ThemeResource GridViewItemCompactSelectedBorderThemeThickness}"
+                                    SelectedBackground="{ThemeResource ListViewItemSelectedBackgroundThemeBrush}" />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
                 </Style>
             </Setter.Value>
         </Setter>
