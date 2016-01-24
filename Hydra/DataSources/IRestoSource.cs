@@ -23,19 +23,19 @@ namespace Hydra.DataSources {
         /// 
         /// </summary>
         /// <returns></returns>
-        Task<IEnumerable<RestoLegendItem>> GetRestoLegendItems();
+        Task<ICollection<RestoLegendItem>> GetRestoLegendItems();
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        Task<IEnumerable<DailyMenu>> GetRestoMenusThisWeek();
+        Task<ICollection<DailyMenu>> GetRestoMenusThisWeek();
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        Task<IEnumerable<DailyMenu>> GetRestoMenus(int nextDays);
+        Task<ICollection<DailyMenu>> GetRestoMenus(int nextDays);
 
         /// <summary>
         /// 

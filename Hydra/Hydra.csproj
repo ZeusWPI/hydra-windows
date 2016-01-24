@@ -184,9 +184,6 @@
     <Compile Include="Views\News\NewsPage.xaml.cs">
       <DependentUpon>NewsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Resto\RestoMapControl.xaml.cs">
-      <DependentUpon>RestoMapControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Resto\RestoMenuTemplateSelector.cs" />
     <Compile Include="Views\Resto\RestoPage.xaml.cs">
       <DependentUpon>RestoPage.xaml</DependentUpon>
@@ -234,6 +231,7 @@
     <Content Include="Assets\AssociationLogos\VRG.small.jpg" />
     <Content Include="Assets\AssociationLogos\VTK.small.jpg" />
     <Content Include="Assets\AssociationLogos\WINA.small.jpg" />
+    <Content Include="Assets\Icons\Resto-MarkerIcon.png" />
     <Content Include="Assets\Icons\Resto-SandwichIcon.png" />
     <Content Include="Assets\Icons\Info-CalendarIcon.png" />
     <Content Include="Assets\Icons\Info-OasisIcon.png" />
@@ -248,7 +246,7 @@
     <Content Include="Assets\Icons\Menu-MinervaIcon.png" />
     <Content Include="Assets\Icons\Menu-SchamperIcon.png" />
     <Content Include="Assets\Icons\Menu-ActivitiesIcon.png" />
-    <Content Include="Assets\Icons\RestoMapIcon.png" />
+    <Content Include="Assets\Icons\Resto-MapIcon.png" />
     <Content Include="Assets\Icons\Info-EduroamIcon.png" />
     <Content Include="Assets\Icons\Info-VpnIcon.png" />
     <Content Include="Assets\Logos\SplashScreen.scale-100.png" />
@@ -356,10 +354,6 @@
     <Page Include="Views\News\NewsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Resto\RestoMapControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Resto\RestoPage.xaml">
       <SubType>Designer</SubType>

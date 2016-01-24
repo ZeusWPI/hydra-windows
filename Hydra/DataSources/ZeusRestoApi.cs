@@ -44,7 +44,7 @@ namespace Hydra.DataSources {
         /// <summary>
         /// Retrieves the legend for the resto menus.
         /// </summary>
-        public async Task<IEnumerable<RestoLegendItem>> GetRestoLegendItems() {
+        public async Task<ICollection<RestoLegendItem>> GetRestoLegendItems() {
             if (restoLegendItems == null) {
                 await GetRestoMeta();
             }
@@ -58,7 +58,7 @@ namespace Hydra.DataSources {
             this.restoMap.RestoLocations = restoMeta.Locations;
         }
 
-        public async Task<IEnumerable<DailyMenu>> GetRestoMenusThisWeek() {
+        public async Task<ICollection<DailyMenu>> GetRestoMenusThisWeek() {
             if(restoMenus != null) {
                 return restoMenus;
             }
@@ -70,7 +70,7 @@ namespace Hydra.DataSources {
             return restoMenus;
         }
 
-        public Task<IEnumerable<DailyMenu>> GetRestoMenus(int nextDays) {
+        public Task<ICollection<DailyMenu>> GetRestoMenus(int nextDays) {
             throw new NotImplementedException();
         }
 

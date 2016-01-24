@@ -112,7 +112,8 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <ListView ItemsSource="{x:Bind Sandwiches}" ItemTemplate="{StaticResource SandwichTemplate}" Style="{StaticResource HydraListViewStatic}" />
+                        <ListView ItemsSource="{x:Bind Sandwiches}" ItemTemplate="{StaticResource SandwichTemplate}"
+                                  Style="{StaticResource HydraListViewStatic}" />
                     </Grid>
                 </DataTemplate>
             </local:RestoMenuTemplateSelector.SandwichMenuTemplate>
@@ -122,8 +123,19 @@
                     <maps:MapControl
                         Margin="-19,-15"
                         MapServiceToken="d8jmVUfn9j2AvDUkjg4x~Uc_mgbDPMhW1C2cm7reMbg~AuFJC-cJJ0dng3bZlsuKhWxOAXsJsXuC18KtKzIEP8mCQpIarZTs9-BGDNQWaeNG"
-                        ZoomLevel="13"
-                        Center="{x:Bind Center}">
+                        Center="{x:Bind Center}" ZoomLevel="12">
+
+                        <maps:MapItemsControl ItemsSource="{x:Bind RestoLocations}">
+                            <maps:MapItemsControl.ItemTemplate>
+                                <DataTemplate x:DataType="data:RestoLocation">
+                                    <Button Background="Transparent">
+                                        <Image maps:MapControl.Location="{x:Bind Location}"
+                                                    Source="ms-appx:///Assets/Icons/Resto-MarkerIcon.png"
+                                                    MaxHeight="45" />
+                                    </Button>
+                                </DataTemplate>
+                            </maps:MapItemsControl.ItemTemplate>
+                        </maps:MapItemsControl>
                     </maps:MapControl>
                 </DataTemplate>
             </local:RestoMenuTemplateSelector.RestoMapTemplate>
@@ -150,13 +162,13 @@
 
             <local:RestoMenuTemplateSelector.SandwichMenuTemplate>
                 <DataTemplate x:DataType="data:SandwichMenu">
-                    <BitmapIcon UriSource="ms-appx:///Assets/Icons/Resto-SandwichIcon.png" />
+                    <BitmapIcon UriSource="ms-appx:///Assets/Icons/Resto-SandwichIcon.png" MaxHeight="25" />
                 </DataTemplate>
             </local:RestoMenuTemplateSelector.SandwichMenuTemplate>
 
             <local:RestoMenuTemplateSelector.RestoMapTemplate>
                 <DataTemplate x:DataType="data:RestoMap">
-                    <TextBlock Text="Map" />
+                    <BitmapIcon UriSource="ms-appx:///Assets/Icons/Resto-MapIcon.png" MaxHeight="25" />
                 </DataTemplate>
             </local:RestoMenuTemplateSelector.RestoMapTemplate>
         </local:RestoMenuTemplateSelector>
