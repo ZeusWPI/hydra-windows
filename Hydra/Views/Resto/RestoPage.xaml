@@ -166,7 +166,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Style="{StaticResource HydraGrid}">
+        <Grid Grid.Row="0" Style="{StaticResource HydraHeaderGrid}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />

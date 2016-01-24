@@ -10,14 +10,17 @@
     mc:Ignorable="d">
 
     <Grid Style="{StaticResource HydraRootContainer}">
-        <Grid Style="{StaticResource HydraGrid}">
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            
-            <TextBlock Grid.Row="0" Text="HYDRAAAAA" Style="{ThemeResource TitleTextBlockStyle}" />
-            <TextBlock Grid.Row="1" Text="{Binding DisplayText}" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Style="{StaticResource HydraHeaderGrid}">
+            <TextBlock Text="HYDRAAAAA" Style="{ThemeResource TitleTextBlockStyle}" />
+        </Grid>
+
+        <Grid Grid.Row="1" Style="{StaticResource HydraGrid}">
+            <TextBlock Text="{Binding DisplayText}" />
         </Grid>
     </Grid>
 </prismMvvm:SessionStateAwarePage>

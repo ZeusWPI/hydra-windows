@@ -17,7 +17,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Style="{StaticResource HydraGrid}">
+        <Grid Grid.Row="0" Style="{StaticResource HydraHeaderGrid}">
             <TextBlock Text="Info » Eduroam" Style="{ThemeResource TitleTextBlockStyle}" />
         </Grid>
 

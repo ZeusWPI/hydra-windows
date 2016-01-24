@@ -52,29 +52,29 @@
 
 
     <Grid Style="{StaticResource HydraRootContainer}">
-        <Grid Style="{StaticResource HydraGrid}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Style="{StaticResource HydraHeaderGrid}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Row="0" Grid.Column="0"
-                       Text="Activiteiten" Style="{ThemeResource TitleTextBlockStyle}" />
-
-            <Button Grid.Row="0" Grid.Column="1" Command="{Binding OpenDialogCommand}" Style="{StaticResource HydraButton}">
+            <TextBlock Text="Activiteiten" Style="{ThemeResource TitleTextBlockStyle}" />
+            
+            <Button Grid.Column="1" Command="{Binding OpenDialogCommand}" Style="{StaticResource HydraButton}">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Filter" />
                     <SymbolIcon Symbol="Filter" Height="15" />
                 </StackPanel>
             </Button>
+        </Grid>
 
-
-            <GridView Grid.Row="1" Grid.ColumnSpan="2"
-                      ItemsSource="{x:Bind EventDaysCVS.View}"
+        <Grid Grid.Row="1" Style="{StaticResource HydraGrid}">
+            <GridView ItemsSource="{x:Bind EventDaysCVS.View}"
                       ItemTemplate="{StaticResource ActivityTemplate}"
                       Style="{StaticResource HydraGridViewStatic}">
 
