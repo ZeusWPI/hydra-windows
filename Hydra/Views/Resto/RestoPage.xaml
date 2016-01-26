@@ -14,7 +14,7 @@
 
     <prismMvvm:SessionStateAwarePage.Resources>
         <converters:DateFormatter x:Key="DateFormatter" />
-        <converters:ArrayImploder x:Key="arrayImploder" />
+        <converters:ArrayImploder x:Key="ArrayImploder" />
         
         <DataTemplate x:Key="MealTemplate" x:DataType="data:Meal">
             <Grid>
@@ -38,7 +38,7 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0" Text="{x:Bind Name}" TextWrapping="WrapWholeWords" FontWeight="Bold" />
-                <TextBlock Grid.Column="1" Text="{x:Bind Ingredients, Converter={StaticResource arrayImploder}}" TextWrapping="Wrap" />
+                <TextBlock Grid.Column="1" Text="{x:Bind Ingredients, Converter={StaticResource ArrayImploder}}" TextWrapping="Wrap" />
                 <StackPanel Grid.Column="2" Orientation="Horizontal">
                     <TextBlock Text="€ " />
                     <TextBlock Text="{x:Bind PriceSmall}" />
