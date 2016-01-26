@@ -13,7 +13,7 @@
 
     <prismMvvm:SessionStateAwarePage.Resources>
         <DataTemplate x:Key="InfoButtonTemplate" x:DataType="viewModelsutil:ButtonViewModel">
-            <Button Command="{x:Bind Command}" HorizontalAlignment="Stretch" Style="{StaticResource HydraButton}">
+            <Button Command="{x:Bind Command}" Style="{StaticResource HydraButton}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
                 <Grid HorizontalAlignment="Left">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40" />
