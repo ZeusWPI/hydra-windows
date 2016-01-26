@@ -41,7 +41,7 @@
                 <TextBlock Grid.Column="1" Text="{x:Bind Ingredients, Converter={StaticResource ArrayImploder}}" TextWrapping="Wrap" />
                 <StackPanel Grid.Column="2" Orientation="Horizontal">
                     <TextBlock Text="€ " />
-                    <TextBlock Text="{x:Bind PriceSmall}" />
+                    <TextBlock Text="{x:Bind PriceSmall}" Margin="0,0,5,0" />
                 </StackPanel>
                 <StackPanel Grid.Column="3" Orientation="Horizontal">
                     <TextBlock Text="€ " />
@@ -65,15 +65,15 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <TextBlock Grid.Row="0" Text="Soep" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" />
+                            <TextBlock Grid.Row="0" Text="Soep" Style="{ThemeResource SubtitleTextBlockStyle}" HorizontalAlignment="Center" />
                             <ContentPresenter Grid.Row="1" Padding="5" ContentTemplate="{StaticResource MealTemplate}" Content="{x:Bind Soup}" HorizontalAlignment="Stretch" />
 
-                            <TextBlock Grid.Row="2" Text="Vlees &amp; Veggie" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" />
+                            <TextBlock Grid.Row="2" Text="Vlees &amp; Veggie" Style="{ThemeResource SubtitleTextBlockStyle}" HorizontalAlignment="Center" />
                             <ListView Grid.Row="3" ItemsSource="{x:Bind Meat}"
                                       ItemTemplate="{StaticResource MealTemplate}"
                                       Style="{StaticResource HydraListViewStatic}"  HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" />
 
-                            <TextBlock Grid.Row="5" Text="Groenten" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" />
+                            <TextBlock Grid.Row="5" Text="Groenten" Style="{ThemeResource SubtitleTextBlockStyle}" HorizontalAlignment="Center" />
                             <ListView Grid.Row="6"
                                       ItemsSource="{x:Bind Vegetables}"
                                       Style="{StaticResource HydraListViewStatic}"  HorizontalAlignment="Stretch">
