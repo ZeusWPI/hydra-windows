@@ -45,7 +45,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="0" Style="{StaticResource HydraGrid}">
+        <Grid Grid.Row="0" Style="{StaticResource HydraHeaderGrid}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
@@ -53,14 +53,11 @@
             <TextBlock Grid.Column="0" Text="Resto » Kaart" Style="{StaticResource TitleTextBlockStyle}" />
         </Grid>
 
-        <Grid Grid.Row="1" Style="{StaticResource HydraGrid}">
-            <maps:MapControl
-                    Margin="-10"
-                    MapServiceToken="d8jmVUfn9j2AvDUkjg4x~Uc_mgbDPMhW1C2cm7reMbg~AuFJC-cJJ0dng3bZlsuKhWxOAXsJsXuC18KtKzIEP8mCQpIarZTs9-BGDNQWaeNG"
-                    Center="{x:Bind Center}" ZoomLevel="13">
-                <maps:MapItemsControl ItemsSource="{Binding RestoLocations}" ItemTemplate="{StaticResource RestoLocationMarker}" />
-            </maps:MapControl>
-        </Grid>
+        <maps:MapControl Grid.Row="1"
+                         MapServiceToken="d8jmVUfn9j2AvDUkjg4x~Uc_mgbDPMhW1C2cm7reMbg~AuFJC-cJJ0dng3bZlsuKhWxOAXsJsXuC18KtKzIEP8mCQpIarZTs9-BGDNQWaeNG"
+                         Center="{x:Bind Center}" ZoomLevel="13">
+            <maps:MapItemsControl ItemsSource="{Binding RestoLocations}" ItemTemplate="{StaticResource RestoLocationMarker}" />
+        </maps:MapControl>
 
     </Grid>
 </prismMvvm:SessionStateAwarePage>

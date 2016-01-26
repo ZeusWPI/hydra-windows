@@ -15,6 +15,7 @@
         <Setter Property="Background" Value="{StaticResource DefaultPageBackground}" />
     </Style>
 
+    <!-- Region HydraPanels -->
     <Style x:Key="HydraPanel" TargetType="Panel">
         <Setter Property="Background" Value="{StaticResource DefaultHydraItemBackground}" />
         <Setter Property="Margin" Value="10" />
@@ -37,11 +38,21 @@
         <Setter Property="BorderBrush" Value="{StaticResource DefaultHydraItemShadow}" />
         <Setter Property="CornerRadius" Value="3" />
     </Style>
+    <!-- EndRegion -->
+
+    <!-- A Scrollviewer that _doesn't_ overlap with the content -->
+    <Style x:Key="HydraScrollViewer" TargetType="ScrollViewer">
+        <Setter Property="Margin" Value="0,0,-25,0" />
+        <Setter Property="Padding" Value="0,0,25,0" />
+        <Setter Property="VerticalScrollBarVisibility" Value="Visible" />
+        <Setter Property="VerticalScrollMode" Value="Auto" />
+    </Style>
 
     <Style x:Key="HydraButton" TargetType="Button">
         <Setter Property="Foreground" Value="{StaticResource UGentBlue}" />
     </Style>
 
+    <!-- Region ListView/GridView/... -->
     <!-- For non-selectable list views -->
     <Style x:Key="HydraListViewStatic" TargetType="ListView">
         <Setter Property="SelectionMode" Value="None" />
@@ -70,7 +81,7 @@
                                                PointerOverBackground="Transparent" 
                                                ReorderHintOffset="{ThemeResource ListViewItemReorderHintThemeOffset}" 
                                                SelectedPointerOverBorderBrush="{ThemeResource ListViewItemSelectedPointerOverBorderThemeBrush}" 
-                                               SelectionCheckMarkVisualEnabled="True" 
+                                               SelectionCheckMarkVisualEnabled="False" 
                                                SelectedForeground="{ThemeResource ListViewItemSelectedForegroundThemeBrush}" 
                                                SelectedPointerOverBackground="{ThemeResource ListViewItemSelectedPointerOverBackgroundThemeBrush}" 
                                                SelectedBorderThickness="{ThemeResource ListViewItemCompactSelectedBorderThemeThickness}" 
@@ -125,6 +136,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <!-- EndRegion -->
 
     <Style x:Key="HydraPivot" TargetType="Pivot">
         <Setter Property="Margin" Value="10" />
@@ -134,8 +146,7 @@
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
-                    <Grid Style="{StaticResource HydraGrid}"
-                          Margin="0" />
+                    <Grid Style="{StaticResource HydraGrid}"  Margin="0"/>
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>

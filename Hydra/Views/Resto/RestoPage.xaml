@@ -54,39 +54,38 @@
         <local:RestoMenuTemplateSelector x:Key="RestoInfoSelector">
             <local:RestoMenuTemplateSelector.DayMenuTemplate>
                 <DataTemplate x:DataType="data:DailyMenu">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
+                    <ScrollViewer Style="{StaticResource HydraScrollViewer}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Row="0" Text="Soep" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" />
-                        <ContentPresenter Grid.Row="1" Padding="5" ContentTemplate="{StaticResource MealTemplate}" Content="{x:Bind Soup}" HorizontalAlignment="Stretch" />
+                            <TextBlock Grid.Row="0" Text="Soep" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" />
+                            <ContentPresenter Grid.Row="1" Padding="5" ContentTemplate="{StaticResource MealTemplate}" Content="{x:Bind Soup}" HorizontalAlignment="Stretch" />
 
-                        <TextBlock Grid.Row="2" Text="Vlees &amp; Veggie" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" />
-                        <ListView Grid.Row="3" ItemsSource="{x:Bind Meat}"
-                                  ItemTemplate="{StaticResource MealTemplate}"
-                                  Style="{StaticResource HydraListViewStatic}"  HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" />
+                            <TextBlock Grid.Row="2" Text="Vlees &amp; Veggie" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" />
+                            <ListView Grid.Row="3" ItemsSource="{x:Bind Meat}"
+                                      ItemTemplate="{StaticResource MealTemplate}"
+                                      Style="{StaticResource HydraListViewStatic}"  HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" />
 
-                        <TextBlock Grid.Row="5" Text="Groenten" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" />
-                        <ListView Grid.Row="6"
-                                  ItemsSource="{x:Bind Vegetables}"
-                                  Style="{StaticResource HydraListViewStatic}"  HorizontalAlignment="Stretch">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding}" />
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </Grid>
+                            <TextBlock Grid.Row="5" Text="Groenten" Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" />
+                            <ListView Grid.Row="6"
+                                      ItemsSource="{x:Bind Vegetables}"
+                                      Style="{StaticResource HydraListViewStatic}"  HorizontalAlignment="Stretch">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding}" />
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+                    </ScrollViewer>
                 </DataTemplate>
             </local:RestoMenuTemplateSelector.DayMenuTemplate>
 
@@ -109,13 +108,10 @@
 
             <local:RestoMenuTemplateSelector.SandwichMenuTemplate>
                 <DataTemplate x:DataType="data:SandwichMenu">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
+                    <ScrollViewer Style="{StaticResource HydraScrollViewer}">
                         <ListView ItemsSource="{x:Bind Sandwiches}" ItemTemplate="{StaticResource SandwichTemplate}"
                                   Style="{StaticResource HydraListViewStatic}" />
-                    </Grid>
+                    </ScrollViewer>
                 </DataTemplate>
             </local:RestoMenuTemplateSelector.SandwichMenuTemplate>
         </local:RestoMenuTemplateSelector>
@@ -146,7 +142,6 @@
             </local:RestoMenuTemplateSelector.SandwichMenuTemplate>
         </local:RestoMenuTemplateSelector>
 
-
         <DataTemplate x:Key="RestoLegendItemTemplate" x:DataType="data:RestoLegendItem">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -166,6 +161,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
+        <!-- Header -->
         <Grid Grid.Row="0" Style="{StaticResource HydraHeaderGrid}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -181,12 +177,13 @@
             </Button>
         </Grid>
 
+        <!-- Content -->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-        
+
             <Pivot Grid.Column="0"
                    ItemsSource="{Binding RestoInfoList}"
                    ItemTemplateSelector="{StaticResource RestoInfoSelector}"
@@ -204,10 +201,9 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-            
+
                 <TextBlock Grid.Row="0" Text="Legende" Style="{ThemeResource TitleTextBlockStyle}" />
-                <ListView Grid.Row="1"
-                          ItemsSource="{Binding Legend}"
+                <ListView Grid.Row="1" ItemsSource="{Binding Legend}"
                           ItemTemplate="{StaticResource RestoLegendItemTemplate}"
                           Style="{StaticResource HydraListViewStatic}" />
             </Grid>
