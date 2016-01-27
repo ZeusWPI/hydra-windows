@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Hydra.App">
-      <uap:VisualElements DisplayName="Hydra" Square150x150Logo="Assets\Logos\Square150x150Logo.png" Square44x44Logo="Assets\Logos\Square44x44Logo.png" Description="Hydra" BackgroundColor="#104B7D">
+      <uap:VisualElements DisplayName="Hydra" Square150x150Logo="Assets\Logos\Square150x150Logo.png" Square44x44Logo="Assets\Logos\Square44x44Logo.png" Description="Met Hydra ben je steeds op de hoogte van het laatste nieuws en de activiteiten van jouw favoriete studentenverenigingen. Luister naar Urgent.fm, lees Schamper of beslis of het menu van de resto's vandaag bij je in de smaak valt." BackgroundColor="#104B7D">
         <uap:DefaultTile Wide310x150Logo="Assets\Logos\Wide310x150Logo.png" ShortName="Hydra" Square310x310Logo="Assets\Logos\Square310x310Logo.png" Square71x71Logo="Assets\Logos\Square71x71Logo.png">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
