@@ -3,11 +3,35 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Hydra.Views.Schamper"
+    xmlns:data="using:Hydra.Models.Schamper"
+    xmlns:converters="using:Hydra.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prismMvvm="using:Prism.Windows.Mvvm"
     prismMvvm:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
+
+    <prismMvvm:SessionStateAwarePage.Resources>
+        <converters:DateFormatter x:Key="DateFormatConverter" />
+
+        <DataTemplate x:Key="SchamperDailyTemplate" x:DataType="data:SchamperDaily">
+            <Grid Style="{StaticResource HydraGrid}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="{x:Bind Title}" Style="{StaticResource SubtitleTextBlockStyle}" />
+                <StackPanel Grid.Row="1" Orientation="Horizontal">
+                    <TextBlock Text="Gepost op: " FontStyle="Italic" />
+                    <TextBlock Text="{x:Bind Date, Converter={StaticResource DateFormatConverter}, ConverterParameter=\{0:d MMM yyyy\, H:mm\}}" FontStyle="Italic" />
+                </StackPanel>
+                <RichTextBlock Grid.Row="2" converters:HtmlToRichTextConverter.Html="{x:Bind Summary}" TextWrapping="Wrap" />
+
+            </Grid>
+        </DataTemplate>
+    </prismMvvm:SessionStateAwarePage.Resources>
 
     <Grid Style="{StaticResource HydraRootContainer}">
         <Grid.RowDefinitions>
@@ -16,10 +40,13 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Style="{StaticResource HydraHeaderGrid}">
-            <TextBlock Text="Schamper" Style="{ThemeResource TitleTextBlockStyle}" />
+            <TextBlock Text="Schamper dailies" Style="{ThemeResource TitleTextBlockStyle}" />
         </Grid>
 
-        <Grid Grid.Row="1" Style="{StaticResource HydraGrid}">
+        <Grid Grid.Row="1">
+            <ListView Grid.Row="1" ItemsSource="{Binding Dailies}"
+                      ItemTemplate="{StaticResource SchamperDailyTemplate}"
+                      Style="{StaticResource HydraListViewStatic}" />
         </Grid>
     </Grid>
 </prismMvvm:SessionStateAwarePage>

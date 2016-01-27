@@ -40,6 +40,7 @@ namespace Hydra {
             Container.RegisterInstance<IAssociationSource>(dsaApi);
             Container.RegisterInstance<IActivitySource>(dsaApi);
             Container.RegisterInstance<INewsSource>(dsaApi);
+            Container.RegisterInstance(new SchamperDailyFeed());
 
             return base.OnInitializeAsync(args);
         }

@@ -110,12 +110,15 @@
     <Compile Include="DataSources\IAssociationSource.cs" />
     <Compile Include="DataSources\IRestoSource.cs" />
     <Compile Include="DataSources\DsaApi.cs" />
+    <Compile Include="DataSources\RssFeed.cs" />
+    <Compile Include="DataSources\SchamperDailyFeed.cs" />
     <Compile Include="DataSources\ZeusRestoApi.cs" />
     <Compile Include="Models\Activities\Activity.cs" />
     <Compile Include="Models\Activities\Association.cs" />
     <Compile Include="Models\Activities\EventDay.cs" />
     <Compile Include="Models\Activities\Konvent.cs" />
     <Compile Include="Models\IModel.cs" />
+    <Compile Include="Models\Schamper\SchamperDaily.cs" />
     <Compile Include="Models\News\NewsArticle.cs" />
     <Compile Include="Models\Resto\Meal.cs" />
     <Compile Include="Models\Resto\RestoLocation.cs" />
@@ -137,6 +140,7 @@
     <Compile Include="ViewModels\News\NewsPageViewModel.cs" />
     <Compile Include="ViewModels\Home\HomePageViewModel.cs" />
     <Compile Include="ViewModels\Resto\RestoMapPageViewModel.cs" />
+    <Compile Include="ViewModels\Schamper\SchamperPageViewModel.cs" />
     <Compile Include="ViewModels\Util\NavigationButtonViewModel.cs" />
     <Compile Include="ViewModels\Util\ButtonViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
@@ -411,7 +415,6 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModels\Schamper\" />
     <Folder Include="ViewModels\UrgentFm\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
