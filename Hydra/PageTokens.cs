@@ -23,6 +23,7 @@ namespace Hydra {
         public const string InfoPage = "Info/InfoPage";
         public const string MinervaPage = "Info/MinervaPage";
         public const string OasisPage = "Info/OasisPage";
+        public const string EpursePage = "Info/EpursePage";
         public const string EduroamPage = "Info/EduroamPage";
         public const string VpnPage = "Info/VpnPage";
         public const string AcademicCalendarPage = "Info/AcademicCalendarPage";

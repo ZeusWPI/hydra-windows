@@ -148,6 +148,9 @@
     <Compile Include="Views\Activities\AssociationFilterDialog.xaml.cs">
       <DependentUpon>AssociationFilterDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Info\EpursePage.xaml.cs">
+      <DependentUpon>EpursePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Settings\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
@@ -321,6 +324,10 @@
     <Page Include="Views\Activities\AssociationFilterDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Info\EpursePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Settings\SettingsPage.xaml">
       <Generator>MSBuild:Compile</Generator>

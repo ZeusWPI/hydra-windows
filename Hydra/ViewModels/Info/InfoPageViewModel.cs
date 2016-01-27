@@ -36,6 +36,11 @@ namespace Hydra.ViewModels.Info {
                             PageToken = PageTokens.OasisPage
                         },
                         new NavigationButtonViewModel(navigationService) {
+                            IconSource = icons_basefolder + "Info-EpurseIcon.png",
+                            DisplayName = "Epurse",
+                            PageToken = PageTokens.EpursePage
+                        },
+                        new NavigationButtonViewModel(navigationService) {
                             IconSource = icons_basefolder + "Info-EduroamIcon.png",
                             DisplayName = "Eduroam",
                             PageToken = PageTokens.EduroamPage
