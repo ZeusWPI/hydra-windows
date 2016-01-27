@@ -1,0 +1,25 @@
+﻿<prismMvvm:SessionStateAwarePage
+    x:Class="Hydra.Views.Settings.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Hydra.Views.Home"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prismMvvm="using:Prism.Windows.Mvvm"
+    prismMvvm:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+
+    <Grid Style="{StaticResource HydraRootContainer}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Style="{StaticResource HydraHeaderGrid}">
+            <TextBlock Text="Voorkeuren" Style="{ThemeResource TitleTextBlockStyle}" />
+        </Grid>
+
+        <Grid Grid.Row="1" Style="{StaticResource HydraGrid}">
+        </Grid>
+    </Grid>
+</prismMvvm:SessionStateAwarePage>

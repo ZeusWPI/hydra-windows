@@ -29,5 +29,14 @@ namespace Hydra {
         public const string DoctorPage = "Info/DoctorPage";
         public const string BicyclePage = "Info/BicyclePage";
         public const string BlokmapPage = "Info/BlokmapPage";
+
+        // Schamper pages
+        public const string SchamperPage = "Schamper/SchamperPage";
+
+        // Urgent.FM pages
+        public const string UrgentFmPage = "UrgentFm/UrgentFmPage";
+
+        // Settings pages
+        public const string SettingsPage = "Settings/SettingsPage";
     }
 }

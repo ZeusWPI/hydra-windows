@@ -148,6 +148,9 @@
     <Compile Include="Views\Activities\AssociationFilterDialog.xaml.cs">
       <DependentUpon>AssociationFilterDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Settings\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Home\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -191,10 +194,16 @@
     <Compile Include="Views\Resto\RestoPage.xaml.cs">
       <DependentUpon>RestoPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Schamper\SchamperPage.xaml.cs">
+      <DependentUpon>SchamperPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\UrgentFm\UrgentFmPage.xaml.cs">
+      <DependentUpon>UrgentFmPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -234,6 +243,9 @@
     <Content Include="Assets\AssociationLogos\VRG.small.jpg" />
     <Content Include="Assets\AssociationLogos\VTK.small.jpg" />
     <Content Include="Assets\AssociationLogos\WINA.small.jpg" />
+    <Content Include="Assets\Icons\Info-EpurseIcon.png" />
+    <Content Include="Assets\Icons\Menu-HomeIcon.png" />
+    <Content Include="Assets\Icons\Menu-SettingsIcon.png" />
     <Content Include="Assets\Icons\Resto-MarkerIcon.png" />
     <Content Include="Assets\Icons\Resto-SandwichIcon.png" />
     <Content Include="Assets\Icons\Info-CalendarIcon.png" />
@@ -244,7 +256,6 @@
     <Content Include="Assets\Icons\Info-StudyLocationIcon.png" />
     <Content Include="Assets\Icons\Menu-NewsIcon.png" />
     <Content Include="Assets\Icons\Menu-RestoIcon.png" />
-    <Content Include="Assets\Icons\Menu-HomeIcon.png" />
     <Content Include="Assets\Icons\Menu-InfoIcon.png" />
     <Content Include="Assets\Icons\Menu-MinervaIcon.png" />
     <Content Include="Assets\Icons\Menu-SchamperIcon.png" />
@@ -252,6 +263,7 @@
     <Content Include="Assets\Icons\Resto-MapIcon.png" />
     <Content Include="Assets\Icons\Info-EduroamIcon.png" />
     <Content Include="Assets\Icons\Info-VpnIcon.png" />
+    <Content Include="Assets\Icons\Menu-UrgentFmIcon.png" />
     <Content Include="Assets\Logos\SplashScreen.scale-100.png" />
     <Content Include="Assets\Logos\SplashScreen.scale-125.png" />
     <Content Include="Assets\Logos\SplashScreen.scale-150.png" />
@@ -310,6 +322,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Settings\SettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Home\HomePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -366,7 +382,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Schamper\SchamperPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Shell.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UrgentFm\UrgentFmPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -380,8 +404,8 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Schamper\" />
-    <Folder Include="Views\UrgentFm\" />
+    <Folder Include="ViewModels\Schamper\" />
+    <Folder Include="ViewModels\UrgentFm\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

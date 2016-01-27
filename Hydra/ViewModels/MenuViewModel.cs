@@ -53,6 +53,21 @@ namespace Hydra.ViewModels {
                     DisplayName = resourceLoader.GetString("RootMenu_ActivitiesPageDisplayName"),
                     IconSource = baseIconFolder + "Menu-ActivitiesIcon.png",
                     Command = new DelegateCommand(NavigateToPage(PageTokens.ActivitiesPage))
+                },
+                new ButtonViewModel {
+                    DisplayName = resourceLoader.GetString("RootMenu_SchamperPageDisplayName"),
+                    IconSource = baseIconFolder + "Menu-SchamperIcon.png",
+                    Command = new DelegateCommand(NavigateToPage(PageTokens.SchamperPage))
+                },
+                new ButtonViewModel {
+                    DisplayName = resourceLoader.GetString("RootMenu_UrgentFmPageDisplayName"),
+                    IconSource = baseIconFolder + "Menu-UrgentFmIcon.png",
+                    Command = new DelegateCommand(NavigateToPage(PageTokens.UrgentFmPage))
+                },
+                new ButtonViewModel {
+                    DisplayName = resourceLoader.GetString("RootMenu_SettingsPageDisplayName"),
+                    IconSource = baseIconFolder + "Menu-SettingsIcon.png",
+                    Command = new DelegateCommand(NavigateToPage(PageTokens.SettingsPage))
                 }
             };
         }

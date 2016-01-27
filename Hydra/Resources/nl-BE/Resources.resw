@@ -135,4 +135,10 @@
   <data name="RootMenu_SchamperPageDisplayName" xml:space="preserve">
     <value>Schamper</value>
   </data>
+  <data name="RootMenu_SettingsPageDisplayName" xml:space="preserve">
+    <value>Voorkeuren</value>
+  </data>
+  <data name="RootMenu_UrgentFmPageDisplayName" xml:space="preserve">
+    <value>Urgent.FM</value>
+  </data>
 </root>
