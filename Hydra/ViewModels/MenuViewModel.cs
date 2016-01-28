@@ -9,11 +9,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Markup;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Shapes;
 
 namespace Hydra.ViewModels {
 
@@ -29,51 +24,47 @@ namespace Hydra.ViewModels {
             this.navigationService = navigationService;
 
             Commands = new ObservableCollection<ButtonViewModel>() {
-                new ButtonViewModel {
+                new NavigationButtonViewModel(navigationService) {
                     DisplayName = resourceLoader.GetString("RootMenu_HomePageDisplayName"),
                     IconSource = baseIconFolder + "Menu-HomeIcon.png",
-                    Command = new DelegateCommand(NavigateToPage(PageTokens.HomePage))
+                    PageToken = PageTokens.HomePage
                 },
-                new ButtonViewModel {
+                new NavigationButtonViewModel(navigationService) {
                     DisplayName = resourceLoader.GetString("RootMenu_RestoPageDisplayName"),
                     IconSource = baseIconFolder + "Menu-RestoIcon.png",
-                    Command = new DelegateCommand(NavigateToPage(PageTokens.RestoPage))
+                    PageToken = PageTokens.RestoPage
                 },
-                new ButtonViewModel {
+                new NavigationButtonViewModel(navigationService) {
                     DisplayName = resourceLoader.GetString("RootMenu_InfoPageDisplayName"),
                     IconSource = baseIconFolder + "Menu-InfoIcon.png",
-                    Command = new DelegateCommand(NavigateToPage(PageTokens.InfoPage))
+                    PageToken = PageTokens.InfoPage
                 },
-                new ButtonViewModel {
+                new NavigationButtonViewModel(navigationService) {
                     DisplayName = resourceLoader.GetString("RootMenu_NewsPageDisplayName"),
                     IconSource = baseIconFolder + "Menu-NewsIcon.png",
-                    Command = new DelegateCommand(NavigateToPage(PageTokens.NewsPage))
+                    PageToken = PageTokens.NewsPage
                 },
-                new ButtonViewModel {
+                new NavigationButtonViewModel(navigationService) {
                     DisplayName = resourceLoader.GetString("RootMenu_ActivitiesPageDisplayName"),
                     IconSource = baseIconFolder + "Menu-ActivitiesIcon.png",
-                    Command = new DelegateCommand(NavigateToPage(PageTokens.ActivitiesPage))
+                    PageToken = PageTokens.ActivitiesPage
                 },
-                new ButtonViewModel {
+                new NavigationButtonViewModel(navigationService) {
                     DisplayName = resourceLoader.GetString("RootMenu_SchamperPageDisplayName"),
                     IconSource = baseIconFolder + "Menu-SchamperIcon.png",
-                    Command = new DelegateCommand(NavigateToPage(PageTokens.SchamperPage))
+                    PageToken = PageTokens.SchamperPage
                 },
-                new ButtonViewModel {
+                new NavigationButtonViewModel(navigationService) {
                     DisplayName = resourceLoader.GetString("RootMenu_UrgentFmPageDisplayName"),
                     IconSource = baseIconFolder + "Menu-UrgentFmIcon.png",
-                    Command = new DelegateCommand(NavigateToPage(PageTokens.UrgentFmPage))
+                    PageToken = PageTokens.UrgentFmPage
                 },
-                new ButtonViewModel {
+                new NavigationButtonViewModel(navigationService) {
                     DisplayName = resourceLoader.GetString("RootMenu_SettingsPageDisplayName"),
                     IconSource = baseIconFolder + "Menu-SettingsIcon.png",
-                    Command = new DelegateCommand(NavigateToPage(PageTokens.SettingsPage))
+                    PageToken = PageTokens.SettingsPage
                 }
             };
-        }
-
-        private Action NavigateToPage(string page) {
-            return () => { this.navigationService.Navigate(page, null); };
         }
     }
 }
