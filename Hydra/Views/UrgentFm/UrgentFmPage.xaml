@@ -20,6 +20,15 @@
         </Grid>
 
         <Grid Grid.Row="1" Style="{StaticResource HydraGrid}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <MediaElement x:Name="UrgentPlayer" AudioCategory="Media" Source="{Binding UrgentStreamUrl}" AutoPlay="False" />
+            <Button x:Name="PlayPauseButton" Grid.Row="1" Command="{Binding PlayPauseCommand}"
+                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <SymbolIcon x:Name="PlayPauseSymbol" Symbol="Play" />
+            </Button>
         </Grid>
     </Grid>
 </prismMvvm:SessionStateAwarePage>

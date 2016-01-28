@@ -141,6 +141,7 @@
     <Compile Include="ViewModels\Home\HomePageViewModel.cs" />
     <Compile Include="ViewModels\Resto\RestoMapPageViewModel.cs" />
     <Compile Include="ViewModels\Schamper\SchamperPageViewModel.cs" />
+    <Compile Include="ViewModels\UrgentFm\UrgentFmPageViewModel.cs" />
     <Compile Include="ViewModels\Util\NavigationButtonViewModel.cs" />
     <Compile Include="ViewModels\Util\ButtonViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
@@ -414,9 +415,7 @@
       <Name>Microsoft Visual C++ 2013 Runtime Package for Windows Universal</Name>
     </SDKReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\UrgentFm\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
