@@ -27,7 +27,8 @@ namespace Hydra.DataSources {
 
         public DsaApi() : base(BASE_URL, API_PATH) {
         }
-        
+
+        #region Associations
         public async Task<IEnumerable<Association>> GetAssociations() {
             if(associations == null) {
                 associations = await Get<Association[]>("associations.json");
@@ -59,7 +60,9 @@ namespace Hydra.DataSources {
 
             return konvents;
         }
+        #endregion
 
+        #region Activities
         public async Task<IEnumerable<Activity>> GetActivities() {
             if (activities == null) {
                 activities = await Get<Activity[]>("all_activities.json");
@@ -91,14 +94,26 @@ namespace Hydra.DataSources {
 
             return dates;
         }
+        #endregion
 
-        public async Task<IEnumerable<NewsArticle>> GetArticles() {
+        #region News
+        public async Task<IEnumerable<NewsArticle>> GetArticles(bool sorted = true) {
             if (newsArticles == null) {
                 newsArticles = await Get<NewsArticle[]>("all_news.json");
             }
 
+            if(sorted) {
+                return newsArticles.OrderByDescending((article) => article.Date);
+            }
             return newsArticles;
         }
+
+        public async Task<IEnumerable<NewsArticle>> GetArticles(DateTime fromDate, bool sorted = true) {
+            return (await GetArticles(false))
+                .Where((article) => article.Date >= fromDate)
+                .OrderByDescending((article) => article.Date);
+        }
+        #endregion
 
     }
 }

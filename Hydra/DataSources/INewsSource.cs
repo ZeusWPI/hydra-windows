@@ -15,8 +15,14 @@ namespace Hydra.DataSources {
         /// <summary>
         /// Returns the articles of the source.
         /// </summary>
-        /// <returns></returns>
-        Task<IEnumerable<NewsArticle>> GetArticles();
-        
+        /// <returns>A collection of articles</returns>
+        Task<IEnumerable<NewsArticle>> GetArticles(bool sorted = true);
+
+        /// <summary>
+        /// Returns the articles of the source, starting from the given date.
+        /// </summary>
+        /// <returns>A collection of articles</returns>
+        Task<IEnumerable<NewsArticle>> GetArticles(DateTime startDate, bool sorted = true);
+
     }
 }

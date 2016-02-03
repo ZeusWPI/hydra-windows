@@ -26,7 +26,7 @@ namespace Hydra.ViewModels.News {
         }
 
         public async Task GetNewsArticles() {
-            IEnumerable<NewsArticle> articles = await newsSource.GetArticles();
+            IEnumerable<NewsArticle> articles = await newsSource.GetArticles(DateTime.Today.AddYears(-1));
             foreach (NewsArticle article in articles) NewsArticles.Add(article);
             OnPropertyChanged();
         }
