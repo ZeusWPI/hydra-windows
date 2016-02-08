@@ -75,6 +75,11 @@ namespace Hydra.DataSources {
             return activities;
         }
 
+        public async Task<IEnumerable<Activity>> GetActivities(DateTime from, DateTime to) {
+            return (await this.GetActivities())
+                .Where((activity) => activity.Start >= from && activity.Start <= to);
+        }
+
         public async Task<IEnumerable<EventDay>> GetActivitiesByDate() {
             List<EventDay> dates = new List<EventDay>();
 
@@ -93,6 +98,11 @@ namespace Hydra.DataSources {
             }
 
             return dates;
+        }
+
+        public async Task<IEnumerable<EventDay>> GetActivitiesByDate(DateTime from, DateTime to) {
+            return (await this.GetActivitiesByDate())
+                .Where((eventDay) => eventDay.Date >= from && eventDay.Date <= to);
         }
         #endregion
 
