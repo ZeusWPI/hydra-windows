@@ -47,7 +47,7 @@ namespace Hydra.Models.Activities {
         public string Thumbnail { get { return Association.Logo; } }
 
         [DataMember(Name = "url")]
-        public Uri Url { get; set; }
+        public string Url { get; set; }
 
         [DataMember(Name = "facebook_id")]
         public string FacebookId { get; set; }
