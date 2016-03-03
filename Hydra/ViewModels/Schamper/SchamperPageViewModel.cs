@@ -1,5 +1,7 @@
 ﻿using Hydra.DataSources;
+using Hydra.Exceptions;
 using Hydra.Models.Schamper;
+using Hydra.Views.Common;
 using Prism.Windows.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -26,8 +28,12 @@ namespace Hydra.ViewModels.Schamper {
         }
 
         public async Task GetDailies() {
-            Dailies = await schamperDailyFeed.GetDailies();
-            OnPropertyChanged();
+            try {
+                Dailies = await schamperDailyFeed.GetDailies();
+                OnPropertyChanged();
+            } catch (DataSourceException ex) {
+                await ErrorDialogFactory.NetworkErrorDialog().ShowAsync();
+            }
         }
     }
 }

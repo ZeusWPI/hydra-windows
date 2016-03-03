@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hydra.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -33,7 +34,7 @@ namespace Hydra.DataSources {
         /// <summary>
         /// Fills in the parameters of a URL and makes sure it is properly encoded. 
         /// </summary>
-        /// <param name="urlFormat"></param>
+        /// <param name="methodUrlFormat"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
         protected string EncodeUrl(string methodUrlFormat, params object[] parameters) {
@@ -45,32 +46,38 @@ namespace Hydra.DataSources {
         /// Performs a GET-request to the specified resource.
         /// </summary>
         /// <typeparam name="T">The type of the deserialized response.</typeparam>
-        /// <param name="relativeUrl"></param>
-        /// <param name="parameters"></param>
+        /// <param name="encodedUrl"></param>
         /// <returns>The deserialized response</returns>
         protected async Task<T> Get<T>(string encodedUrl) {
-            HttpResponseMessage response = await httpClient.GetAsync(ApiPath + encodedUrl);
-            response.EnsureSuccessStatusCode(); // Throw exceptions if something went wrong
+            try {
+                HttpResponseMessage response = await httpClient.GetAsync(ApiPath + encodedUrl);
+                response.EnsureSuccessStatusCode(); // Throw exceptions if something went wrong
 
-            Stream stream = await response.Content.ReadAsStreamAsync();
-            return Deserialize<T>(stream);
+                Stream stream = await response.Content.ReadAsStreamAsync();
+                return Deserialize<T>(stream);
+            } catch(HttpRequestException ex) {
+                throw new DataSourceException("Couldn't connect to the server with url " + encodedUrl, ex);
+            }
         }
 
         /// <summary>
         /// Deserializes a stream. By default assumes a JSON-stream and type T (implicitly) having a DataContract.
         /// Override this if you want to use a manual JSON parser, or one parsing something else than JSON.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="input"></param>
-        /// <param name="serializerSettings"></param>
-        /// <returns></returns>
+        /// <typeparam name="T">The type of the input when deserialized.</typeparam>
+        /// <param name="input">The input stream that needs to be serialized.</param>
+        /// <returns>The deserialized input</returns>
         protected T Deserialize<T>(Stream input) {
-            DataContractJsonSerializerSettings serializerSettings = new DataContractJsonSerializerSettings() {
-                UseSimpleDictionaryFormat = true,
-            };
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(T), serializerSettings);
+            try {
+                DataContractJsonSerializerSettings serializerSettings = new DataContractJsonSerializerSettings() {
+                    UseSimpleDictionaryFormat = true,
+                };
+                DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(T), serializerSettings);
 
-            return (T) serializer.ReadObject(input);
+                return (T)serializer.ReadObject(input);
+            } catch(InvalidDataException ex) {
+                throw new DataSourceException("Couldn't deserialize input", ex);
+            }
         }
 
     }

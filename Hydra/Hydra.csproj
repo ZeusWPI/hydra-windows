@@ -113,6 +113,7 @@
     <Compile Include="DataSources\RssFeed.cs" />
     <Compile Include="DataSources\SchamperDailyFeed.cs" />
     <Compile Include="DataSources\ZeusRestoApi.cs" />
+    <Compile Include="Exceptions\DataSourceException.cs" />
     <Compile Include="Models\Activities\Activity.cs" />
     <Compile Include="Models\Activities\Association.cs" />
     <Compile Include="Models\Activities\EventDay.cs" />
@@ -153,6 +154,7 @@
     <Compile Include="Views\Activities\AssociationFilterDialog.xaml.cs">
       <DependentUpon>AssociationFilterDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Common\ErrorDialogFactory.cs" />
     <Compile Include="Views\Info\EpursePage.xaml.cs">
       <DependentUpon>EpursePage.xaml</DependentUpon>
     </Compile>

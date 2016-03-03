@@ -1,6 +1,8 @@
 ﻿using Hydra.DataSources;
+using Hydra.Exceptions;
 using Hydra.Models.Activities;
 using Hydra.Views.Activities;
+using Hydra.Views.Common;
 using Prism.Commands;
 using Prism.Windows.Mvvm;
 using System;
@@ -38,9 +40,13 @@ namespace Hydra.ViewModels.Activities {
         }
 
         public async Task GetActivities() {
-            IEnumerable<EventDay> days = await activitySource.GetActivitiesByDate();
-            foreach (EventDay day in days) EventDays.Add(day);
-            OnPropertyChanged();
+            try {
+                IEnumerable<EventDay> days = await activitySource.GetActivitiesByDate();
+                foreach (EventDay day in days) EventDays.Add(day);
+                OnPropertyChanged();
+            } catch (DataSourceException ex) {
+                await ErrorDialogFactory.NetworkErrorDialog().ShowAsync();
+            }
         }
     }
 }

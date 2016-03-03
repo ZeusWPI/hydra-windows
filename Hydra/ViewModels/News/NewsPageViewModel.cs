@@ -1,5 +1,7 @@
 ﻿using Hydra.DataSources;
+using Hydra.Exceptions;
 using Hydra.Models.News;
+using Hydra.Views.Common;
 using Prism.Windows.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -26,9 +28,13 @@ namespace Hydra.ViewModels.News {
         }
 
         public async Task GetNewsArticles() {
-            IEnumerable<NewsArticle> articles = await newsSource.GetArticles(DateTime.Today.AddYears(-1));
-            foreach (NewsArticle article in articles) NewsArticles.Add(article);
-            OnPropertyChanged();
+            try {
+                IEnumerable<NewsArticle> articles = await newsSource.GetArticles(DateTime.Today.AddYears(-1));
+                foreach (NewsArticle article in articles) NewsArticles.Add(article);
+                OnPropertyChanged();
+            } catch (DataSourceException ex) {
+                await ErrorDialogFactory.NetworkErrorDialog().ShowAsync();
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hydra.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,11 @@ namespace Hydra.DataSources {
 
         public async Task<SyndicationFeed> GetFeed() {
             if(this.feed == null) {
-                this.feed = await syndicationClient.RetrieveFeedAsync(this.FeedUrl);
+                try {
+                    this.feed = await syndicationClient.RetrieveFeedAsync(this.FeedUrl);
+                } catch (Exception ex) {
+                    throw new DataSourceException("Couldn't connect to the server with url " + this.FeedUrl, ex);
+                }
             }
 
             return this.feed;

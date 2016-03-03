@@ -92,7 +92,7 @@
                 <DataTemplate>
                     <StackPanel>
                         <TextBlock Style="{ThemeResource TitleTextBlockStyle}"  Text="Laden..." />
-                        <ProgressRing IsActive="{Binding Loading}" />
+                        <ProgressRing IsActive="True" />
                     </StackPanel>
                 </DataTemplate>
             </local:RestoMenuTemplateSelector.LoadingTemplate>

@@ -1,6 +1,8 @@
 ﻿using Hydra.DataSources;
+using Hydra.Exceptions;
 using Hydra.Models.Resto;
 using Hydra.ViewModels.Util;
+using Hydra.Views.Common;
 using Prism.Windows.Mvvm;
 using Prism.Windows.Navigation;
 using System;
@@ -39,22 +41,34 @@ namespace Hydra.ViewModels.Resto {
         }
 
         public async Task GetRestoMenus() {
-            IEnumerable<DailyMenu> restoMenus = await restoSource.GetRestoMenusThisWeek();
-            foreach (var restoMenu in restoMenus) {
-                RestoInfoList.Add(restoMenu);
+            try {
+                IEnumerable<DailyMenu> restoMenus = await restoSource.GetRestoMenusThisWeek();
+                foreach (var restoMenu in restoMenus) {
+                    RestoInfoList.Add(restoMenu);
+                }
+                OnPropertyChanged();
+            } catch(DataSourceException ex) {
+                await ErrorDialogFactory.NetworkErrorDialog().ShowAsync();
             }
-            OnPropertyChanged();
         }
 
         public async Task GetRestoLegend() {
-            RestoLegendItem[] legendItems = await restoSource.GetRestoLegendItems();
-            foreach (RestoLegendItem legendItem in legendItems) Legend.Add(legendItem);
-            OnPropertyChanged();
+            try {
+                RestoLegendItem[] legendItems = await restoSource.GetRestoLegendItems();
+                foreach (RestoLegendItem legendItem in legendItems) Legend.Add(legendItem);
+                OnPropertyChanged();
+            } catch (DataSourceException ex) {
+                await ErrorDialogFactory.NetworkErrorDialog().ShowAsync();
+            }
         }
 
         public async Task GetRestoSandwichMenu() {
-            RestoInfoList.Add(await restoSource.GetRestoSandwichMenu());
-            OnPropertyChanged();
+            try {
+                RestoInfoList.Add(await restoSource.GetRestoSandwichMenu());
+                OnPropertyChanged();
+            } catch (DataSourceException ex) {
+                await ErrorDialogFactory.NetworkErrorDialog().ShowAsync();
+            }
         }
     }
 }
