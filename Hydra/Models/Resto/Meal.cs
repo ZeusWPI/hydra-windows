@@ -18,5 +18,11 @@ namespace Hydra.Models.Resto {
 
         [DataMember(Name = "recommended")]
         public bool Recommended { get; set; }
+
+        [DataMember(Name = "kind")]
+        public string Kind { get; set; }
+
+        [DataMember(Name = "type")]
+        public string Type { get; set; }
     }
 }

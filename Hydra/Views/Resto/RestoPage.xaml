@@ -62,19 +62,20 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-
-                            <TextBlock Grid.Row="0" Text="Soep" Style="{ThemeResource SubtitleTextBlockStyle}" HorizontalAlignment="Center" />
-                            <ContentPresenter Grid.Row="1" Padding="5" ContentTemplate="{StaticResource MealTemplate}" Content="{x:Bind Soup}" HorizontalAlignment="Stretch" />
-
-                            <TextBlock Grid.Row="2" Text="Vlees &amp; Veggie" Style="{ThemeResource SubtitleTextBlockStyle}" HorizontalAlignment="Center" />
-                            <ListView Grid.Row="3" ItemsSource="{x:Bind Meat}"
+                            
+                            <TextBlock Grid.Row="0" Text="Hoofdgerechten" Style="{ThemeResource SubtitleTextBlockStyle}" HorizontalAlignment="Center" />
+                            <ListView Grid.Row="1" ItemsSource="{x:Bind MainDishes}"
                                       ItemTemplate="{StaticResource MealTemplate}"
                                       Style="{StaticResource HydraListViewStatic}"  HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" />
 
-                            <TextBlock Grid.Row="5" Text="Groenten" Style="{ThemeResource SubtitleTextBlockStyle}" HorizontalAlignment="Center" />
-                            <ListView Grid.Row="6"
+                            <TextBlock Grid.Row="2" Text="Bijgerechten" Style="{ThemeResource SubtitleTextBlockStyle}" HorizontalAlignment="Center" />
+                            <ListView Grid.Row="3" ItemsSource="{x:Bind SideDishes}"
+                                      ItemTemplate="{StaticResource MealTemplate}"
+                                      Style="{StaticResource HydraListViewStatic}"  HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" />
+
+                            <TextBlock Grid.Row="4" Text="Groenten" Style="{ThemeResource SubtitleTextBlockStyle}" HorizontalAlignment="Center" />
+                            <ListView Grid.Row="5"
                                       ItemsSource="{x:Bind Vegetables}"
                                       Style="{StaticResource HydraListViewStatic}"  HorizontalAlignment="Stretch">
                                 <ListView.ItemTemplate>
@@ -140,18 +141,6 @@
                 </DataTemplate>
             </local:RestoMenuTemplateSelector.SandwichMenuTemplate>
         </local:RestoMenuTemplateSelector>
-
-        <DataTemplate x:Key="RestoLegendItemTemplate" x:DataType="data:RestoLegendItem">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="30" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0" Text="{x:Bind Key}" />
-                <TextBlock Grid.Column="1" Text="{x:Bind Value}" TextWrapping="Wrap" />
-            </Grid>
-        </DataTemplate>
     </prismMvvm:SessionStateAwarePage.Resources>
 
     <Grid Style="{StaticResource HydraRootContainer}">
@@ -177,37 +166,16 @@
         </Grid>
 
         <!-- Content -->
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <Pivot Grid.Column="0"
-                   ItemsSource="{Binding RestoInfoList}"
-                   ItemTemplateSelector="{StaticResource RestoInfoSelector}"
-                   Style="{StaticResource HydraPivot}">
-                <Pivot.HeaderTemplate>
-                    <DataTemplate>
-                        <ContentControl Content="{Binding}" ContentTemplateSelector="{StaticResource RestoHeaderSelector}" />
-                    </DataTemplate>
-                </Pivot.HeaderTemplate>
-            </Pivot>
-
-
-            <Grid Grid.Column="1" Style="{StaticResource HydraGrid}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <TextBlock Grid.Row="0" Text="Legende" Style="{ThemeResource TitleTextBlockStyle}" />
-                <ListView Grid.Row="1" ItemsSource="{Binding Legend}"
-                          ItemTemplate="{StaticResource RestoLegendItemTemplate}"
-                          Style="{StaticResource HydraListViewStatic}" />
-            </Grid>
-
-        </Grid>
+        <Pivot Grid.Row="1"
+               ItemsSource="{Binding RestoInfoList}"
+               ItemTemplateSelector="{StaticResource RestoInfoSelector}"
+               Style="{StaticResource HydraPivot}">
+            <Pivot.HeaderTemplate>
+                <DataTemplate>
+                    <ContentControl Content="{Binding}" ContentTemplateSelector="{StaticResource RestoHeaderSelector}" />
+                </DataTemplate>
+            </Pivot.HeaderTemplate>
+        </Pivot>
 
     </Grid>
 </prismMvvm:SessionStateAwarePage>

@@ -8,23 +8,27 @@ using System.Threading.Tasks;
 using Hydra.Models.Resto;
 using System.Globalization;
 using System.Runtime.Serialization.Json;
+using Hydra.Exceptions;
 
 namespace Hydra.DataSources {
     public class ZeusRestoApi : RestApi, IRestoSource {
 
         private const string BASE_URL = "https://zeus.ugent.be";
-        private const string API_PATH = "/hydra/api/1.0/resto";
+        private const string API_PATH = "/hydra/api/2.0/resto/";
 
         private RestoLocation[] restoLocations;
-        private RestoLegendItem[] restoLegendItems;
-        private List<DailyMenu> restoMenus;
+        private Dictionary<DateTime, DailyMenu> restoMenus;
         private SandwichMenu sandwichMenu;
 
-
         public ZeusRestoApi() : base(BASE_URL, API_PATH) {
-            sandwichMenu = new SandwichMenu() {
+            this.restoMenus = new Dictionary<DateTime, DailyMenu>();
+            this.sandwichMenu = new SandwichMenu() {
                 Sandwiches = null
             };
+        }
+
+        public string getPreferredLanguage() {
+            return "nl";
         }
 
         /// <summary>
@@ -38,66 +42,33 @@ namespace Hydra.DataSources {
             return this.restoLocations;
         }
 
-        /// <summary>
-        /// Retrieves the legend for the resto menus.
-        /// </summary>
-        public async Task<RestoLegendItem[]> GetRestoLegendItems() {
-            if (restoLegendItems == null) {
-                await GetRestoMeta();
-            }
-
-            return restoLegendItems;
-        }
-
         private async Task GetRestoMeta() {
             RestoMeta restoMeta = await Get<RestoMeta>("/meta.json");
-            this.restoLegendItems = restoMeta.Legend;
             this.restoLocations = restoMeta.Locations;
         }
-
-        public async Task<ICollection<DailyMenu>> GetRestoMenusThisWeek() {
-            if(restoMenus != null) {
-                return restoMenus;
+        
+        public async Task<ICollection<DailyMenu>> GetRestoMenus(int nextDays) {
+            if (restoMenus.Count > 0) {
+                return restoMenus.Values;
             }
 
-            string weekMenuApiUrl = $"/menu/{DateTime.Now.Year}/{getWeekNr()}.json";
-            Dictionary<string, DailyMenu> weekMenu = await Get<Dictionary<string, DailyMenu>>(weekMenuApiUrl);
-            restoMenus = weekMenuToList(weekMenu);
-
-            return restoMenus;
-        }
-
-        public Task<ICollection<DailyMenu>> GetRestoMenus(int nextDays) {
-            throw new NotImplementedException();
-        }
-
-        private int getWeekNr() {
-            Calendar calendar = DateTimeFormatInfo.CurrentInfo.Calendar;
-
-            int currentWeekNr = calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFullWeek, DayOfWeek.Monday);
-            DayOfWeek currentDayNr = calendar.GetDayOfWeek(DateTime.Now);
-
-            // If it's the weekend, we prooooobably want the menus for the following week.
-            if (currentDayNr == DayOfWeek.Saturday || currentDayNr == DayOfWeek.Sunday) {
-                // Not just +1, in case someone is crazy enough to be looking up the resto menu on New Year's Eve.
-                currentWeekNr = calendar.GetWeekOfYear(DateTime.Now.AddDays(7), CalendarWeekRule.FirstFullWeek, DayOfWeek.Monday);
+            DateTime date = DateTime.Now;
+            int i = 0;
+            bool dsvFuckedUp = false; // In case DSV is _really_ late filling in the menus
+            while(i <= nextDays && !dsvFuckedUp) {
+                date = date.AddDays(1);
+                if (date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday) {
+                    string weekMenuApiUrl = $"/menu/{getPreferredLanguage()}/{date.Year}/{date.Month}/{date.Day}.json";
+                    try {
+                        restoMenus.Add(date, await Get<DailyMenu>(weekMenuApiUrl));
+                    } catch(DataSourceException e) { // Error 404
+                        dsvFuckedUp = true;
+                    }
+                    i++;
+                }
             }
 
-            return currentWeekNr;
-        }
-
-        private List<DailyMenu> weekMenuToList(Dictionary<string, DailyMenu> weekMenu) {
-            List<DailyMenu> menus = new List<DailyMenu>(5);
-
-            // I hate the current API
-            foreach (var keyValue in weekMenu.ToArray()) {
-                DateTime date;
-                DateTime.TryParse(keyValue.Key, out date);
-                keyValue.Value.Date = date;
-                menus.Add(keyValue.Value);
-            }
-
-            return menus;
+            return restoMenus.Values;
         }
 
         public async Task<SandwichMenu> GetRestoSandwichMenu() {

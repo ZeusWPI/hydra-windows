@@ -21,7 +21,6 @@ namespace Hydra.ViewModels.Resto {
         private readonly IRestoSource restoSource;
 
         public ObservableCollection<object> RestoInfoList { get; set; }
-        public ObservableCollection<RestoLegendItem> Legend { get; set; }
 
         public ButtonViewModel MapButton { get; set; }
 
@@ -33,31 +32,19 @@ namespace Hydra.ViewModels.Resto {
                 PageToken = PageTokens.RestoMapPage
             };
 
-            RestoInfoList = new ObservableCollection<object>();
-            Legend = new ObservableCollection<RestoLegendItem>();
+            this.RestoInfoList = new ObservableCollection<object>();
             var restoMenusTask = GetRestoMenus();
-            var restoLegendTask = GetRestoLegend();
             var restoSandwichMenuTask = GetRestoSandwichMenu();
         }
 
         public async Task GetRestoMenus() {
             try {
-                IEnumerable<DailyMenu> restoMenus = await restoSource.GetRestoMenusThisWeek();
+                IEnumerable<DailyMenu> restoMenus = await restoSource.GetRestoMenus(4);
                 foreach (var restoMenu in restoMenus) {
                     RestoInfoList.Add(restoMenu);
                 }
                 OnPropertyChanged();
             } catch(DataSourceException ex) {
-                await ErrorDialogFactory.NetworkErrorDialog().ShowAsync();
-            }
-        }
-
-        public async Task GetRestoLegend() {
-            try {
-                RestoLegendItem[] legendItems = await restoSource.GetRestoLegendItems();
-                foreach (RestoLegendItem legendItem in legendItems) Legend.Add(legendItem);
-                OnPropertyChanged();
-            } catch (DataSourceException ex) {
                 await ErrorDialogFactory.NetworkErrorDialog().ShowAsync();
             }
         }

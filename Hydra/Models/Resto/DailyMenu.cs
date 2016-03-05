@@ -10,16 +10,28 @@ namespace Hydra.Models.Resto {
     [DataContract]
     public class DailyMenu : IModel {
 
-        public DateTime Date { get; set; }
+        [DataMember(Name = "date")]
+        private string dateFormatted { get; set; }
+        public DateTime Date {
+            get { return DateTime.Parse(dateFormatted); }
+            set { dateFormatted = value.ToString("yyyy-MM-dd"); }
+        }
 
-        [DataMember(Name = "meat")]
-        public Meal[] Meat { get; set; }
+        [DataMember(Name = "meals")]
+        public Meal[] Meals { get; set; }
+
+        [IgnoreDataMember]
+        public IEnumerable<Meal> MainDishes {
+            get { return Meals.Where(meal => meal.Type == "main"); }
+        }
+
+        [IgnoreDataMember]
+        public IEnumerable<Meal> SideDishes {
+            get { return Meals.Where(meal => meal.Type == "side"); }
+        }
 
         [DataMember(Name = "open")]
         public bool Open { get; set; }
-
-        [DataMember(Name = "soup")]
-        public Meal Soup { get; set; }
 
         [DataMember(Name = "vegetables")]
         public string[] Vegetables { get; set; }

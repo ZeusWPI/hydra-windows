@@ -13,18 +13,6 @@
     mc:Ignorable="d">
 
     <prismMvvm:SessionStateAwarePage.Resources>
-        <DataTemplate x:Key="RestoLegendItemTemplate" x:DataType="data:RestoLegendItem">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="30" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0" Text="{x:Bind Key}" />
-                <TextBlock Grid.Column="1" Text="{x:Bind Value}" TextWrapping="Wrap" />
-            </Grid>
-        </DataTemplate>
-
         <DataTemplate x:Key="RestoLocationMarker" x:DataType="data:RestoLocation">
             <StackPanel maps:MapControl.Location="{x:Bind Location}" Margin="-25,-50,0,0">
                 <!-- TODO: use NormalizedAnchorPoint (doesn't work right now, see Windows-bug

@@ -14,28 +14,18 @@ namespace Hydra.DataSources {
     public interface IRestoSource {
 
         /// <summary>
-        /// Returns a RestoMap, containing all resto locations.
+        /// Returns a list of all resto locations.
         /// </summary>
         /// <returns></returns>
         Task<RestoLocation[]> GetRestoLocations();
 
         /// <summary>
-        /// 
+        /// Returns the resto menu for the next few days.
         /// </summary>
+        /// <param name="nextDays">The amount of days (excluding today)
+        /// to fetch the resto menu from</param>
         /// <returns></returns>
-        Task<RestoLegendItem[]> GetRestoLegendItems();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        Task<ICollection<DailyMenu>> GetRestoMenusThisWeek();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        Task<ICollection<DailyMenu>> GetRestoMenus(int nextDays);
+        Task<ICollection<DailyMenu>> GetRestoMenus(int nextDays = 1);
 
         /// <summary>
         /// 
