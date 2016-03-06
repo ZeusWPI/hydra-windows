@@ -75,6 +75,11 @@ namespace Hydra.DataSources {
             return activities;
         }
 
+        public async Task<IEnumerable<Activity>> GetActivities(DateTime date) {
+            return (await this.GetActivities())
+                .Where((activity) => activity.Start.Date == date.Date);
+        }
+
         public async Task<IEnumerable<Activity>> GetActivities(DateTime from, DateTime to) {
             return (await this.GetActivities())
                 .Where((activity) => activity.Start >= from && activity.Start <= to);

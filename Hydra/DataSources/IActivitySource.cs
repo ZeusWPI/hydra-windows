@@ -13,10 +13,22 @@ namespace Hydra.DataSources {
     public interface IActivitySource {
 
         /// <summary>
-        /// 
+        /// Returns all activities at UGent it knows of.
         /// </summary>
         /// <returns></returns>
         Task<IEnumerable<Activity>> GetActivities();
+
+        /// <summary>
+        /// Returns all activities at UGent it knows of in a given date
+        /// </summary>
+        /// <returns></returns>
+        Task<IEnumerable<Activity>> GetActivities(DateTime date);
+
+        /// <summary>
+        /// Returns all activities at UGent it knows of in a given span of days
+        /// </summary>
+        /// <returns></returns>
+        Task<IEnumerable<Activity>> GetActivities(DateTime from, DateTime to);
 
         /// <summary>
         /// 

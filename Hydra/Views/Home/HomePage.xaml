@@ -4,11 +4,44 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Hydra.Views.Home"
     xmlns:resto="using:Hydra.Views.Resto"
+    xmlns:activities="using:Hydra.Models.Activities"
+    xmlns:converters="using:Hydra.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prismMvvm="using:Prism.Windows.Mvvm"
     prismMvvm:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
+
+    <prismMvvm:SessionStateAwarePage.Resources>
+        <converters:DateFormatter x:Key="DateFormatConverter" />
+        <converters:BooleanToHiddenConverter x:Key="BooleanToHidden" />
+        <DataTemplate x:Key="ActivityTemplate" x:DataType="activities:Activity">
+            <Grid Visibility="{x:Bind Hidden, Converter={StaticResource BooleanToHidden}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Image Source="{x:Bind Thumbnail}" Height="40"
+                       Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
+                       Margin="0,0,5,0" />
+
+                <TextBlock Text="{x:Bind Title}"
+                           Grid.Row="0" Grid.Column="1" />
+                <TextBlock Text="{x:Bind Start, Converter={StaticResource DateFormatConverter}, ConverterParameter=\{0:H:mm\}}"
+                           Grid.Row="0" Grid.Column="2" />
+
+                <TextBlock Text="{x:Bind Association}" FontStyle="Italic"
+                           Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" />
+            </Grid>
+        </DataTemplate>
+    </prismMvvm:SessionStateAwarePage.Resources>
 
     <Grid Style="{StaticResource HydraRootContainer}">
         <Grid.RowDefinitions>
@@ -27,7 +60,7 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
@@ -42,7 +75,17 @@
                 </Grid>
 
                 <Grid Grid.Row="1" Grid.Column="0" Style="{StaticResource HydraGrid}">
-                    <TextBlock Text="{Binding WelcomeText}" TextWrapping="Wrap" />
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Vandaag &amp; morgen" Style="{StaticResource SubtitleTextBlockStyle}" />
+                    <ScrollViewer Grid.Row="1" Style="{StaticResource HydraScrollViewer}">
+                        <ListView ItemsSource="{Binding ActivitiesToday}"
+                                  ItemTemplate="{StaticResource ActivityTemplate}"
+                                  Style="{StaticResource HydraListViewStatic}" />
+                    </ScrollViewer>
                 </Grid>
 
                 <Grid Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Style="{StaticResource HydraGrid}">
