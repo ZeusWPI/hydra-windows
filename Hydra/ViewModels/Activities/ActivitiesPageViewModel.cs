@@ -1,9 +1,11 @@
 ﻿using Hydra.DataSources;
 using Hydra.Exceptions;
 using Hydra.Models.Activities;
+using Hydra.ViewModels.Common;
 using Hydra.Views.Activities;
 using Hydra.Views.Common;
 using Prism.Commands;
+using Prism.Windows.AppModel;
 using Prism.Windows.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -16,7 +18,7 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml;
 
 namespace Hydra.ViewModels.Activities {
-    public class ActivitiesPageViewModel : ViewModelBase, INotifyPropertyChanged {
+    public class ActivitiesPageViewModel : AbstractPageViewModel, INotifyPropertyChanged {
 
         private readonly IActivitySource activitySource;
         
@@ -33,13 +35,13 @@ namespace Hydra.ViewModels.Activities {
             }
         }
 
-        public ActivitiesPageViewModel(IAssociationSource associationSource, IActivitySource activitySource) {
+        public ActivitiesPageViewModel(IResourceLoader resourceLoader, IActivitySource activitySource) : base(resourceLoader) {
             this.activitySource = activitySource;
             EventDays = new ObservableCollection<EventDay>();
-            var activitiesTask = GetActivities();
+            GetActivities();
         }
 
-        public async Task GetActivities() {
+        public async void GetActivities() {
             try {
                 IEnumerable<EventDay> days = await activitySource.GetActivitiesByDate();
                 foreach (EventDay day in days) EventDays.Add(day);

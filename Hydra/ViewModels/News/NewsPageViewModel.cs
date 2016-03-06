@@ -1,8 +1,9 @@
 ﻿using Hydra.DataSources;
 using Hydra.Exceptions;
 using Hydra.Models.News;
+using Hydra.ViewModels.Common;
 using Hydra.Views.Common;
-using Prism.Windows.Mvvm;
+using Prism.Windows.AppModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,20 +15,20 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml;
 
 namespace Hydra.ViewModels.News {
-    public class NewsPageViewModel : ViewModelBase, INotifyPropertyChanged {
+    public class NewsPageViewModel : AbstractPageViewModel, INotifyPropertyChanged {
 
         private readonly INewsSource newsSource;
 
         public ObservableCollection<NewsArticle> NewsArticles { get; set; }
 
-        public NewsPageViewModel(INewsSource newsSource) {
+        public NewsPageViewModel(IResourceLoader resourceLoader, INewsSource newsSource) : base(resourceLoader) {
             this.newsSource = newsSource;
             NewsArticles = new ObservableCollection<NewsArticle>();
 
-            var newsArticlesTask = GetNewsArticles();
+            GetNewsArticles();
         }
 
-        public async Task GetNewsArticles() {
+        public async void GetNewsArticles() {
             try {
                 IEnumerable<NewsArticle> articles = await newsSource.GetArticles(DateTime.Today.AddYears(-1));
                 foreach (NewsArticle article in articles) NewsArticles.Add(article);

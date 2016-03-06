@@ -48,7 +48,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Row="0" Style="{StaticResource HydraHeaderGrid}">
-            <TextBlock Text="Nieuws" Style="{ThemeResource TitleTextBlockStyle}" />
+            <TextBlock Text="{Binding Title}" Style="{ThemeResource TitleTextBlockStyle}" />
         </Grid>
         
         <ListView Grid.Row="1" ItemsSource="{Binding NewsArticles}"

@@ -1,5 +1,7 @@
 ﻿using Hydra.DataSources;
 using Hydra.Models.Resto;
+using Hydra.ViewModels.Common;
+using Prism.Windows.AppModel;
 using Prism.Windows.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -8,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Hydra.ViewModels.Home {
-    public class HomePageViewModel : ViewModelBase {
+    public class HomePageViewModel : AbstractPageViewModel {
 
         private readonly IRestoSource restoSource;
         public DailyMenu RestoMenuToday { get; set; }
@@ -16,7 +18,7 @@ namespace Hydra.ViewModels.Home {
         public string WelcomeTitle { get; set; }
         public string WelcomeText { get; set; }
 
-        public HomePageViewModel(IRestoSource restoSource) {
+        public HomePageViewModel(IResourceLoader resourceLoader, IRestoSource restoSource) : base(resourceLoader) {
             this.restoSource = restoSource;
 
             this.WelcomeTitle = "Welkom bij Hydra!";

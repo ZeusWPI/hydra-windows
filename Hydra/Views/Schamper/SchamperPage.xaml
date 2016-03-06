@@ -40,7 +40,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Style="{StaticResource HydraHeaderGrid}">
-            <TextBlock Text="Schamper dailies" Style="{ThemeResource TitleTextBlockStyle}" />
+            <TextBlock Text="{Binding Title}" Style="{ThemeResource TitleTextBlockStyle}" />
         </Grid>
 
         <Grid Grid.Row="1">

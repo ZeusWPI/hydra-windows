@@ -117,6 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ActivitiesPageViewModel_Title" xml:space="preserve">
+    <value>Activiteiten</value>
+  </data>
+  <data name="HomePageViewModel_Title" xml:space="preserve">
+    <value>Hydra</value>
+  </data>
+  <data name="InfoPageViewModel_Title" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="NewsPageViewModel_Title" xml:space="preserve">
+    <value>Nieuws</value>
+  </data>
+  <data name="RestoPageViewModel_Title" xml:space="preserve">
+    <value>Resto</value>
+  </data>
   <data name="RootMenu_ActivitiesPageDisplayName" xml:space="preserve">
     <value>Activiteiten</value>
   </data>
@@ -139,6 +154,15 @@
     <value>Voorkeuren</value>
   </data>
   <data name="RootMenu_UrgentFmPageDisplayName" xml:space="preserve">
+    <value>Urgent.FM</value>
+  </data>
+  <data name="SchamperPageViewModel_Title" xml:space="preserve">
+    <value>Schamper Dailies</value>
+  </data>
+  <data name="SettingsPageViewModel_Title" xml:space="preserve">
+    <value>Voorkeuren</value>
+  </data>
+  <data name="UrgentFmPageViewModel_Title" xml:space="preserve">
     <value>Urgent.FM</value>
   </data>
 </root>

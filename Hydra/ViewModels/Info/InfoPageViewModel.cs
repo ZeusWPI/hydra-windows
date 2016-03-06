@@ -1,4 +1,5 @@
 ﻿using Hydra.ViewModels.Common;
+using Prism.Windows.AppModel;
 using Prism.Windows.Mvvm;
 using Prism.Windows.Navigation;
 using System;
@@ -9,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Hydra.ViewModels.Info {
-    public class InfoPageViewModel : ViewModelBase {
+    public class InfoPageViewModel : AbstractPageViewModel {
 
         private readonly string icons_basefolder = "ms-appx:///Assets/Icons/";
 
@@ -17,7 +18,7 @@ namespace Hydra.ViewModels.Info {
 
         public ObservableCollection<InfoPageItemViewModel> InfoItems { get; set; }
 
-        public InfoPageViewModel(INavigationService navigationService) {
+        public InfoPageViewModel(IResourceLoader resourceLoader, INavigationService navigationService) : base(resourceLoader) {
             this.navigationService = navigationService;
 
             InfoItems = new ObservableCollection<InfoPageItemViewModel>() {

@@ -63,7 +63,7 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Activiteiten" Style="{ThemeResource TitleTextBlockStyle}" />
+            <TextBlock Text="{Binding Title}" Style="{ThemeResource TitleTextBlockStyle}" />
             
             <Button Grid.Column="1" Command="{Binding OpenDialogCommand}" Style="{StaticResource HydraButton}">
                 <StackPanel Orientation="Horizontal">
