@@ -46,29 +46,56 @@ namespace Hydra.DataSources {
             RestoMeta restoMeta = await Get<RestoMeta>("/meta.json");
             this.restoLocations = restoMeta.Locations;
         }
+
+        public async Task<DailyMenu> GetRestoMenu(DateTime date) {
+            // No menu in the weekend
+            if (date.DayOfWeek == DayOfWeek.Saturday && date.DayOfWeek == DayOfWeek.Sunday)
+                return null;
+
+            // Check if it was already added some time in the past
+            if (restoMenus.ContainsKey(date))
+                return restoMenus[date];
+
+            string weekMenuApiUrl = $"/menu/{getPreferredLanguage()}/{date.Year}/{date.Month}/{date.Day}.json";
+            DailyMenu menu = await Get<DailyMenu>(weekMenuApiUrl);
+            restoMenus.Add(date, menu);
+
+            return menu;
+        }
+
+        public async Task<DailyMenu> GetRestoMenu() {
+            DateTime today = DateTime.Now.Date;
+
+            // No menu in the weekend
+            if (today.DayOfWeek == DayOfWeek.Saturday)
+                return await GetRestoMenu(today.AddDays(2));
+            if (today.DayOfWeek == DayOfWeek.Sunday)
+                return await GetRestoMenu(today.AddDays(1));
+
+            return await GetRestoMenu(today);
+        }
         
         public async Task<ICollection<DailyMenu>> GetRestoMenus(int nextDays) {
-            if (restoMenus.Count > 0) {
-                return restoMenus.Values;
-            }
+            List<DailyMenu> menus = new List<DailyMenu>(nextDays);
 
             DateTime date = DateTime.Now;
             int i = 0;
             bool dsvFuckedUp = false; // In case DSV is _really_ late filling in the menus
             while(i <= nextDays && !dsvFuckedUp) {
                 date = date.AddDays(1);
-                if (date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday) {
-                    string weekMenuApiUrl = $"/menu/{getPreferredLanguage()}/{date.Year}/{date.Month}/{date.Day}.json";
-                    try {
-                        restoMenus.Add(date, await Get<DailyMenu>(weekMenuApiUrl));
-                    } catch(DataSourceException e) { // Error 404
-                        dsvFuckedUp = true;
+
+                try {
+                    DailyMenu menu = await GetRestoMenu(date);
+                    if (menu != null) {
+                        menus.Add(menu);
+                        i++;
                     }
-                    i++;
+                } catch(DataSourceException ex) {
+                    dsvFuckedUp = true;
                 }
             }
 
-            return restoMenus.Values;
+            return menus;
         }
 
         public async Task<SandwichMenu> GetRestoSandwichMenu() {

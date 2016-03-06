@@ -1,7 +1,7 @@
 ﻿using Hydra.DataSources;
 using Hydra.Exceptions;
 using Hydra.Models.Resto;
-using Hydra.ViewModels.Util;
+using Hydra.ViewModels.Common;
 using Hydra.Views.Common;
 using Prism.Windows.Mvvm;
 using Prism.Windows.Navigation;
@@ -13,14 +13,13 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.UI.Xaml;
 
 namespace Hydra.ViewModels.Resto {
     public class RestoPageViewModel : ViewModelBase, INotifyPropertyChanged {
 
         private readonly IRestoSource restoSource;
 
-        public ObservableCollection<object> RestoInfoList { get; set; }
+        public ObservableCollection<RestoMenu> RestoInfoList { get; set; }
 
         public ButtonViewModel MapButton { get; set; }
 
@@ -32,12 +31,12 @@ namespace Hydra.ViewModels.Resto {
                 PageToken = PageTokens.RestoMapPage
             };
 
-            this.RestoInfoList = new ObservableCollection<object>();
-            var restoMenusTask = GetRestoMenus();
-            var restoSandwichMenuTask = GetRestoSandwichMenu();
+            this.RestoInfoList = new ObservableCollection<RestoMenu>();
+            GetRestoMenus();
+            GetRestoSandwichMenu();
         }
 
-        public async Task GetRestoMenus() {
+        public async void GetRestoMenus() {
             try {
                 IEnumerable<DailyMenu> restoMenus = await restoSource.GetRestoMenus(4);
                 foreach (var restoMenu in restoMenus) {
@@ -49,7 +48,7 @@ namespace Hydra.ViewModels.Resto {
             }
         }
 
-        public async Task GetRestoSandwichMenu() {
+        public async void GetRestoSandwichMenu() {
             try {
                 RestoInfoList.Add(await restoSource.GetRestoSandwichMenu());
                 OnPropertyChanged();

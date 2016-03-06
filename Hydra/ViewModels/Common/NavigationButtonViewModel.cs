@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Hydra.ViewModels.Util {
+namespace Hydra.ViewModels.Common {
 
     /// <summary>
     /// A default viewmodel for a button

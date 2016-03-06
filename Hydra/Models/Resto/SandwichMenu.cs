@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Hydra.Models.Resto {
-    public class SandwichMenu {
+    public class SandwichMenu : RestoMenu {
         public Sandwich[] Sandwiches;
     }
 }

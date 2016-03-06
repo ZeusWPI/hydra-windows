@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Hydra.Views.Info"
     xmlns:viewModels="using:Hydra.ViewModels.Info"
-    xmlns:viewModelsutil="using:Hydra.ViewModels.Util"
+    xmlns:viewModelsCommon="using:Hydra.ViewModels.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prismMvvm="using:Prism.Windows.Mvvm"
@@ -12,8 +12,9 @@
     mc:Ignorable="d">
 
     <prismMvvm:SessionStateAwarePage.Resources>
-        <DataTemplate x:Key="InfoButtonTemplate" x:DataType="viewModelsutil:ButtonViewModel">
-            <Button Command="{x:Bind Command}" Style="{StaticResource HydraButton}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+        <DataTemplate x:Key="InfoButtonTemplate" x:DataType="viewModelsCommon:ButtonViewModel">
+            <Button Command="{x:Bind Command}" Style="{StaticResource HydraButton}"
+                    HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
                 <Grid HorizontalAlignment="Left">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40" />

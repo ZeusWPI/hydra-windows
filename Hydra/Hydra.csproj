@@ -119,6 +119,7 @@
     <Compile Include="Models\Activities\EventDay.cs" />
     <Compile Include="Models\Activities\Konvent.cs" />
     <Compile Include="Models\IModel.cs" />
+    <Compile Include="Models\Resto\RestoMenu.cs" />
     <Compile Include="Models\Schamper\SchamperDaily.cs" />
     <Compile Include="Models\News\NewsArticle.cs" />
     <Compile Include="Models\Resto\Meal.cs" />
@@ -142,8 +143,8 @@
     <Compile Include="ViewModels\Resto\RestoMapPageViewModel.cs" />
     <Compile Include="ViewModels\Schamper\SchamperPageViewModel.cs" />
     <Compile Include="ViewModels\UrgentFm\UrgentFmPageViewModel.cs" />
-    <Compile Include="ViewModels\Util\NavigationButtonViewModel.cs" />
-    <Compile Include="ViewModels\Util\ButtonViewModel.cs" />
+    <Compile Include="ViewModels\Common\NavigationButtonViewModel.cs" />
+    <Compile Include="ViewModels\Common\ButtonViewModel.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
     <Compile Include="ViewModels\Activities\ActivitiesPageViewModel.cs" />
     <Compile Include="ViewModels\Resto\RestoPageViewModel.cs" />
@@ -156,6 +157,9 @@
     <Compile Include="Views\Common\ErrorDialogFactory.cs" />
     <Compile Include="Views\Info\EpursePage.xaml.cs">
       <DependentUpon>EpursePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Resto\RestoMenuUserControl.xaml.cs">
+      <DependentUpon>RestoMenuUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Settings\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
@@ -334,6 +338,10 @@
     <Page Include="Views\Info\EpursePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Resto\RestoMenuUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Settings\SettingsPage.xaml">
       <Generator>MSBuild:Compile</Generator>

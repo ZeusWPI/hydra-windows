@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Hydra.Models.Resto {
 
     [DataContract]
-    public class DailyMenu : IModel {
+    public class DailyMenu : RestoMenu {
 
         [DataMember(Name = "date")]
         private string dateFormatted { get; set; }

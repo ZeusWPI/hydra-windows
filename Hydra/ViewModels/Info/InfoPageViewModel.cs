@@ -1,5 +1,4 @@
-﻿using Hydra.ViewModels.Util;
-using Prism.Commands;
+﻿using Hydra.ViewModels.Common;
 using Prism.Windows.Mvvm;
 using Prism.Windows.Navigation;
 using System;

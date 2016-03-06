@@ -1,4 +1,4 @@
-﻿using Hydra.ViewModels.Util;
+﻿using Hydra.ViewModels.Common;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

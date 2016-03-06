@@ -5,13 +5,13 @@
     xmlns:local="using:Hydra.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewModelsUtil="using:Hydra.ViewModels.Util"
+    xmlns:viewModelsCommon="using:Hydra.ViewModels.Common"
     xmlns:prismMvvm="using:Prism.Windows.Mvvm"
     prismMvvm:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
 
     <UserControl.Resources>
-        <DataTemplate x:Key="MenuItemTemplate" x:DataType="viewModelsUtil:ButtonViewModel">
+        <DataTemplate x:Key="MenuItemTemplate" x:DataType="viewModelsCommon:ButtonViewModel">
             <Grid>
                 <Button AutomationProperties.Name="{x:Bind DisplayName}"
                         Command="{x:Bind Path=Command}"

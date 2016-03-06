@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Hydra.Views.Home"
+    xmlns:resto="using:Hydra.Views.Resto"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prismMvvm="using:Prism.Windows.Mvvm"
@@ -16,11 +17,39 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Style="{StaticResource HydraHeaderGrid}">
-            <TextBlock Text="HYDRAAAAA" Style="{ThemeResource TitleTextBlockStyle}" />
+            <TextBlock Text="Hydra" Style="{ThemeResource TitleTextBlockStyle}" />
         </Grid>
 
-        <Grid Grid.Row="1" Style="{StaticResource HydraGrid}">
-            <TextBlock Text="{Binding DisplayText}" />
+        <Grid Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Grid.Column="0" Style="{StaticResource HydraGrid}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    
+                    <TextBlock Grid.Row="0" Text="{Binding WelcomeTitle}" Style="{StaticResource SubtitleTextBlockStyle}" />
+                    <TextBlock Grid.Row="1" Text="{Binding WelcomeText}" TextWrapping="Wrap" />
+                </Grid>
+
+                <Grid Grid.Row="1" Grid.Column="0" Style="{StaticResource HydraGrid}">
+                    <TextBlock Text="{Binding WelcomeText}" TextWrapping="Wrap" />
+                </Grid>
+
+                <Grid Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Style="{StaticResource HydraGrid}">
+                    <resto:RestoMenuUserControl DataContext="{Binding RestoMenuToday}" />
+                </Grid>
+            </Grid>
+            
         </Grid>
     </Grid>
 </prismMvvm:SessionStateAwarePage>

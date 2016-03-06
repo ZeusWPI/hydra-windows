@@ -20,12 +20,12 @@ namespace Hydra.ViewModels.Resto {
 
         public RestoMapPageViewModel(IRestoSource restoSource) {
             this.restoSource = restoSource;
-            var restoMapTask = GetRestoMap();
+            GetRestoMap();
         }
 
-        public async Task GetRestoMap() {
+        public async void GetRestoMap() {
             RestoLocations = await restoSource.GetRestoLocations();
-            OnPropertyChanged();
+            OnPropertyChanged("RestoLocations");
         }
     }
 }
