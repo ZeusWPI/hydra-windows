@@ -60,7 +60,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid Grid.ColumnSpan="2" Style="{StaticResource HydraHeaderGrid}">
-            <TextBlock Text="Info » Academische kalender" Style="{ThemeResource TitleTextBlockStyle}" />
+            <TextBlock Text="Info » Academische kalender" Style="{ThemeResource HydraHeaderText}" />
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="0" Style="{StaticResource HydraGrid}">

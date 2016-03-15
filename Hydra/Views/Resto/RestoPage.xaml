@@ -55,7 +55,7 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" Text="Resto" Style="{StaticResource TitleTextBlockStyle}" />
+            <TextBlock Grid.Column="0" Text="Resto" Style="{StaticResource HydraHeaderText}" />
             <Button Grid.Column="1" DataContext="{Binding MapButton}" Command="{Binding Command}">
                 <StackPanel Orientation="Horizontal">
                     <BitmapIcon UriSource="{Binding IconSource}" MaxHeight="20" />

@@ -5,12 +5,16 @@
 
     <!-- UGent Colors -->
     <SolidColorBrush x:Key="UGentBlue" Color="#104B7D" />
+    <SolidColorBrush x:Key="UGentBlueLight" Color="#245B8D" />
+    <SolidColorBrush x:Key="UGentBlueLighter" Color="#C9D8E7" />
     <SolidColorBrush x:Key="UGentYellow" Color="#FDB812" />
     <SolidColorBrush x:Key="UGentYellowLight" Color="#D69D13" />
     <SolidColorBrush x:Key="UGentYellowLighter" Color="#FFEE89" />
 
+
+    <SolidColorBrush x:Key="DefaultPageBackground" Color="#C9D8E7" />
+    <SolidColorBrush x:Key="DefaultPageHeaderBackground" Color="#C9D8E7" />
     
-    <SolidColorBrush x:Key="DefaultPageBackground" Color="#E5E5E5" />
     <!-- The default color of a first-level container in a page -->
     <SolidColorBrush x:Key="DefaultHydraItemBackground" Color="White" />
     <SolidColorBrush x:Key="DefaultHydraItemShadow" Color="#BBBBBB" />

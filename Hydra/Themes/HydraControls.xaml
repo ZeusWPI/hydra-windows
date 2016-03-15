@@ -28,7 +28,9 @@
         <Setter Property="CornerRadius" Value="3" />
     </Style>
 
-    <Style x:Key="HydraHeaderGrid" TargetType="Grid" BasedOn="{StaticResource HydraGrid}">
+    <Style x:Key="HydraHeaderGrid" TargetType="Grid" BasedOn="{StaticResource HydraPanel}">
+        <Setter Property="Background" Value="{StaticResource DefaultPageHeaderBackground}" />
+        <Setter Property="Padding" Value="15,15,15,10" />
         <Setter Property="Margin" Value="0" />
     </Style>
 
@@ -37,6 +39,12 @@
         <Setter Property="BorderThickness" Value="0,0,1,1" />
         <Setter Property="BorderBrush" Value="{StaticResource DefaultHydraItemShadow}" />
         <Setter Property="CornerRadius" Value="3" />
+    </Style>
+    <!-- EndRegion -->
+
+    <!-- Region TextBlock-styles -->
+    <Style x:Key="HydraHeaderText" TargetType="TextBlock" BasedOn="{StaticResource TitleTextBlockStyle}">
+        <Setter Property="Foreground" Value="{StaticResource UGentBlue}" />
     </Style>
     <!-- EndRegion -->
 

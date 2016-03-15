@@ -63,7 +63,7 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="{Binding Title}" Style="{ThemeResource TitleTextBlockStyle}" />
+            <TextBlock Text="{Binding Title}" Style="{ThemeResource HydraHeaderText}" />
             
             <Button Grid.Column="1" Command="{Binding OpenDialogCommand}" Style="{StaticResource HydraButton}">
                 <StackPanel Orientation="Horizontal">

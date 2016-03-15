@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Style="{StaticResource HydraHeaderGrid}">
-            <TextBlock Text="Info » Studentenarts" Style="{ThemeResource TitleTextBlockStyle}" />
+            <TextBlock Text="Info » Studentenarts" Style="{ThemeResource HydraHeaderText}" />
         </Grid>
 
         <Grid Grid.Row="1" Style="{StaticResource HydraGrid}">

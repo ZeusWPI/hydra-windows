@@ -38,7 +38,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" Text="Resto » Kaart" Style="{StaticResource TitleTextBlockStyle}" />
+            <TextBlock Grid.Column="0" Text="Resto » Kaart" Style="{StaticResource HydraHeaderText}" />
         </Grid>
 
         <maps:MapControl Grid.Row="1"
