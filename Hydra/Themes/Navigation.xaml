@@ -98,6 +98,7 @@
     <Style x:Key="SplitViewMenuItemTextStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="16" />
         <Setter Property="Margin" Value="15,0,20,0" />
+        <Setter Property="Foreground" Value="{StaticResource UGentBlueLighter}" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
