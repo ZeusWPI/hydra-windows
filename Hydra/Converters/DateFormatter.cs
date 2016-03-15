@@ -11,7 +11,7 @@ namespace Hydra.Converters {
         public object Convert(object value, Type targetType, object parameter, string language) {
             string formatString = parameter as string;
             if (!string.IsNullOrEmpty(formatString)) {
-                return string.Format(CultureInfo.InvariantCulture, formatString, value);
+                return string.Format(new CultureInfo("nl-be"), formatString, value);
             }
 
             // If the format string is null or empty, simply call ToString() on the value.
