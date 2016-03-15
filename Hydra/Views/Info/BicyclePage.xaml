@@ -35,7 +35,7 @@
                        Style="{ThemeResource HydraItemTitle}" />
             <TextBlock Grid.Row="1" Text="Maandag: 9u - 12u / 13u - 16u." />
             <TextBlock Grid.Row="2" Text="Dinsdag: 12u - 16u." />
-            <TextBlock Grid.Row="2" Text="Woensdag: 8u - 12u." />
+            <TextBlock Grid.Row="3" Text="Woensdag: 8u - 12u." />
             <TextBlock Grid.Row="4" Text="Donderdag: 10u - 12u / 13u - 19u." />
             <TextBlock Grid.Row="5" Text="Vrijdag: GESLOTEN." />
         </Grid>
