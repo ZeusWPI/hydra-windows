@@ -46,7 +46,7 @@
 
         <DataTemplate x:Key="EventDayTemplate" x:DataType="data:EventDay">
             <TextBlock Text="{x:Bind Date, Converter={StaticResource DateFormatConverter}, ConverterParameter=\{0:ddd d MMMM\}}"
-                                           Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                       Style="{ThemeResource HydraItemTitle}"/>
         </DataTemplate>
     </prismMvvm:SessionStateAwarePage.Resources>
 

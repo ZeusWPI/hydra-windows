@@ -39,7 +39,7 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" Text="{x:Bind Title}" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                <TextBlock Grid.Row="0" Text="{x:Bind Title}" Style="{ThemeResource HydraItemTitle}" />
 
                 <ListView Grid.Row="1" ItemsSource="{x:Bind Links}"
                           ItemTemplate="{StaticResource InfoButtonTemplate}"

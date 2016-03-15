@@ -31,7 +31,7 @@
             </Grid.RowDefinitions>
             
             <TextBlock Grid.Row="0" Text="Verbinden met eduroam"
-                       Style="{ThemeResource SubtitleTextBlockStyle}" />
+                       Style="{ThemeResource HydraItemTitle}" />
 
             <TextBlock Grid.Row="1" Text="1) Kies het netwerk &quot;eduroam&quot;" />
             <TextBlock Grid.Row="2" Text="2) Vul in als gebruikersnaam: UGent-gebruikersnaam@ugent.be" />

@@ -33,7 +33,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="KonventTemplate" x:DataType="data:Konvent">
-            <TextBlock Text="{x:Bind KonventName}" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+            <TextBlock Text="{x:Bind KonventName}" Style="{ThemeResource HydraItemTitle}"/>
         </DataTemplate>
     </ContentDialog.Resources>
 

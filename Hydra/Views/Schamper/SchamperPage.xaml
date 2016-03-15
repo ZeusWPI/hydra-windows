@@ -22,7 +22,7 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" Text="{x:Bind Title}" Style="{StaticResource SubtitleTextBlockStyle}" />
+                <TextBlock Grid.Row="0" Text="{x:Bind Title}" Style="{StaticResource HydraItemTitle}" />
                 <StackPanel Grid.Row="1" Orientation="Horizontal">
                     <TextBlock Text="Gepost op: " FontStyle="Italic" />
                     <TextBlock Text="{x:Bind Date, Converter={StaticResource DateFormatConverter}, ConverterParameter=\{0:d MMM yyyy\, H:mm\}}" FontStyle="Italic" />

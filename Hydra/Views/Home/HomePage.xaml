@@ -69,8 +69,8 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    
-                    <TextBlock Grid.Row="0" Text="{Binding WelcomeTitle}" Style="{StaticResource SubtitleTextBlockStyle}" />
+
+                    <TextBlock Grid.Row="0" Text="{Binding WelcomeTitle}" Style="{StaticResource HydraItemTitle}" />
                     <TextBlock Grid.Row="1" Text="{Binding WelcomeText}" TextWrapping="Wrap" />
                 </Grid>
 
@@ -80,7 +80,7 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Text="Vandaag &amp; morgen" Style="{StaticResource SubtitleTextBlockStyle}" />
+                    <TextBlock Grid.Row="0" Text="Vandaag &amp; morgen" Style="{StaticResource HydraItemTitle}" />
                     <ScrollViewer Grid.Row="1" Style="{StaticResource HydraScrollViewer}">
                         <ListView ItemsSource="{Binding ActivitiesToday}"
                                   ItemTemplate="{StaticResource ActivityTemplate}"

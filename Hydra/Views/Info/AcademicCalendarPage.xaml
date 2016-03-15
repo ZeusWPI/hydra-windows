@@ -69,8 +69,8 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0"
-                       Text="Onderwijs- en examenperiodes" Style="{ThemeResource SubtitleTextBlockStyle}" />
+            <TextBlock Grid.Row="0" Text="Onderwijs- en examenperiodes"
+                       Style="{ThemeResource HydraItemTitle}" />
 
             <ListView Grid.Row="1" 
                       ItemsSource="{Binding Periods}" ItemTemplate="{StaticResource AcademicPeriodTemplate}"
@@ -83,8 +83,8 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0"
-                       Text="Sluitingsdagen" Style="{ThemeResource SubtitleTextBlockStyle}" />
+            <TextBlock Grid.Row="0" Text="Sluitingsdagen"
+                       Style="{ThemeResource HydraItemTitle}" />
 
             <ListView Grid.Row="1" 
                       ItemsSource="{Binding Holidays}" ItemTemplate="{StaticResource HolidayTemplate}"

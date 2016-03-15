@@ -32,7 +32,7 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" Text="Openingsuren"
-                       Style="{ThemeResource SubtitleTextBlockStyle}" />
+                       Style="{ThemeResource HydraItemTitle}" />
             <TextBlock Grid.Row="1" Text="Maandag: 9u - 12u / 13u - 16u." />
             <TextBlock Grid.Row="2" Text="Dinsdag: 12u - 16u." />
             <TextBlock Grid.Row="2" Text="Woensdag: 8u - 12u." />

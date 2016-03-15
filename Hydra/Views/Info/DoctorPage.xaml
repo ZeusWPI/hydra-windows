@@ -29,7 +29,7 @@
             </Grid.RowDefinitions>
             
             <TextBlock Grid.Row="0" Text="Consultaties"
-                       Style="{ThemeResource SubtitleTextBlockStyle}" />
+                       Style="{ThemeResource HydraItemTitle}" />
 
             <TextBlock Grid.Row="1" Text="Maandag - vrijdag: op afspraak" />
             <TextBlock Grid.Row="2" Text="Maandag - donderdag: tussen 17u en 19u vrije consultaties" />
