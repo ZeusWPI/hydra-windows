@@ -82,8 +82,6 @@ namespace Hydra.DataSources {
             int i = 0;
             bool dsvFuckedUp = false; // In case DSV is _really_ late filling in the menus
             while(i <= nextDays && !dsvFuckedUp) {
-                date = date.AddDays(1);
-
                 try {
                     DailyMenu menu = await GetRestoMenu(date);
                     if (menu != null) {
@@ -93,6 +91,8 @@ namespace Hydra.DataSources {
                 } catch(DataSourceException ex) {
                     dsvFuckedUp = true;
                 }
+
+                date = date.AddDays(1);
             }
 
             return menus;
