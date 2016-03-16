@@ -94,10 +94,13 @@ namespace Hydra.DataSources {
                         select new { GroupName = grp.Key, Items = grp };
 
             foreach (var grp in query) {
-                EventDay eventDay = new EventDay();
-                eventDay.Date = grp.GroupName;
+                EventDay eventDay = new EventDay() {
+                    Date = grp.GroupName,
+                    Activities = new List<Activity>()
+                };
+
                 foreach (var item in grp.Items) {
-                    eventDay.Add(item);
+                    eventDay.Activities.Add(item);
                 }
                 dates.Add(eventDay);
             }

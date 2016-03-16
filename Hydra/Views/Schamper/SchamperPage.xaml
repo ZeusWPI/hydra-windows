@@ -18,35 +18,47 @@
             <Grid Style="{StaticResource HydraGrid}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Row="0" Text="{x:Bind Title}" Style="{StaticResource HydraItemTitle}" />
-                <StackPanel Grid.Row="1" Orientation="Horizontal">
-                    <TextBlock Text="Gepost op: " FontStyle="Italic" />
-                    <TextBlock Text="{x:Bind Date, Converter={StaticResource DateFormatConverter}, ConverterParameter=\{0:d MMM yyyy\, H:mm\}}" FontStyle="Italic" />
-                </StackPanel>
-                <RichTextBlock Grid.Row="2" converters:HtmlToRichTextConverter.Html="{x:Bind Summary}" TextWrapping="Wrap" />
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Bind Title}" Style="{StaticResource HydraItemTitle}" />
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <SymbolIcon Grid.Column="0" Symbol="Clock" Margin="5,0"/>
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center"
+                               Text="{x:Bind Date, Converter={StaticResource DateFormatConverter}, ConverterParameter=\{0:d MMM yyyy\}}"
+                               FontStyle="Italic" />
+                </Grid>
+                <RichTextBlock Grid.Row="1" Grid.ColumnSpan="2"
+                               converters:HtmlToRichTextConverter.Html="{x:Bind Summary}"
+                               TextWrapping="Wrap" />
 
             </Grid>
         </DataTemplate>
     </prismMvvm:SessionStateAwarePage.Resources>
 
-    <Grid Style="{StaticResource HydraRootContainer}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <ScrollViewer Style="{StaticResource HydraPageScrollViewer}">
+        <Grid Style="{StaticResource HydraRootContainer}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Style="{StaticResource HydraHeaderGrid}">
-            <TextBlock Text="{Binding Title}" Style="{ThemeResource HydraHeaderText}" />
-        </Grid>
+            <Grid Grid.Row="0" Style="{StaticResource HydraHeaderGrid}">
+                <TextBlock Text="{Binding Title}" Style="{ThemeResource HydraHeaderText}" />
+            </Grid>
 
-        <Grid Grid.Row="1">
-            <ListView Grid.Row="1" ItemsSource="{Binding Dailies}"
-                      ItemTemplate="{StaticResource SchamperDailyTemplate}"
-                      Style="{StaticResource HydraListViewStatic}" />
+            <Grid Grid.Row="1">
+                <ItemsControl ItemsSource="{Binding Dailies}"
+                              ItemTemplate="{StaticResource SchamperDailyTemplate}" />
+            </Grid>
         </Grid>
-    </Grid>
+    </ScrollViewer>
 </prismMvvm:SessionStateAwarePage>

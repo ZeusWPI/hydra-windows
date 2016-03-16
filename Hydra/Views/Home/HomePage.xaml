@@ -81,7 +81,7 @@
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Text="Vandaag &amp; morgen" Style="{StaticResource HydraItemTitle}" />
-                    <ScrollViewer Grid.Row="1" Style="{StaticResource HydraScrollViewer}">
+                    <ScrollViewer Grid.Row="1" Style="{StaticResource HydraItemScrollViewer}">
                         <ListView ItemsSource="{Binding ActivitiesToday}"
                                   ItemTemplate="{StaticResource ActivityTemplate}"
                                   Style="{StaticResource HydraListViewStatic}" />

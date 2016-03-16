@@ -56,13 +56,19 @@
     </Style>
     <!-- EndRegion -->
 
-    <!-- A Scrollviewer that _doesn't_ overlap with the content -->
-    <Style x:Key="HydraScrollViewer" TargetType="ScrollViewer">
+
+    <!-- Region ScrollViewers -->
+    <Style x:Key="HydraPageScrollViewer" TargetType="ScrollViewer">
+        <Setter Property="Padding" Value="0,0,10,0" />
+    </Style>
+    
+    <Style x:Key="HydraItemScrollViewer" TargetType="ScrollViewer">
         <Setter Property="Margin" Value="0,0,-25,0" />
         <Setter Property="Padding" Value="0,0,25,0" />
         <Setter Property="VerticalScrollBarVisibility" Value="Visible" />
         <Setter Property="VerticalScrollMode" Value="Auto" />
     </Style>
+    <!-- EndRegion -->
 
     <Style x:Key="HydraButton" TargetType="Button">
         <Setter Property="Foreground" Value="{StaticResource UGentBlue}" />
